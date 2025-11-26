@@ -16,4 +16,6 @@ abstract class FcrmIcons {
       'packages/fcrm_chat_flutter/lib/src/assets/icons/paperclip.svg';
   static const file =
       'packages/fcrm_chat_flutter/lib/src/assets/icons/file.svg';
+  static const send =
+      'packages/fcrm_chat_flutter/lib/src/assets/icons/send.svg';
 }

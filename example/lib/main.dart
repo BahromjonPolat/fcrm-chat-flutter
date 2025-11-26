@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
                 appKey: Env.appKey,
                 appSecret: Env.appSecret,
                 socketUrl: Env.socketUrl,
+                defaultEndpoint: 'Hilol (Example)',
               ),
             ),
           child: Container(),

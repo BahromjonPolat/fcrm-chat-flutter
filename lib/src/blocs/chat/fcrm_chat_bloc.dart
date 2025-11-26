@@ -26,6 +26,7 @@ class FcrmChatBloc extends Bloc<FcrmChatEvent, FcrmChatState> {
               appSecret,
               socketUrl,
               enableLogging,
+              defaultEndpoint,
             ) async {
               final chat = FcrmChat(
                 config: ChatConfig(
@@ -39,11 +40,13 @@ class FcrmChatBloc extends Bloc<FcrmChatEvent, FcrmChatState> {
               );
 
               await chat.initialize();
-              emit(state.copyWith(chat: chat));
+              emit(
+                state.copyWith(chat: chat, defaultEndpoint: defaultEndpoint),
+              );
               final registered = await chat.isRegistered();
               if (!registered) {
                 add(
-                  .register(
+                  FcrmChatEvent.register(
                     userData: {
                       'name': 'Bahromjon Polat',
                       'email': 'bahromjon.ergashboyev@gmail.com',
@@ -78,6 +81,15 @@ class FcrmChatBloc extends Bloc<FcrmChatEvent, FcrmChatState> {
             ),
           );
         },
+        sendMessage: (message, endpoint) async {
+          final result = await state.chat?.sendMessage(
+            message,
+            endpoint: endpoint ?? state.defaultEndpoint,
+          );
+          print(result);
+          // emit(state.copyWith());
+        },
+        sendImage: (imagePath, endpoint) {},
       );
     });
   }

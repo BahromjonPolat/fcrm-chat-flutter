@@ -58,7 +58,9 @@ class FcrmChatBubble extends StatelessWidget {
               right: isSendBubble ? 0 : 56,
               bottom: isSendBubble ? 0 : 16,
             ),
-            alignment: isSendBubble ? Alignment.topRight : Alignment.topLeft,
+            alignment: isSendBubble
+                ? Alignment.centerRight
+                : Alignment.centerLeft,
             child: PhysicalShape(
               clipper: ChatBubbleClipper(
                 type: isSendBubble

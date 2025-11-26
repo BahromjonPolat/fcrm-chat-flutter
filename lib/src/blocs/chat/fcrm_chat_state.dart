@@ -6,5 +6,6 @@ class FcrmChatState with _$FcrmChatState {
     @Default(FormzSubmissionStatus.initial) FormzSubmissionStatus status,
     @Default([]) List<ChatMessage> messages,
     FcrmChat? chat,
+    String? defaultEndpoint,
   }) = _Initial;
 }

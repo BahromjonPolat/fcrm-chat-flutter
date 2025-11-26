@@ -9,6 +9,7 @@ class FcrmChatEvent with _$FcrmChatEvent {
     required String appSecret,
     required String socketUrl,
     @Default(true) bool enableLogging,
+    String? defaultEndpoint,
   }) = _Initialize;
 
   const factory FcrmChatEvent.getMessages({@Default(1) int page}) =
@@ -19,4 +20,10 @@ class FcrmChatEvent with _$FcrmChatEvent {
     void Function()? onSuccess,
     void Function(String error)? onError,
   }) = _Register;
+
+  const factory FcrmChatEvent.sendMessage(String message, {String? endpoint}) =
+      _SendMessage;
+
+  const factory FcrmChatEvent.sendImage(String imagePath, {String? endpoint}) =
+      _SendImage;
 }

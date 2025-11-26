@@ -26,6 +26,7 @@ mixin _$FcrmChatEvent {
       String appSecret,
       String socketUrl,
       bool enableLogging,
+      String? defaultEndpoint,
     )
     initialize,
     required TResult Function(int page) getMessages,
@@ -35,6 +36,8 @@ mixin _$FcrmChatEvent {
       void Function(String)? onError,
     )
     register,
+    required TResult Function(String message, String? endpoint) sendMessage,
+    required TResult Function(String imagePath, String? endpoint) sendImage,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -45,6 +48,7 @@ mixin _$FcrmChatEvent {
       String appSecret,
       String socketUrl,
       bool enableLogging,
+      String? defaultEndpoint,
     )?
     initialize,
     TResult? Function(int page)? getMessages,
@@ -54,6 +58,8 @@ mixin _$FcrmChatEvent {
       void Function(String)? onError,
     )?
     register,
+    TResult? Function(String message, String? endpoint)? sendMessage,
+    TResult? Function(String imagePath, String? endpoint)? sendImage,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -64,6 +70,7 @@ mixin _$FcrmChatEvent {
       String appSecret,
       String socketUrl,
       bool enableLogging,
+      String? defaultEndpoint,
     )?
     initialize,
     TResult Function(int page)? getMessages,
@@ -73,6 +80,8 @@ mixin _$FcrmChatEvent {
       void Function(String)? onError,
     )?
     register,
+    TResult Function(String message, String? endpoint)? sendMessage,
+    TResult Function(String imagePath, String? endpoint)? sendImage,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,18 +89,24 @@ mixin _$FcrmChatEvent {
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_GetMessages value) getMessages,
     required TResult Function(_Register value) register,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_GetMessages value)? getMessages,
     TResult? Function(_Register value)? register,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialize value)? initialize,
     TResult Function(_GetMessages value)? getMessages,
     TResult Function(_Register value)? register,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -132,6 +147,7 @@ abstract class _$$InitializeImplCopyWith<$Res> {
     String appSecret,
     String socketUrl,
     bool enableLogging,
+    String? defaultEndpoint,
   });
 }
 
@@ -155,6 +171,7 @@ class __$$InitializeImplCopyWithImpl<$Res>
     Object? appSecret = null,
     Object? socketUrl = null,
     Object? enableLogging = null,
+    Object? defaultEndpoint = freezed,
   }) {
     return _then(
       _$InitializeImpl(
@@ -182,6 +199,10 @@ class __$$InitializeImplCopyWithImpl<$Res>
             ? _value.enableLogging
             : enableLogging // ignore: cast_nullable_to_non_nullable
                   as bool,
+        defaultEndpoint: freezed == defaultEndpoint
+            ? _value.defaultEndpoint
+            : defaultEndpoint // ignore: cast_nullable_to_non_nullable
+                  as String?,
       ),
     );
   }
@@ -197,6 +218,7 @@ class _$InitializeImpl implements _Initialize {
     required this.appSecret,
     required this.socketUrl,
     this.enableLogging = true,
+    this.defaultEndpoint,
   });
 
   @override
@@ -212,10 +234,12 @@ class _$InitializeImpl implements _Initialize {
   @override
   @JsonKey()
   final bool enableLogging;
+  @override
+  final String? defaultEndpoint;
 
   @override
   String toString() {
-    return 'FcrmChatEvent.initialize(baseUrl: $baseUrl, companyToken: $companyToken, appKey: $appKey, appSecret: $appSecret, socketUrl: $socketUrl, enableLogging: $enableLogging)';
+    return 'FcrmChatEvent.initialize(baseUrl: $baseUrl, companyToken: $companyToken, appKey: $appKey, appSecret: $appSecret, socketUrl: $socketUrl, enableLogging: $enableLogging, defaultEndpoint: $defaultEndpoint)';
   }
 
   @override
@@ -232,7 +256,9 @@ class _$InitializeImpl implements _Initialize {
             (identical(other.socketUrl, socketUrl) ||
                 other.socketUrl == socketUrl) &&
             (identical(other.enableLogging, enableLogging) ||
-                other.enableLogging == enableLogging));
+                other.enableLogging == enableLogging) &&
+            (identical(other.defaultEndpoint, defaultEndpoint) ||
+                other.defaultEndpoint == defaultEndpoint));
   }
 
   @override
@@ -244,6 +270,7 @@ class _$InitializeImpl implements _Initialize {
     appSecret,
     socketUrl,
     enableLogging,
+    defaultEndpoint,
   );
 
   /// Create a copy of FcrmChatEvent
@@ -264,6 +291,7 @@ class _$InitializeImpl implements _Initialize {
       String appSecret,
       String socketUrl,
       bool enableLogging,
+      String? defaultEndpoint,
     )
     initialize,
     required TResult Function(int page) getMessages,
@@ -273,6 +301,8 @@ class _$InitializeImpl implements _Initialize {
       void Function(String)? onError,
     )
     register,
+    required TResult Function(String message, String? endpoint) sendMessage,
+    required TResult Function(String imagePath, String? endpoint) sendImage,
   }) {
     return initialize(
       baseUrl,
@@ -281,6 +311,7 @@ class _$InitializeImpl implements _Initialize {
       appSecret,
       socketUrl,
       enableLogging,
+      defaultEndpoint,
     );
   }
 
@@ -294,6 +325,7 @@ class _$InitializeImpl implements _Initialize {
       String appSecret,
       String socketUrl,
       bool enableLogging,
+      String? defaultEndpoint,
     )?
     initialize,
     TResult? Function(int page)? getMessages,
@@ -303,6 +335,8 @@ class _$InitializeImpl implements _Initialize {
       void Function(String)? onError,
     )?
     register,
+    TResult? Function(String message, String? endpoint)? sendMessage,
+    TResult? Function(String imagePath, String? endpoint)? sendImage,
   }) {
     return initialize?.call(
       baseUrl,
@@ -311,6 +345,7 @@ class _$InitializeImpl implements _Initialize {
       appSecret,
       socketUrl,
       enableLogging,
+      defaultEndpoint,
     );
   }
 
@@ -324,6 +359,7 @@ class _$InitializeImpl implements _Initialize {
       String appSecret,
       String socketUrl,
       bool enableLogging,
+      String? defaultEndpoint,
     )?
     initialize,
     TResult Function(int page)? getMessages,
@@ -333,6 +369,8 @@ class _$InitializeImpl implements _Initialize {
       void Function(String)? onError,
     )?
     register,
+    TResult Function(String message, String? endpoint)? sendMessage,
+    TResult Function(String imagePath, String? endpoint)? sendImage,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -343,6 +381,7 @@ class _$InitializeImpl implements _Initialize {
         appSecret,
         socketUrl,
         enableLogging,
+        defaultEndpoint,
       );
     }
     return orElse();
@@ -354,6 +393,8 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_GetMessages value) getMessages,
     required TResult Function(_Register value) register,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
   }) {
     return initialize(this);
   }
@@ -364,6 +405,8 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_GetMessages value)? getMessages,
     TResult? Function(_Register value)? register,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
   }) {
     return initialize?.call(this);
   }
@@ -374,6 +417,8 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_Initialize value)? initialize,
     TResult Function(_GetMessages value)? getMessages,
     TResult Function(_Register value)? register,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -391,6 +436,7 @@ abstract class _Initialize implements FcrmChatEvent {
     required final String appSecret,
     required final String socketUrl,
     final bool enableLogging,
+    final String? defaultEndpoint,
   }) = _$InitializeImpl;
 
   String get baseUrl;
@@ -399,6 +445,7 @@ abstract class _Initialize implements FcrmChatEvent {
   String get appSecret;
   String get socketUrl;
   bool get enableLogging;
+  String? get defaultEndpoint;
 
   /// Create a copy of FcrmChatEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -485,6 +532,7 @@ class _$GetMessagesImpl implements _GetMessages {
       String appSecret,
       String socketUrl,
       bool enableLogging,
+      String? defaultEndpoint,
     )
     initialize,
     required TResult Function(int page) getMessages,
@@ -494,6 +542,8 @@ class _$GetMessagesImpl implements _GetMessages {
       void Function(String)? onError,
     )
     register,
+    required TResult Function(String message, String? endpoint) sendMessage,
+    required TResult Function(String imagePath, String? endpoint) sendImage,
   }) {
     return getMessages(page);
   }
@@ -508,6 +558,7 @@ class _$GetMessagesImpl implements _GetMessages {
       String appSecret,
       String socketUrl,
       bool enableLogging,
+      String? defaultEndpoint,
     )?
     initialize,
     TResult? Function(int page)? getMessages,
@@ -517,6 +568,8 @@ class _$GetMessagesImpl implements _GetMessages {
       void Function(String)? onError,
     )?
     register,
+    TResult? Function(String message, String? endpoint)? sendMessage,
+    TResult? Function(String imagePath, String? endpoint)? sendImage,
   }) {
     return getMessages?.call(page);
   }
@@ -531,6 +584,7 @@ class _$GetMessagesImpl implements _GetMessages {
       String appSecret,
       String socketUrl,
       bool enableLogging,
+      String? defaultEndpoint,
     )?
     initialize,
     TResult Function(int page)? getMessages,
@@ -540,6 +594,8 @@ class _$GetMessagesImpl implements _GetMessages {
       void Function(String)? onError,
     )?
     register,
+    TResult Function(String message, String? endpoint)? sendMessage,
+    TResult Function(String imagePath, String? endpoint)? sendImage,
     required TResult orElse(),
   }) {
     if (getMessages != null) {
@@ -554,6 +610,8 @@ class _$GetMessagesImpl implements _GetMessages {
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_GetMessages value) getMessages,
     required TResult Function(_Register value) register,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
   }) {
     return getMessages(this);
   }
@@ -564,6 +622,8 @@ class _$GetMessagesImpl implements _GetMessages {
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_GetMessages value)? getMessages,
     TResult? Function(_Register value)? register,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
   }) {
     return getMessages?.call(this);
   }
@@ -574,6 +634,8 @@ class _$GetMessagesImpl implements _GetMessages {
     TResult Function(_Initialize value)? initialize,
     TResult Function(_GetMessages value)? getMessages,
     TResult Function(_Register value)? register,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
     required TResult orElse(),
   }) {
     if (getMessages != null) {
@@ -710,6 +772,7 @@ class _$RegisterImpl implements _Register {
       String appSecret,
       String socketUrl,
       bool enableLogging,
+      String? defaultEndpoint,
     )
     initialize,
     required TResult Function(int page) getMessages,
@@ -719,6 +782,8 @@ class _$RegisterImpl implements _Register {
       void Function(String)? onError,
     )
     register,
+    required TResult Function(String message, String? endpoint) sendMessage,
+    required TResult Function(String imagePath, String? endpoint) sendImage,
   }) {
     return register(userData, onSuccess, onError);
   }
@@ -733,6 +798,7 @@ class _$RegisterImpl implements _Register {
       String appSecret,
       String socketUrl,
       bool enableLogging,
+      String? defaultEndpoint,
     )?
     initialize,
     TResult? Function(int page)? getMessages,
@@ -742,6 +808,8 @@ class _$RegisterImpl implements _Register {
       void Function(String)? onError,
     )?
     register,
+    TResult? Function(String message, String? endpoint)? sendMessage,
+    TResult? Function(String imagePath, String? endpoint)? sendImage,
   }) {
     return register?.call(userData, onSuccess, onError);
   }
@@ -756,6 +824,7 @@ class _$RegisterImpl implements _Register {
       String appSecret,
       String socketUrl,
       bool enableLogging,
+      String? defaultEndpoint,
     )?
     initialize,
     TResult Function(int page)? getMessages,
@@ -765,6 +834,8 @@ class _$RegisterImpl implements _Register {
       void Function(String)? onError,
     )?
     register,
+    TResult Function(String message, String? endpoint)? sendMessage,
+    TResult Function(String imagePath, String? endpoint)? sendImage,
     required TResult orElse(),
   }) {
     if (register != null) {
@@ -779,6 +850,8 @@ class _$RegisterImpl implements _Register {
     required TResult Function(_Initialize value) initialize,
     required TResult Function(_GetMessages value) getMessages,
     required TResult Function(_Register value) register,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
   }) {
     return register(this);
   }
@@ -789,6 +862,8 @@ class _$RegisterImpl implements _Register {
     TResult? Function(_Initialize value)? initialize,
     TResult? Function(_GetMessages value)? getMessages,
     TResult? Function(_Register value)? register,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
   }) {
     return register?.call(this);
   }
@@ -799,6 +874,8 @@ class _$RegisterImpl implements _Register {
     TResult Function(_Initialize value)? initialize,
     TResult Function(_GetMessages value)? getMessages,
     TResult Function(_Register value)? register,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
     required TResult orElse(),
   }) {
     if (register != null) {
@@ -827,16 +904,443 @@ abstract class _Register implements FcrmChatEvent {
 }
 
 /// @nodoc
+abstract class _$$SendMessageImplCopyWith<$Res> {
+  factory _$$SendMessageImplCopyWith(
+    _$SendMessageImpl value,
+    $Res Function(_$SendMessageImpl) then,
+  ) = __$$SendMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message, String? endpoint});
+}
+
+/// @nodoc
+class __$$SendMessageImplCopyWithImpl<$Res>
+    extends _$FcrmChatEventCopyWithImpl<$Res, _$SendMessageImpl>
+    implements _$$SendMessageImplCopyWith<$Res> {
+  __$$SendMessageImplCopyWithImpl(
+    _$SendMessageImpl _value,
+    $Res Function(_$SendMessageImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of FcrmChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? message = null, Object? endpoint = freezed}) {
+    return _then(
+      _$SendMessageImpl(
+        null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as String,
+        endpoint: freezed == endpoint
+            ? _value.endpoint
+            : endpoint // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$SendMessageImpl implements _SendMessage {
+  const _$SendMessageImpl(this.message, {this.endpoint});
+
+  @override
+  final String message;
+  @override
+  final String? endpoint;
+
+  @override
+  String toString() {
+    return 'FcrmChatEvent.sendMessage(message: $message, endpoint: $endpoint)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendMessageImpl &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.endpoint, endpoint) ||
+                other.endpoint == endpoint));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message, endpoint);
+
+  /// Create a copy of FcrmChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendMessageImplCopyWith<_$SendMessageImpl> get copyWith =>
+      __$$SendMessageImplCopyWithImpl<_$SendMessageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+      String baseUrl,
+      String companyToken,
+      String appKey,
+      String appSecret,
+      String socketUrl,
+      bool enableLogging,
+      String? defaultEndpoint,
+    )
+    initialize,
+    required TResult Function(int page) getMessages,
+    required TResult Function(
+      Map<String, dynamic> userData,
+      void Function()? onSuccess,
+      void Function(String)? onError,
+    )
+    register,
+    required TResult Function(String message, String? endpoint) sendMessage,
+    required TResult Function(String imagePath, String? endpoint) sendImage,
+  }) {
+    return sendMessage(message, endpoint);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+      String baseUrl,
+      String companyToken,
+      String appKey,
+      String appSecret,
+      String socketUrl,
+      bool enableLogging,
+      String? defaultEndpoint,
+    )?
+    initialize,
+    TResult? Function(int page)? getMessages,
+    TResult? Function(
+      Map<String, dynamic> userData,
+      void Function()? onSuccess,
+      void Function(String)? onError,
+    )?
+    register,
+    TResult? Function(String message, String? endpoint)? sendMessage,
+    TResult? Function(String imagePath, String? endpoint)? sendImage,
+  }) {
+    return sendMessage?.call(message, endpoint);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+      String baseUrl,
+      String companyToken,
+      String appKey,
+      String appSecret,
+      String socketUrl,
+      bool enableLogging,
+      String? defaultEndpoint,
+    )?
+    initialize,
+    TResult Function(int page)? getMessages,
+    TResult Function(
+      Map<String, dynamic> userData,
+      void Function()? onSuccess,
+      void Function(String)? onError,
+    )?
+    register,
+    TResult Function(String message, String? endpoint)? sendMessage,
+    TResult Function(String imagePath, String? endpoint)? sendImage,
+    required TResult orElse(),
+  }) {
+    if (sendMessage != null) {
+      return sendMessage(message, endpoint);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_GetMessages value) getMessages,
+    required TResult Function(_Register value) register,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
+  }) {
+    return sendMessage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_GetMessages value)? getMessages,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
+  }) {
+    return sendMessage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_GetMessages value)? getMessages,
+    TResult Function(_Register value)? register,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
+    required TResult orElse(),
+  }) {
+    if (sendMessage != null) {
+      return sendMessage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendMessage implements FcrmChatEvent {
+  const factory _SendMessage(final String message, {final String? endpoint}) =
+      _$SendMessageImpl;
+
+  String get message;
+  String? get endpoint;
+
+  /// Create a copy of FcrmChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SendMessageImplCopyWith<_$SendMessageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SendImageImplCopyWith<$Res> {
+  factory _$$SendImageImplCopyWith(
+    _$SendImageImpl value,
+    $Res Function(_$SendImageImpl) then,
+  ) = __$$SendImageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String imagePath, String? endpoint});
+}
+
+/// @nodoc
+class __$$SendImageImplCopyWithImpl<$Res>
+    extends _$FcrmChatEventCopyWithImpl<$Res, _$SendImageImpl>
+    implements _$$SendImageImplCopyWith<$Res> {
+  __$$SendImageImplCopyWithImpl(
+    _$SendImageImpl _value,
+    $Res Function(_$SendImageImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of FcrmChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? imagePath = null, Object? endpoint = freezed}) {
+    return _then(
+      _$SendImageImpl(
+        null == imagePath
+            ? _value.imagePath
+            : imagePath // ignore: cast_nullable_to_non_nullable
+                  as String,
+        endpoint: freezed == endpoint
+            ? _value.endpoint
+            : endpoint // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$SendImageImpl implements _SendImage {
+  const _$SendImageImpl(this.imagePath, {this.endpoint});
+
+  @override
+  final String imagePath;
+  @override
+  final String? endpoint;
+
+  @override
+  String toString() {
+    return 'FcrmChatEvent.sendImage(imagePath: $imagePath, endpoint: $endpoint)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendImageImpl &&
+            (identical(other.imagePath, imagePath) ||
+                other.imagePath == imagePath) &&
+            (identical(other.endpoint, endpoint) ||
+                other.endpoint == endpoint));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, imagePath, endpoint);
+
+  /// Create a copy of FcrmChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendImageImplCopyWith<_$SendImageImpl> get copyWith =>
+      __$$SendImageImplCopyWithImpl<_$SendImageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+      String baseUrl,
+      String companyToken,
+      String appKey,
+      String appSecret,
+      String socketUrl,
+      bool enableLogging,
+      String? defaultEndpoint,
+    )
+    initialize,
+    required TResult Function(int page) getMessages,
+    required TResult Function(
+      Map<String, dynamic> userData,
+      void Function()? onSuccess,
+      void Function(String)? onError,
+    )
+    register,
+    required TResult Function(String message, String? endpoint) sendMessage,
+    required TResult Function(String imagePath, String? endpoint) sendImage,
+  }) {
+    return sendImage(imagePath, endpoint);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+      String baseUrl,
+      String companyToken,
+      String appKey,
+      String appSecret,
+      String socketUrl,
+      bool enableLogging,
+      String? defaultEndpoint,
+    )?
+    initialize,
+    TResult? Function(int page)? getMessages,
+    TResult? Function(
+      Map<String, dynamic> userData,
+      void Function()? onSuccess,
+      void Function(String)? onError,
+    )?
+    register,
+    TResult? Function(String message, String? endpoint)? sendMessage,
+    TResult? Function(String imagePath, String? endpoint)? sendImage,
+  }) {
+    return sendImage?.call(imagePath, endpoint);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+      String baseUrl,
+      String companyToken,
+      String appKey,
+      String appSecret,
+      String socketUrl,
+      bool enableLogging,
+      String? defaultEndpoint,
+    )?
+    initialize,
+    TResult Function(int page)? getMessages,
+    TResult Function(
+      Map<String, dynamic> userData,
+      void Function()? onSuccess,
+      void Function(String)? onError,
+    )?
+    register,
+    TResult Function(String message, String? endpoint)? sendMessage,
+    TResult Function(String imagePath, String? endpoint)? sendImage,
+    required TResult orElse(),
+  }) {
+    if (sendImage != null) {
+      return sendImage(imagePath, endpoint);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_GetMessages value) getMessages,
+    required TResult Function(_Register value) register,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
+  }) {
+    return sendImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_GetMessages value)? getMessages,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
+  }) {
+    return sendImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_GetMessages value)? getMessages,
+    TResult Function(_Register value)? register,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
+    required TResult orElse(),
+  }) {
+    if (sendImage != null) {
+      return sendImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendImage implements FcrmChatEvent {
+  const factory _SendImage(final String imagePath, {final String? endpoint}) =
+      _$SendImageImpl;
+
+  String get imagePath;
+  String? get endpoint;
+
+  /// Create a copy of FcrmChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SendImageImplCopyWith<_$SendImageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$FcrmChatState {
   FormzSubmissionStatus get status => throw _privateConstructorUsedError;
   List<ChatMessage> get messages => throw _privateConstructorUsedError;
   FcrmChat? get chat => throw _privateConstructorUsedError;
+  String? get defaultEndpoint => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
       FormzSubmissionStatus status,
       List<ChatMessage> messages,
       FcrmChat? chat,
+      String? defaultEndpoint,
     )
     initial,
   }) => throw _privateConstructorUsedError;
@@ -846,6 +1350,7 @@ mixin _$FcrmChatState {
       FormzSubmissionStatus status,
       List<ChatMessage> messages,
       FcrmChat? chat,
+      String? defaultEndpoint,
     )?
     initial,
   }) => throw _privateConstructorUsedError;
@@ -855,6 +1360,7 @@ mixin _$FcrmChatState {
       FormzSubmissionStatus status,
       List<ChatMessage> messages,
       FcrmChat? chat,
+      String? defaultEndpoint,
     )?
     initial,
     required TResult orElse(),
@@ -891,6 +1397,7 @@ abstract class $FcrmChatStateCopyWith<$Res> {
     FormzSubmissionStatus status,
     List<ChatMessage> messages,
     FcrmChat? chat,
+    String? defaultEndpoint,
   });
 }
 
@@ -912,6 +1419,7 @@ class _$FcrmChatStateCopyWithImpl<$Res, $Val extends FcrmChatState>
     Object? status = null,
     Object? messages = null,
     Object? chat = freezed,
+    Object? defaultEndpoint = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -927,6 +1435,10 @@ class _$FcrmChatStateCopyWithImpl<$Res, $Val extends FcrmChatState>
                 ? _value.chat
                 : chat // ignore: cast_nullable_to_non_nullable
                       as FcrmChat?,
+            defaultEndpoint: freezed == defaultEndpoint
+                ? _value.defaultEndpoint
+                : defaultEndpoint // ignore: cast_nullable_to_non_nullable
+                      as String?,
           )
           as $Val,
     );
@@ -946,6 +1458,7 @@ abstract class _$$InitialImplCopyWith<$Res>
     FormzSubmissionStatus status,
     List<ChatMessage> messages,
     FcrmChat? chat,
+    String? defaultEndpoint,
   });
 }
 
@@ -966,6 +1479,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? status = null,
     Object? messages = null,
     Object? chat = freezed,
+    Object? defaultEndpoint = freezed,
   }) {
     return _then(
       _$InitialImpl(
@@ -981,6 +1495,10 @@ class __$$InitialImplCopyWithImpl<$Res>
             ? _value.chat
             : chat // ignore: cast_nullable_to_non_nullable
                   as FcrmChat?,
+        defaultEndpoint: freezed == defaultEndpoint
+            ? _value.defaultEndpoint
+            : defaultEndpoint // ignore: cast_nullable_to_non_nullable
+                  as String?,
       ),
     );
   }
@@ -993,6 +1511,7 @@ class _$InitialImpl implements _Initial {
     this.status = FormzSubmissionStatus.initial,
     final List<ChatMessage> messages = const [],
     this.chat,
+    this.defaultEndpoint,
   }) : _messages = messages;
 
   @override
@@ -1009,10 +1528,12 @@ class _$InitialImpl implements _Initial {
 
   @override
   final FcrmChat? chat;
+  @override
+  final String? defaultEndpoint;
 
   @override
   String toString() {
-    return 'FcrmChatState.initial(status: $status, messages: $messages, chat: $chat)';
+    return 'FcrmChatState.initial(status: $status, messages: $messages, chat: $chat, defaultEndpoint: $defaultEndpoint)';
   }
 
   @override
@@ -1022,7 +1543,9 @@ class _$InitialImpl implements _Initial {
             other is _$InitialImpl &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._messages, _messages) &&
-            (identical(other.chat, chat) || other.chat == chat));
+            (identical(other.chat, chat) || other.chat == chat) &&
+            (identical(other.defaultEndpoint, defaultEndpoint) ||
+                other.defaultEndpoint == defaultEndpoint));
   }
 
   @override
@@ -1031,6 +1554,7 @@ class _$InitialImpl implements _Initial {
     status,
     const DeepCollectionEquality().hash(_messages),
     chat,
+    defaultEndpoint,
   );
 
   /// Create a copy of FcrmChatState
@@ -1048,10 +1572,11 @@ class _$InitialImpl implements _Initial {
       FormzSubmissionStatus status,
       List<ChatMessage> messages,
       FcrmChat? chat,
+      String? defaultEndpoint,
     )
     initial,
   }) {
-    return initial(status, messages, chat);
+    return initial(status, messages, chat, defaultEndpoint);
   }
 
   @override
@@ -1061,10 +1586,11 @@ class _$InitialImpl implements _Initial {
       FormzSubmissionStatus status,
       List<ChatMessage> messages,
       FcrmChat? chat,
+      String? defaultEndpoint,
     )?
     initial,
   }) {
-    return initial?.call(status, messages, chat);
+    return initial?.call(status, messages, chat, defaultEndpoint);
   }
 
   @override
@@ -1074,12 +1600,13 @@ class _$InitialImpl implements _Initial {
       FormzSubmissionStatus status,
       List<ChatMessage> messages,
       FcrmChat? chat,
+      String? defaultEndpoint,
     )?
     initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(status, messages, chat);
+      return initial(status, messages, chat, defaultEndpoint);
     }
     return orElse();
   }
@@ -1118,6 +1645,7 @@ abstract class _Initial implements FcrmChatState {
     final FormzSubmissionStatus status,
     final List<ChatMessage> messages,
     final FcrmChat? chat,
+    final String? defaultEndpoint,
   }) = _$InitialImpl;
 
   @override
@@ -1126,6 +1654,8 @@ abstract class _Initial implements FcrmChatState {
   List<ChatMessage> get messages;
   @override
   FcrmChat? get chat;
+  @override
+  String? get defaultEndpoint;
 
   /// Create a copy of FcrmChatState
   /// with the given fields replaced by the non-null parameter values.
