@@ -1,3 +1,4 @@
+import 'package:example/env.dart';
 import 'package:fcrm_chat_flutter/fcrm_chat_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,9 +15,35 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => ChatBloc(), child: Container()),
+        BlocProvider(
+          create: (context) => FcrmChatBloc()
+            ..add(
+              FcrmChatEvent.initialize(
+                baseUrl: Env.baseUrl,
+                companyToken: Env.companyToken,
+                appKey: Env.appKey,
+                appSecret: Env.appSecret,
+                socketUrl: Env.socketUrl,
+              ),
+            ),
+          child: Container(),
+        ),
       ],
-      child: MaterialApp(home: HomePage()),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          cardColor: Colors.white,
+          appBarTheme: AppBarThemeData(
+            centerTitle: true,
+            backgroundColor: Colors.white,
+            surfaceTintColor: Colors.white,
+          ),
+          primaryColor: Color(0xFF0085FF),
+          // primaryColor: const Color.fromARGB(255, 52, 148, 55),
+          scaffoldBackgroundColor: Color(0xFFF1F3F3),
+        ),
+        home: HomePage(),
+      ),
     );
   }
 }

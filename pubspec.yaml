@@ -8,20 +8,23 @@ environment:
 
 dependencies:
   bloc: ^8.1.4
+  cached_network_image: ^3.4.1
   dartz: ^0.10.1
   equatable: ^2.0.5
   fcrm_chat_sdk:
     git:
       url: https://github.com/ipchi/fcrm_chat_sdk.git
       ref: main
+  file_picker: ^10.3.7
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
   formz: ^0.8.0
   freezed_annotation: ^2.4.4
-  image_picker: ^1.1.2
+  image_picker: ^1.2.1
   json_annotation: ^4.9.0
   shared_preferences: ^2.3.3
+  svg_flutter: ^0.0.1
 
 dev_dependencies:
   bloc_test: ^9.1.7
@@ -31,13 +34,11 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.5.7
   json_serializable: ^6.8.0
-# flutter:
-# To add assets to your package, add an assets section, like this:
-# assets:
-#   - images/a_dot_burr.jpeg
-#   - images/a_dot_ham.jpeg
-#
 
+flutter:
+  assets:
+    - lib/src/assets/icons/
+    - lib/src/assets/images/
 # fonts:
 #   - family: Schyler
 #     fonts:
