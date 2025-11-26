@@ -38,6 +38,7 @@ mixin _$FcrmChatEvent {
     register,
     required TResult Function(String message, String? endpoint) sendMessage,
     required TResult Function(String imagePath, String? endpoint) sendImage,
+    required TResult Function(ChatMessage message) addMessage,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -60,6 +61,7 @@ mixin _$FcrmChatEvent {
     register,
     TResult? Function(String message, String? endpoint)? sendMessage,
     TResult? Function(String imagePath, String? endpoint)? sendImage,
+    TResult? Function(ChatMessage message)? addMessage,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -82,6 +84,7 @@ mixin _$FcrmChatEvent {
     register,
     TResult Function(String message, String? endpoint)? sendMessage,
     TResult Function(String imagePath, String? endpoint)? sendImage,
+    TResult Function(ChatMessage message)? addMessage,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -91,6 +94,7 @@ mixin _$FcrmChatEvent {
     required TResult Function(_Register value) register,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_AddMessage value) addMessage,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
@@ -99,6 +103,7 @@ mixin _$FcrmChatEvent {
     TResult? Function(_Register value)? register,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_AddMessage value)? addMessage,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
@@ -107,6 +112,7 @@ mixin _$FcrmChatEvent {
     TResult Function(_Register value)? register,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendImage value)? sendImage,
+    TResult Function(_AddMessage value)? addMessage,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -303,6 +309,7 @@ class _$InitializeImpl implements _Initialize {
     register,
     required TResult Function(String message, String? endpoint) sendMessage,
     required TResult Function(String imagePath, String? endpoint) sendImage,
+    required TResult Function(ChatMessage message) addMessage,
   }) {
     return initialize(
       baseUrl,
@@ -337,6 +344,7 @@ class _$InitializeImpl implements _Initialize {
     register,
     TResult? Function(String message, String? endpoint)? sendMessage,
     TResult? Function(String imagePath, String? endpoint)? sendImage,
+    TResult? Function(ChatMessage message)? addMessage,
   }) {
     return initialize?.call(
       baseUrl,
@@ -371,6 +379,7 @@ class _$InitializeImpl implements _Initialize {
     register,
     TResult Function(String message, String? endpoint)? sendMessage,
     TResult Function(String imagePath, String? endpoint)? sendImage,
+    TResult Function(ChatMessage message)? addMessage,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -395,6 +404,7 @@ class _$InitializeImpl implements _Initialize {
     required TResult Function(_Register value) register,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_AddMessage value) addMessage,
   }) {
     return initialize(this);
   }
@@ -407,6 +417,7 @@ class _$InitializeImpl implements _Initialize {
     TResult? Function(_Register value)? register,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_AddMessage value)? addMessage,
   }) {
     return initialize?.call(this);
   }
@@ -419,6 +430,7 @@ class _$InitializeImpl implements _Initialize {
     TResult Function(_Register value)? register,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendImage value)? sendImage,
+    TResult Function(_AddMessage value)? addMessage,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -544,6 +556,7 @@ class _$GetMessagesImpl implements _GetMessages {
     register,
     required TResult Function(String message, String? endpoint) sendMessage,
     required TResult Function(String imagePath, String? endpoint) sendImage,
+    required TResult Function(ChatMessage message) addMessage,
   }) {
     return getMessages(page);
   }
@@ -570,6 +583,7 @@ class _$GetMessagesImpl implements _GetMessages {
     register,
     TResult? Function(String message, String? endpoint)? sendMessage,
     TResult? Function(String imagePath, String? endpoint)? sendImage,
+    TResult? Function(ChatMessage message)? addMessage,
   }) {
     return getMessages?.call(page);
   }
@@ -596,6 +610,7 @@ class _$GetMessagesImpl implements _GetMessages {
     register,
     TResult Function(String message, String? endpoint)? sendMessage,
     TResult Function(String imagePath, String? endpoint)? sendImage,
+    TResult Function(ChatMessage message)? addMessage,
     required TResult orElse(),
   }) {
     if (getMessages != null) {
@@ -612,6 +627,7 @@ class _$GetMessagesImpl implements _GetMessages {
     required TResult Function(_Register value) register,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_AddMessage value) addMessage,
   }) {
     return getMessages(this);
   }
@@ -624,6 +640,7 @@ class _$GetMessagesImpl implements _GetMessages {
     TResult? Function(_Register value)? register,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_AddMessage value)? addMessage,
   }) {
     return getMessages?.call(this);
   }
@@ -636,6 +653,7 @@ class _$GetMessagesImpl implements _GetMessages {
     TResult Function(_Register value)? register,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendImage value)? sendImage,
+    TResult Function(_AddMessage value)? addMessage,
     required TResult orElse(),
   }) {
     if (getMessages != null) {
@@ -784,6 +802,7 @@ class _$RegisterImpl implements _Register {
     register,
     required TResult Function(String message, String? endpoint) sendMessage,
     required TResult Function(String imagePath, String? endpoint) sendImage,
+    required TResult Function(ChatMessage message) addMessage,
   }) {
     return register(userData, onSuccess, onError);
   }
@@ -810,6 +829,7 @@ class _$RegisterImpl implements _Register {
     register,
     TResult? Function(String message, String? endpoint)? sendMessage,
     TResult? Function(String imagePath, String? endpoint)? sendImage,
+    TResult? Function(ChatMessage message)? addMessage,
   }) {
     return register?.call(userData, onSuccess, onError);
   }
@@ -836,6 +856,7 @@ class _$RegisterImpl implements _Register {
     register,
     TResult Function(String message, String? endpoint)? sendMessage,
     TResult Function(String imagePath, String? endpoint)? sendImage,
+    TResult Function(ChatMessage message)? addMessage,
     required TResult orElse(),
   }) {
     if (register != null) {
@@ -852,6 +873,7 @@ class _$RegisterImpl implements _Register {
     required TResult Function(_Register value) register,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_AddMessage value) addMessage,
   }) {
     return register(this);
   }
@@ -864,6 +886,7 @@ class _$RegisterImpl implements _Register {
     TResult? Function(_Register value)? register,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_AddMessage value)? addMessage,
   }) {
     return register?.call(this);
   }
@@ -876,6 +899,7 @@ class _$RegisterImpl implements _Register {
     TResult Function(_Register value)? register,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendImage value)? sendImage,
+    TResult Function(_AddMessage value)? addMessage,
     required TResult orElse(),
   }) {
     if (register != null) {
@@ -1000,6 +1024,7 @@ class _$SendMessageImpl implements _SendMessage {
     register,
     required TResult Function(String message, String? endpoint) sendMessage,
     required TResult Function(String imagePath, String? endpoint) sendImage,
+    required TResult Function(ChatMessage message) addMessage,
   }) {
     return sendMessage(message, endpoint);
   }
@@ -1026,6 +1051,7 @@ class _$SendMessageImpl implements _SendMessage {
     register,
     TResult? Function(String message, String? endpoint)? sendMessage,
     TResult? Function(String imagePath, String? endpoint)? sendImage,
+    TResult? Function(ChatMessage message)? addMessage,
   }) {
     return sendMessage?.call(message, endpoint);
   }
@@ -1052,6 +1078,7 @@ class _$SendMessageImpl implements _SendMessage {
     register,
     TResult Function(String message, String? endpoint)? sendMessage,
     TResult Function(String imagePath, String? endpoint)? sendImage,
+    TResult Function(ChatMessage message)? addMessage,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -1068,6 +1095,7 @@ class _$SendMessageImpl implements _SendMessage {
     required TResult Function(_Register value) register,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_AddMessage value) addMessage,
   }) {
     return sendMessage(this);
   }
@@ -1080,6 +1108,7 @@ class _$SendMessageImpl implements _SendMessage {
     TResult? Function(_Register value)? register,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_AddMessage value)? addMessage,
   }) {
     return sendMessage?.call(this);
   }
@@ -1092,6 +1121,7 @@ class _$SendMessageImpl implements _SendMessage {
     TResult Function(_Register value)? register,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendImage value)? sendImage,
+    TResult Function(_AddMessage value)? addMessage,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -1213,6 +1243,7 @@ class _$SendImageImpl implements _SendImage {
     register,
     required TResult Function(String message, String? endpoint) sendMessage,
     required TResult Function(String imagePath, String? endpoint) sendImage,
+    required TResult Function(ChatMessage message) addMessage,
   }) {
     return sendImage(imagePath, endpoint);
   }
@@ -1239,6 +1270,7 @@ class _$SendImageImpl implements _SendImage {
     register,
     TResult? Function(String message, String? endpoint)? sendMessage,
     TResult? Function(String imagePath, String? endpoint)? sendImage,
+    TResult? Function(ChatMessage message)? addMessage,
   }) {
     return sendImage?.call(imagePath, endpoint);
   }
@@ -1265,6 +1297,7 @@ class _$SendImageImpl implements _SendImage {
     register,
     TResult Function(String message, String? endpoint)? sendMessage,
     TResult Function(String imagePath, String? endpoint)? sendImage,
+    TResult Function(ChatMessage message)? addMessage,
     required TResult orElse(),
   }) {
     if (sendImage != null) {
@@ -1281,6 +1314,7 @@ class _$SendImageImpl implements _SendImage {
     required TResult Function(_Register value) register,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_AddMessage value) addMessage,
   }) {
     return sendImage(this);
   }
@@ -1293,6 +1327,7 @@ class _$SendImageImpl implements _SendImage {
     TResult? Function(_Register value)? register,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_AddMessage value)? addMessage,
   }) {
     return sendImage?.call(this);
   }
@@ -1305,6 +1340,7 @@ class _$SendImageImpl implements _SendImage {
     TResult Function(_Register value)? register,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_SendImage value)? sendImage,
+    TResult Function(_AddMessage value)? addMessage,
     required TResult orElse(),
   }) {
     if (sendImage != null) {
@@ -1325,6 +1361,214 @@ abstract class _SendImage implements FcrmChatEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SendImageImplCopyWith<_$SendImageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddMessageImplCopyWith<$Res> {
+  factory _$$AddMessageImplCopyWith(
+    _$AddMessageImpl value,
+    $Res Function(_$AddMessageImpl) then,
+  ) = __$$AddMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ChatMessage message});
+}
+
+/// @nodoc
+class __$$AddMessageImplCopyWithImpl<$Res>
+    extends _$FcrmChatEventCopyWithImpl<$Res, _$AddMessageImpl>
+    implements _$$AddMessageImplCopyWith<$Res> {
+  __$$AddMessageImplCopyWithImpl(
+    _$AddMessageImpl _value,
+    $Res Function(_$AddMessageImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of FcrmChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? message = null}) {
+    return _then(
+      _$AddMessageImpl(
+        null == message
+            ? _value.message
+            : message // ignore: cast_nullable_to_non_nullable
+                  as ChatMessage,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$AddMessageImpl implements _AddMessage {
+  const _$AddMessageImpl(this.message);
+
+  @override
+  final ChatMessage message;
+
+  @override
+  String toString() {
+    return 'FcrmChatEvent.addMessage(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddMessageImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of FcrmChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddMessageImplCopyWith<_$AddMessageImpl> get copyWith =>
+      __$$AddMessageImplCopyWithImpl<_$AddMessageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+      String baseUrl,
+      String companyToken,
+      String appKey,
+      String appSecret,
+      String socketUrl,
+      bool enableLogging,
+      String? defaultEndpoint,
+    )
+    initialize,
+    required TResult Function(int page) getMessages,
+    required TResult Function(
+      Map<String, dynamic> userData,
+      void Function()? onSuccess,
+      void Function(String)? onError,
+    )
+    register,
+    required TResult Function(String message, String? endpoint) sendMessage,
+    required TResult Function(String imagePath, String? endpoint) sendImage,
+    required TResult Function(ChatMessage message) addMessage,
+  }) {
+    return addMessage(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+      String baseUrl,
+      String companyToken,
+      String appKey,
+      String appSecret,
+      String socketUrl,
+      bool enableLogging,
+      String? defaultEndpoint,
+    )?
+    initialize,
+    TResult? Function(int page)? getMessages,
+    TResult? Function(
+      Map<String, dynamic> userData,
+      void Function()? onSuccess,
+      void Function(String)? onError,
+    )?
+    register,
+    TResult? Function(String message, String? endpoint)? sendMessage,
+    TResult? Function(String imagePath, String? endpoint)? sendImage,
+    TResult? Function(ChatMessage message)? addMessage,
+  }) {
+    return addMessage?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+      String baseUrl,
+      String companyToken,
+      String appKey,
+      String appSecret,
+      String socketUrl,
+      bool enableLogging,
+      String? defaultEndpoint,
+    )?
+    initialize,
+    TResult Function(int page)? getMessages,
+    TResult Function(
+      Map<String, dynamic> userData,
+      void Function()? onSuccess,
+      void Function(String)? onError,
+    )?
+    register,
+    TResult Function(String message, String? endpoint)? sendMessage,
+    TResult Function(String imagePath, String? endpoint)? sendImage,
+    TResult Function(ChatMessage message)? addMessage,
+    required TResult orElse(),
+  }) {
+    if (addMessage != null) {
+      return addMessage(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_GetMessages value) getMessages,
+    required TResult Function(_Register value) register,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_SendImage value) sendImage,
+    required TResult Function(_AddMessage value) addMessage,
+  }) {
+    return addMessage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_GetMessages value)? getMessages,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_SendImage value)? sendImage,
+    TResult? Function(_AddMessage value)? addMessage,
+  }) {
+    return addMessage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_GetMessages value)? getMessages,
+    TResult Function(_Register value)? register,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_SendImage value)? sendImage,
+    TResult Function(_AddMessage value)? addMessage,
+    required TResult orElse(),
+  }) {
+    if (addMessage != null) {
+      return addMessage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddMessage implements FcrmChatEvent {
+  const factory _AddMessage(final ChatMessage message) = _$AddMessageImpl;
+
+  ChatMessage get message;
+
+  /// Create a copy of FcrmChatEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AddMessageImplCopyWith<_$AddMessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

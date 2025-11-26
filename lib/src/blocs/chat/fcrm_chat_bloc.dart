@@ -5,6 +5,9 @@
 
 */
 
+import 'dart:async';
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -15,6 +18,7 @@ part 'fcrm_chat_state.dart';
 part 'fcrm_chat_bloc.freezed.dart';
 
 class FcrmChatBloc extends Bloc<FcrmChatEvent, FcrmChatState> {
+  StreamSubscription<ChatMessage>? _messageSubscription;
   FcrmChatBloc() : super(FcrmChatState.initial()) {
     on<FcrmChatEvent>((event, emit) async {
       await event.when(
@@ -40,9 +44,13 @@ class FcrmChatBloc extends Bloc<FcrmChatEvent, FcrmChatState> {
               );
 
               await chat.initialize();
+
               emit(
                 state.copyWith(chat: chat, defaultEndpoint: defaultEndpoint),
               );
+              _messageSubscription = chat.onMessage.listen((message) {
+                add(FcrmChatEvent.addMessage(message));
+              });
               final registered = await chat.isRegistered();
               if (!registered) {
                 add(
@@ -82,15 +90,30 @@ class FcrmChatBloc extends Bloc<FcrmChatEvent, FcrmChatState> {
           );
         },
         sendMessage: (message, endpoint) async {
-          final result = await state.chat?.sendMessage(
+          await state.chat?.sendMessage(
             message,
             endpoint: endpoint ?? state.defaultEndpoint,
           );
-          print(result);
+
           // emit(state.copyWith());
         },
-        sendImage: (imagePath, endpoint) {},
+        sendImage: (imagePath, endpoint) async {
+          await state.chat?.sendImage(
+            File(imagePath),
+            endpoint: endpoint ?? state.defaultEndpoint,
+          );
+        },
+        addMessage: (message) {
+          final messages = [...state.messages, message];
+          emit(state.copyWith(messages: messages));
+        },
       );
     });
+  }
+
+  @override
+  Future<void> close() {
+    _messageSubscription?.cancel();
+    return super.close();
   }
 }

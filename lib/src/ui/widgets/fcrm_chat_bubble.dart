@@ -5,6 +5,7 @@
 
 */
 
+import 'package:fcrm_chat_flutter/src/extensions/widget_x.dart';
 import 'package:fcrm_chat_flutter/src/utils/date_utils.dart';
 import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 import 'package:flutter/material.dart';
@@ -51,86 +52,83 @@ class FcrmChatBubble extends StatelessWidget {
           ),
         },
 
-        Expanded(
-          child: Container(
-            margin: EdgeInsets.only(
-              left: isSendBubble ? 56 : 0,
-              right: isSendBubble ? 0 : 56,
-              bottom: isSendBubble ? 0 : 16,
+        Container(
+          margin: EdgeInsets.only(
+            left: isSendBubble ? 56 : 0,
+            right: isSendBubble ? 0 : 56,
+            bottom: isSendBubble ? 0 : 16,
+          ),
+          child: PhysicalShape(
+            clipper: ChatBubbleClipper(
+              type: isSendBubble
+                  ? BubbleType.sendBubble
+                  : BubbleType.receiverBubble,
             ),
-            alignment: isSendBubble
-                ? Alignment.centerRight
-                : Alignment.centerLeft,
-            child: PhysicalShape(
-              clipper: ChatBubbleClipper(
-                type: isSendBubble
-                    ? BubbleType.sendBubble
-                    : BubbleType.receiverBubble,
+            elevation: elevation ?? 2,
+            color: isSendBubble
+                ? Theme.of(context).primaryColor
+                : Theme.of(context).cardColor,
+            shadowColor: shadowColor ?? Colors.grey.shade200,
+            child: Padding(
+              padding: EdgeInsets.only(
+                bottom: 8,
+                top: 8,
+                right: isSendBubble ? 16 : 8,
+                left: isSendBubble ? 8 : 16,
               ),
-              elevation: elevation ?? 2,
-              color: isSendBubble
-                  ? Theme.of(context).primaryColor
-                  : Theme.of(context).cardColor,
-              shadowColor: shadowColor ?? Colors.grey.shade200,
-              child: Padding(
-                padding: EdgeInsets.only(
-                  bottom: 8,
-                  top: 8,
-                  right: isSendBubble ? 16 : 8,
-                  left: isSendBubble ? 8 : 16,
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      message.content,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: isSendBubble ? Colors.white : null,
-                      ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    message.content,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: isSendBubble ? Colors.white : null,
                     ),
-                    const SizedBox(height: 4),
-                    Row(
-                      spacing: 7,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        if (isSendBubble) ...{
-                          Text(
-                            AppDateUtils.formatDate(
-                              message.createdAt,
-                              pattern: 'hh:mm',
-                            ),
-                            style: TextStyle(fontSize: 10, color: Colors.white),
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    spacing: 7,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      if (isSendBubble) ...{
+                        Text(
+                          AppDateUtils.formatDate(
+                            message.createdAt.toLocal(),
+                            pattern: 'hh:mm',
                           ),
+                          style: TextStyle(fontSize: 10, color: Colors.white),
+                        ),
 
-                          Icon(Icons.done_all, color: Colors.white, size: 20),
-                        } else ...{
-                          Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(text: '${message.senderName} / '),
-                                TextSpan(
-                                  text: AppDateUtils.formatDate(
-                                    message.createdAt,
-                                    pattern: 'hh:mm',
-                                  ),
+                        Icon(Icons.done_all, color: Colors.white, size: 20),
+                      } else ...{
+                        Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(text: '${message.senderName} / '),
+                              TextSpan(
+                                text: AppDateUtils.formatDate(
+                                  message.createdAt.toLocal(),
+                                  pattern: 'hh:mm',
                                 ),
-                              ],
-                            ),
-                            style: TextStyle(
-                              fontSize: 10,
-                              color: Colors.grey.shade500,
-                            ),
+                              ),
+                            ],
                           ),
-                        },
-                      ],
-                    ),
-                  ],
-                ),
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Colors.grey.shade500,
+                          ),
+                        ),
+                      },
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
-        ),
+        ).wrapExpandedOrNot(wrap: message.content.length > 60),
       ],
     );
   }

@@ -26,4 +26,6 @@ class FcrmChatEvent with _$FcrmChatEvent {
 
   const factory FcrmChatEvent.sendImage(String imagePath, {String? endpoint}) =
       _SendImage;
+
+  const factory FcrmChatEvent.addMessage(ChatMessage message) = _AddMessage;
 }

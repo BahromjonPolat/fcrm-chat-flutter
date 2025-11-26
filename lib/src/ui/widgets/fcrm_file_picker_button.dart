@@ -5,10 +5,12 @@
 
 */
 
+import 'package:fcrm_chat_flutter/fcrm_chat_flutter.dart';
 import 'package:fcrm_chat_flutter/src/constants/fcrm_icons.dart';
 import 'package:fcrm_chat_flutter/src/ui/widgets/fcrm_bottom_modal_sheet.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:svg_flutter/svg.dart';
 
@@ -25,12 +27,20 @@ class FcrmFilePickerButton extends StatelessWidget {
             BottomModalSheetItem(
               title: 'File',
               icon: FcrmIcons.file,
-              onTap: () => _pickFile(isFile: true),
+              onTap: () => _pickFile(isFile: true, onPicked: (value) {}),
             ),
             BottomModalSheetItem(
               title: 'Gallery',
               icon: FcrmIcons.gallery,
-              onTap: () => _pickFile(isFile: false),
+              onTap: () => _pickFile(
+                isFile: false,
+                onPicked: (value) {
+                  final imagePath = value.first.path;
+                  context.read<FcrmChatBloc>().add(
+                    FcrmChatEvent.sendImage(imagePath),
+                  );
+                },
+              ),
             ),
           ],
         );
@@ -54,7 +64,10 @@ class FcrmFilePickerButton extends StatelessWidget {
     );
   }
 
-  Future _pickFile({required bool isFile}) async {
+  Future<void> _pickFile({
+    required bool isFile,
+    required ValueChanged<List<XFile>> onPicked,
+  }) async {
     final files = <XFile>[];
     if (isFile) {
       final picker = FilePicker.platform;
@@ -67,5 +80,10 @@ class FcrmFilePickerButton extends StatelessWidget {
         files.add(result);
       }
     }
+
+    if (files.isEmpty) {
+      return;
+    }
+    onPicked(files);
   }
 }
