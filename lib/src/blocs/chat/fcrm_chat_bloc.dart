@@ -9,6 +9,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:fcrm_chat_flutter/src/models/fcrm_register_model.dart';
 import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:formz/formz.dart';
@@ -31,6 +32,7 @@ class FcrmChatBloc extends Bloc<FcrmChatEvent, FcrmChatState> {
               socketUrl,
               enableLogging,
               defaultEndpoint,
+              onSuccess,
             ) async {
               final chat = FcrmChat(
                 config: ChatConfig(
@@ -45,35 +47,29 @@ class FcrmChatBloc extends Bloc<FcrmChatEvent, FcrmChatState> {
 
               await chat.initialize();
 
-              emit(
-                state.copyWith(chat: chat, defaultEndpoint: defaultEndpoint),
-              );
               _messageSubscription = chat.onMessage.listen((message) {
                 add(FcrmChatEvent.addMessage(message));
               });
               final registered = await chat.isRegistered();
+
+              emit(
+                state.copyWith(chat: chat, defaultEndpoint: defaultEndpoint),
+              );
+
+              onSuccess?.call();
               if (!registered) {
-                add(
-                  FcrmChatEvent.register(
-                    userData: {
-                      'name': 'Bahromjon Polat',
-                      'email': 'bahromjon.ergashboyev@gmail.com',
-                      'phone': '+998901234567',
-                    },
-                  ),
-                );
                 return;
               }
 
               // await chat.sendMessage('Assalomu alaykum! Bu birinchi xabar.');
               add(FcrmChatEvent.getMessages());
             },
-        register: (userData, onSuccess, onError) async {
+        register: (data, onSuccess, onError) async {
           if (state.status.isInProgress) {
             return;
           }
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-          await state.chat?.register(userData: userData);
+          await state.chat?.register(userData: data.toJson());
           onSuccess?.call();
         },
         getMessages: (page) async {

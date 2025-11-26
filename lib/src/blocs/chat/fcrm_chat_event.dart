@@ -10,13 +10,14 @@ class FcrmChatEvent with _$FcrmChatEvent {
     required String socketUrl,
     @Default(true) bool enableLogging,
     String? defaultEndpoint,
+    void Function()? onSuccess,
   }) = _Initialize;
 
   const factory FcrmChatEvent.getMessages({@Default(1) int page}) =
       _GetMessages;
 
   const factory FcrmChatEvent.register({
-    required Map<String, dynamic> userData,
+    required FcrmRegisterModel data,
     void Function()? onSuccess,
     void Function(String error)? onError,
   }) = _Register;

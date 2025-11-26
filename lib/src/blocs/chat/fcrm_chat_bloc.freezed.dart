@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,1902 +9,883 @@ part of 'fcrm_chat_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$FcrmChatEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )
-    initialize,
-    required TResult Function(int page) getMessages,
-    required TResult Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )
-    register,
-    required TResult Function(String message, String? endpoint) sendMessage,
-    required TResult Function(String imagePath, String? endpoint) sendImage,
-    required TResult Function(ChatMessage message) addMessage,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )?
-    initialize,
-    TResult? Function(int page)? getMessages,
-    TResult? Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )?
-    register,
-    TResult? Function(String message, String? endpoint)? sendMessage,
-    TResult? Function(String imagePath, String? endpoint)? sendImage,
-    TResult? Function(ChatMessage message)? addMessage,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )?
-    initialize,
-    TResult Function(int page)? getMessages,
-    TResult Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )?
-    register,
-    TResult Function(String message, String? endpoint)? sendMessage,
-    TResult Function(String imagePath, String? endpoint)? sendImage,
-    TResult Function(ChatMessage message)? addMessage,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialize value) initialize,
-    required TResult Function(_GetMessages value) getMessages,
-    required TResult Function(_Register value) register,
-    required TResult Function(_SendMessage value) sendMessage,
-    required TResult Function(_SendImage value) sendImage,
-    required TResult Function(_AddMessage value) addMessage,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialize value)? initialize,
-    TResult? Function(_GetMessages value)? getMessages,
-    TResult? Function(_Register value)? register,
-    TResult? Function(_SendMessage value)? sendMessage,
-    TResult? Function(_SendImage value)? sendImage,
-    TResult? Function(_AddMessage value)? addMessage,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialize value)? initialize,
-    TResult Function(_GetMessages value)? getMessages,
-    TResult Function(_Register value)? register,
-    TResult Function(_SendMessage value)? sendMessage,
-    TResult Function(_SendImage value)? sendImage,
-    TResult Function(_AddMessage value)? addMessage,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FcrmChatEvent);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'FcrmChatEvent()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $FcrmChatEventCopyWith<$Res> {
-  factory $FcrmChatEventCopyWith(
-    FcrmChatEvent value,
-    $Res Function(FcrmChatEvent) then,
-  ) = _$FcrmChatEventCopyWithImpl<$Res, FcrmChatEvent>;
+class $FcrmChatEventCopyWith<$Res>  {
+$FcrmChatEventCopyWith(FcrmChatEvent _, $Res Function(FcrmChatEvent) __);
 }
 
-/// @nodoc
-class _$FcrmChatEventCopyWithImpl<$Res, $Val extends FcrmChatEvent>
-    implements $FcrmChatEventCopyWith<$Res> {
-  _$FcrmChatEventCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [FcrmChatEvent].
+extension FcrmChatEventPatterns on FcrmChatEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initialize value)?  initialize,TResult Function( _GetMessages value)?  getMessages,TResult Function( _Register value)?  register,TResult Function( _SendMessage value)?  sendMessage,TResult Function( _SendImage value)?  sendImage,TResult Function( _AddMessage value)?  addMessage,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Initialize() when initialize != null:
+return initialize(_that);case _GetMessages() when getMessages != null:
+return getMessages(_that);case _Register() when register != null:
+return register(_that);case _SendMessage() when sendMessage != null:
+return sendMessage(_that);case _SendImage() when sendImage != null:
+return sendImage(_that);case _AddMessage() when addMessage != null:
+return addMessage(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initialize value)  initialize,required TResult Function( _GetMessages value)  getMessages,required TResult Function( _Register value)  register,required TResult Function( _SendMessage value)  sendMessage,required TResult Function( _SendImage value)  sendImage,required TResult Function( _AddMessage value)  addMessage,}){
+final _that = this;
+switch (_that) {
+case _Initialize():
+return initialize(_that);case _GetMessages():
+return getMessages(_that);case _Register():
+return register(_that);case _SendMessage():
+return sendMessage(_that);case _SendImage():
+return sendImage(_that);case _AddMessage():
+return addMessage(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initialize value)?  initialize,TResult? Function( _GetMessages value)?  getMessages,TResult? Function( _Register value)?  register,TResult? Function( _SendMessage value)?  sendMessage,TResult? Function( _SendImage value)?  sendImage,TResult? Function( _AddMessage value)?  addMessage,}){
+final _that = this;
+switch (_that) {
+case _Initialize() when initialize != null:
+return initialize(_that);case _GetMessages() when getMessages != null:
+return getMessages(_that);case _Register() when register != null:
+return register(_that);case _SendMessage() when sendMessage != null:
+return sendMessage(_that);case _SendImage() when sendImage != null:
+return sendImage(_that);case _AddMessage() when addMessage != null:
+return addMessage(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String baseUrl,  String companyToken,  String appKey,  String appSecret,  String socketUrl,  bool enableLogging,  String? defaultEndpoint,  void Function()? onSuccess)?  initialize,TResult Function( int page)?  getMessages,TResult Function( FcrmRegisterModel data,  void Function()? onSuccess,  void Function(String error)? onError)?  register,TResult Function( String message,  String? endpoint)?  sendMessage,TResult Function( String imagePath,  String? endpoint)?  sendImage,TResult Function( ChatMessage message)?  addMessage,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Initialize() when initialize != null:
+return initialize(_that.baseUrl,_that.companyToken,_that.appKey,_that.appSecret,_that.socketUrl,_that.enableLogging,_that.defaultEndpoint,_that.onSuccess);case _GetMessages() when getMessages != null:
+return getMessages(_that.page);case _Register() when register != null:
+return register(_that.data,_that.onSuccess,_that.onError);case _SendMessage() when sendMessage != null:
+return sendMessage(_that.message,_that.endpoint);case _SendImage() when sendImage != null:
+return sendImage(_that.imagePath,_that.endpoint);case _AddMessage() when addMessage != null:
+return addMessage(_that.message);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String baseUrl,  String companyToken,  String appKey,  String appSecret,  String socketUrl,  bool enableLogging,  String? defaultEndpoint,  void Function()? onSuccess)  initialize,required TResult Function( int page)  getMessages,required TResult Function( FcrmRegisterModel data,  void Function()? onSuccess,  void Function(String error)? onError)  register,required TResult Function( String message,  String? endpoint)  sendMessage,required TResult Function( String imagePath,  String? endpoint)  sendImage,required TResult Function( ChatMessage message)  addMessage,}) {final _that = this;
+switch (_that) {
+case _Initialize():
+return initialize(_that.baseUrl,_that.companyToken,_that.appKey,_that.appSecret,_that.socketUrl,_that.enableLogging,_that.defaultEndpoint,_that.onSuccess);case _GetMessages():
+return getMessages(_that.page);case _Register():
+return register(_that.data,_that.onSuccess,_that.onError);case _SendMessage():
+return sendMessage(_that.message,_that.endpoint);case _SendImage():
+return sendImage(_that.imagePath,_that.endpoint);case _AddMessage():
+return addMessage(_that.message);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String baseUrl,  String companyToken,  String appKey,  String appSecret,  String socketUrl,  bool enableLogging,  String? defaultEndpoint,  void Function()? onSuccess)?  initialize,TResult? Function( int page)?  getMessages,TResult? Function( FcrmRegisterModel data,  void Function()? onSuccess,  void Function(String error)? onError)?  register,TResult? Function( String message,  String? endpoint)?  sendMessage,TResult? Function( String imagePath,  String? endpoint)?  sendImage,TResult? Function( ChatMessage message)?  addMessage,}) {final _that = this;
+switch (_that) {
+case _Initialize() when initialize != null:
+return initialize(_that.baseUrl,_that.companyToken,_that.appKey,_that.appSecret,_that.socketUrl,_that.enableLogging,_that.defaultEndpoint,_that.onSuccess);case _GetMessages() when getMessages != null:
+return getMessages(_that.page);case _Register() when register != null:
+return register(_that.data,_that.onSuccess,_that.onError);case _SendMessage() when sendMessage != null:
+return sendMessage(_that.message,_that.endpoint);case _SendImage() when sendImage != null:
+return sendImage(_that.imagePath,_that.endpoint);case _AddMessage() when addMessage != null:
+return addMessage(_that.message);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$InitializeImplCopyWith<$Res> {
-  factory _$$InitializeImplCopyWith(
-    _$InitializeImpl value,
-    $Res Function(_$InitializeImpl) then,
-  ) = __$$InitializeImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({
-    String baseUrl,
-    String companyToken,
-    String appKey,
-    String appSecret,
-    String socketUrl,
-    bool enableLogging,
-    String? defaultEndpoint,
-  });
-}
-
-/// @nodoc
-class __$$InitializeImplCopyWithImpl<$Res>
-    extends _$FcrmChatEventCopyWithImpl<$Res, _$InitializeImpl>
-    implements _$$InitializeImplCopyWith<$Res> {
-  __$$InitializeImplCopyWithImpl(
-    _$InitializeImpl _value,
-    $Res Function(_$InitializeImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? baseUrl = null,
-    Object? companyToken = null,
-    Object? appKey = null,
-    Object? appSecret = null,
-    Object? socketUrl = null,
-    Object? enableLogging = null,
-    Object? defaultEndpoint = freezed,
-  }) {
-    return _then(
-      _$InitializeImpl(
-        baseUrl: null == baseUrl
-            ? _value.baseUrl
-            : baseUrl // ignore: cast_nullable_to_non_nullable
-                  as String,
-        companyToken: null == companyToken
-            ? _value.companyToken
-            : companyToken // ignore: cast_nullable_to_non_nullable
-                  as String,
-        appKey: null == appKey
-            ? _value.appKey
-            : appKey // ignore: cast_nullable_to_non_nullable
-                  as String,
-        appSecret: null == appSecret
-            ? _value.appSecret
-            : appSecret // ignore: cast_nullable_to_non_nullable
-                  as String,
-        socketUrl: null == socketUrl
-            ? _value.socketUrl
-            : socketUrl // ignore: cast_nullable_to_non_nullable
-                  as String,
-        enableLogging: null == enableLogging
-            ? _value.enableLogging
-            : enableLogging // ignore: cast_nullable_to_non_nullable
-                  as bool,
-        defaultEndpoint: freezed == defaultEndpoint
-            ? _value.defaultEndpoint
-            : defaultEndpoint // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$InitializeImpl implements _Initialize {
-  const _$InitializeImpl({
-    required this.baseUrl,
-    required this.companyToken,
-    required this.appKey,
-    required this.appSecret,
-    required this.socketUrl,
-    this.enableLogging = true,
-    this.defaultEndpoint,
-  });
 
-  @override
-  final String baseUrl;
-  @override
-  final String companyToken;
-  @override
-  final String appKey;
-  @override
-  final String appSecret;
-  @override
-  final String socketUrl;
-  @override
-  @JsonKey()
-  final bool enableLogging;
-  @override
-  final String? defaultEndpoint;
+class _Initialize implements FcrmChatEvent {
+  const _Initialize({required this.baseUrl, required this.companyToken, required this.appKey, required this.appSecret, required this.socketUrl, this.enableLogging = true, this.defaultEndpoint, this.onSuccess});
+  
 
-  @override
-  String toString() {
-    return 'FcrmChatEvent.initialize(baseUrl: $baseUrl, companyToken: $companyToken, appKey: $appKey, appSecret: $appSecret, socketUrl: $socketUrl, enableLogging: $enableLogging, defaultEndpoint: $defaultEndpoint)';
-  }
+ final  String baseUrl;
+ final  String companyToken;
+ final  String appKey;
+ final  String appSecret;
+ final  String socketUrl;
+@JsonKey() final  bool enableLogging;
+ final  String? defaultEndpoint;
+ final  void Function()? onSuccess;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$InitializeImpl &&
-            (identical(other.baseUrl, baseUrl) || other.baseUrl == baseUrl) &&
-            (identical(other.companyToken, companyToken) ||
-                other.companyToken == companyToken) &&
-            (identical(other.appKey, appKey) || other.appKey == appKey) &&
-            (identical(other.appSecret, appSecret) ||
-                other.appSecret == appSecret) &&
-            (identical(other.socketUrl, socketUrl) ||
-                other.socketUrl == socketUrl) &&
-            (identical(other.enableLogging, enableLogging) ||
-                other.enableLogging == enableLogging) &&
-            (identical(other.defaultEndpoint, defaultEndpoint) ||
-                other.defaultEndpoint == defaultEndpoint));
-  }
+/// Create a copy of FcrmChatEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$InitializeCopyWith<_Initialize> get copyWith => __$InitializeCopyWithImpl<_Initialize>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    baseUrl,
-    companyToken,
-    appKey,
-    appSecret,
-    socketUrl,
-    enableLogging,
-    defaultEndpoint,
-  );
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$InitializeImplCopyWith<_$InitializeImpl> get copyWith =>
-      __$$InitializeImplCopyWithImpl<_$InitializeImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )
-    initialize,
-    required TResult Function(int page) getMessages,
-    required TResult Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )
-    register,
-    required TResult Function(String message, String? endpoint) sendMessage,
-    required TResult Function(String imagePath, String? endpoint) sendImage,
-    required TResult Function(ChatMessage message) addMessage,
-  }) {
-    return initialize(
-      baseUrl,
-      companyToken,
-      appKey,
-      appSecret,
-      socketUrl,
-      enableLogging,
-      defaultEndpoint,
-    );
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )?
-    initialize,
-    TResult? Function(int page)? getMessages,
-    TResult? Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )?
-    register,
-    TResult? Function(String message, String? endpoint)? sendMessage,
-    TResult? Function(String imagePath, String? endpoint)? sendImage,
-    TResult? Function(ChatMessage message)? addMessage,
-  }) {
-    return initialize?.call(
-      baseUrl,
-      companyToken,
-      appKey,
-      appSecret,
-      socketUrl,
-      enableLogging,
-      defaultEndpoint,
-    );
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )?
-    initialize,
-    TResult Function(int page)? getMessages,
-    TResult Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )?
-    register,
-    TResult Function(String message, String? endpoint)? sendMessage,
-    TResult Function(String imagePath, String? endpoint)? sendImage,
-    TResult Function(ChatMessage message)? addMessage,
-    required TResult orElse(),
-  }) {
-    if (initialize != null) {
-      return initialize(
-        baseUrl,
-        companyToken,
-        appKey,
-        appSecret,
-        socketUrl,
-        enableLogging,
-        defaultEndpoint,
-      );
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialize value) initialize,
-    required TResult Function(_GetMessages value) getMessages,
-    required TResult Function(_Register value) register,
-    required TResult Function(_SendMessage value) sendMessage,
-    required TResult Function(_SendImage value) sendImage,
-    required TResult Function(_AddMessage value) addMessage,
-  }) {
-    return initialize(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialize value)? initialize,
-    TResult? Function(_GetMessages value)? getMessages,
-    TResult? Function(_Register value)? register,
-    TResult? Function(_SendMessage value)? sendMessage,
-    TResult? Function(_SendImage value)? sendImage,
-    TResult? Function(_AddMessage value)? addMessage,
-  }) {
-    return initialize?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialize value)? initialize,
-    TResult Function(_GetMessages value)? getMessages,
-    TResult Function(_Register value)? register,
-    TResult Function(_SendMessage value)? sendMessage,
-    TResult Function(_SendImage value)? sendImage,
-    TResult Function(_AddMessage value)? addMessage,
-    required TResult orElse(),
-  }) {
-    if (initialize != null) {
-      return initialize(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initialize&&(identical(other.baseUrl, baseUrl) || other.baseUrl == baseUrl)&&(identical(other.companyToken, companyToken) || other.companyToken == companyToken)&&(identical(other.appKey, appKey) || other.appKey == appKey)&&(identical(other.appSecret, appSecret) || other.appSecret == appSecret)&&(identical(other.socketUrl, socketUrl) || other.socketUrl == socketUrl)&&(identical(other.enableLogging, enableLogging) || other.enableLogging == enableLogging)&&(identical(other.defaultEndpoint, defaultEndpoint) || other.defaultEndpoint == defaultEndpoint)&&(identical(other.onSuccess, onSuccess) || other.onSuccess == onSuccess));
 }
 
-abstract class _Initialize implements FcrmChatEvent {
-  const factory _Initialize({
-    required final String baseUrl,
-    required final String companyToken,
-    required final String appKey,
-    required final String appSecret,
-    required final String socketUrl,
-    final bool enableLogging,
-    final String? defaultEndpoint,
-  }) = _$InitializeImpl;
 
-  String get baseUrl;
-  String get companyToken;
-  String get appKey;
-  String get appSecret;
-  String get socketUrl;
-  bool get enableLogging;
-  String? get defaultEndpoint;
+@override
+int get hashCode => Object.hash(runtimeType,baseUrl,companyToken,appKey,appSecret,socketUrl,enableLogging,defaultEndpoint,onSuccess);
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InitializeImplCopyWith<_$InitializeImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'FcrmChatEvent.initialize(baseUrl: $baseUrl, companyToken: $companyToken, appKey: $appKey, appSecret: $appSecret, socketUrl: $socketUrl, enableLogging: $enableLogging, defaultEndpoint: $defaultEndpoint, onSuccess: $onSuccess)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$GetMessagesImplCopyWith<$Res> {
-  factory _$$GetMessagesImplCopyWith(
-    _$GetMessagesImpl value,
-    $Res Function(_$GetMessagesImpl) then,
-  ) = __$$GetMessagesImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int page});
+abstract mixin class _$InitializeCopyWith<$Res> implements $FcrmChatEventCopyWith<$Res> {
+  factory _$InitializeCopyWith(_Initialize value, $Res Function(_Initialize) _then) = __$InitializeCopyWithImpl;
+@useResult
+$Res call({
+ String baseUrl, String companyToken, String appKey, String appSecret, String socketUrl, bool enableLogging, String? defaultEndpoint, void Function()? onSuccess
+});
+
+
+
+
+}
+/// @nodoc
+class __$InitializeCopyWithImpl<$Res>
+    implements _$InitializeCopyWith<$Res> {
+  __$InitializeCopyWithImpl(this._self, this._then);
+
+  final _Initialize _self;
+  final $Res Function(_Initialize) _then;
+
+/// Create a copy of FcrmChatEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? baseUrl = null,Object? companyToken = null,Object? appKey = null,Object? appSecret = null,Object? socketUrl = null,Object? enableLogging = null,Object? defaultEndpoint = freezed,Object? onSuccess = freezed,}) {
+  return _then(_Initialize(
+baseUrl: null == baseUrl ? _self.baseUrl : baseUrl // ignore: cast_nullable_to_non_nullable
+as String,companyToken: null == companyToken ? _self.companyToken : companyToken // ignore: cast_nullable_to_non_nullable
+as String,appKey: null == appKey ? _self.appKey : appKey // ignore: cast_nullable_to_non_nullable
+as String,appSecret: null == appSecret ? _self.appSecret : appSecret // ignore: cast_nullable_to_non_nullable
+as String,socketUrl: null == socketUrl ? _self.socketUrl : socketUrl // ignore: cast_nullable_to_non_nullable
+as String,enableLogging: null == enableLogging ? _self.enableLogging : enableLogging // ignore: cast_nullable_to_non_nullable
+as bool,defaultEndpoint: freezed == defaultEndpoint ? _self.defaultEndpoint : defaultEndpoint // ignore: cast_nullable_to_non_nullable
+as String?,onSuccess: freezed == onSuccess ? _self.onSuccess : onSuccess // ignore: cast_nullable_to_non_nullable
+as void Function()?,
+  ));
 }
 
-/// @nodoc
-class __$$GetMessagesImplCopyWithImpl<$Res>
-    extends _$FcrmChatEventCopyWithImpl<$Res, _$GetMessagesImpl>
-    implements _$$GetMessagesImplCopyWith<$Res> {
-  __$$GetMessagesImplCopyWithImpl(
-    _$GetMessagesImpl _value,
-    $Res Function(_$GetMessagesImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? page = null}) {
-    return _then(
-      _$GetMessagesImpl(
-        page: null == page
-            ? _value.page
-            : page // ignore: cast_nullable_to_non_nullable
-                  as int,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$GetMessagesImpl implements _GetMessages {
-  const _$GetMessagesImpl({this.page = 1});
 
-  @override
-  @JsonKey()
-  final int page;
+class _GetMessages implements FcrmChatEvent {
+  const _GetMessages({this.page = 1});
+  
 
-  @override
-  String toString() {
-    return 'FcrmChatEvent.getMessages(page: $page)';
-  }
+@JsonKey() final  int page;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetMessagesImpl &&
-            (identical(other.page, page) || other.page == page));
-  }
+/// Create a copy of FcrmChatEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$GetMessagesCopyWith<_GetMessages> get copyWith => __$GetMessagesCopyWithImpl<_GetMessages>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, page);
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetMessagesImplCopyWith<_$GetMessagesImpl> get copyWith =>
-      __$$GetMessagesImplCopyWithImpl<_$GetMessagesImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )
-    initialize,
-    required TResult Function(int page) getMessages,
-    required TResult Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )
-    register,
-    required TResult Function(String message, String? endpoint) sendMessage,
-    required TResult Function(String imagePath, String? endpoint) sendImage,
-    required TResult Function(ChatMessage message) addMessage,
-  }) {
-    return getMessages(page);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )?
-    initialize,
-    TResult? Function(int page)? getMessages,
-    TResult? Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )?
-    register,
-    TResult? Function(String message, String? endpoint)? sendMessage,
-    TResult? Function(String imagePath, String? endpoint)? sendImage,
-    TResult? Function(ChatMessage message)? addMessage,
-  }) {
-    return getMessages?.call(page);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )?
-    initialize,
-    TResult Function(int page)? getMessages,
-    TResult Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )?
-    register,
-    TResult Function(String message, String? endpoint)? sendMessage,
-    TResult Function(String imagePath, String? endpoint)? sendImage,
-    TResult Function(ChatMessage message)? addMessage,
-    required TResult orElse(),
-  }) {
-    if (getMessages != null) {
-      return getMessages(page);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialize value) initialize,
-    required TResult Function(_GetMessages value) getMessages,
-    required TResult Function(_Register value) register,
-    required TResult Function(_SendMessage value) sendMessage,
-    required TResult Function(_SendImage value) sendImage,
-    required TResult Function(_AddMessage value) addMessage,
-  }) {
-    return getMessages(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialize value)? initialize,
-    TResult? Function(_GetMessages value)? getMessages,
-    TResult? Function(_Register value)? register,
-    TResult? Function(_SendMessage value)? sendMessage,
-    TResult? Function(_SendImage value)? sendImage,
-    TResult? Function(_AddMessage value)? addMessage,
-  }) {
-    return getMessages?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialize value)? initialize,
-    TResult Function(_GetMessages value)? getMessages,
-    TResult Function(_Register value)? register,
-    TResult Function(_SendMessage value)? sendMessage,
-    TResult Function(_SendImage value)? sendImage,
-    TResult Function(_AddMessage value)? addMessage,
-    required TResult orElse(),
-  }) {
-    if (getMessages != null) {
-      return getMessages(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetMessages&&(identical(other.page, page) || other.page == page));
 }
 
-abstract class _GetMessages implements FcrmChatEvent {
-  const factory _GetMessages({final int page}) = _$GetMessagesImpl;
 
-  int get page;
+@override
+int get hashCode => Object.hash(runtimeType,page);
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GetMessagesImplCopyWith<_$GetMessagesImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'FcrmChatEvent.getMessages(page: $page)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$RegisterImplCopyWith<$Res> {
-  factory _$$RegisterImplCopyWith(
-    _$RegisterImpl value,
-    $Res Function(_$RegisterImpl) then,
-  ) = __$$RegisterImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({
-    Map<String, dynamic> userData,
-    void Function()? onSuccess,
-    void Function(String)? onError,
-  });
+abstract mixin class _$GetMessagesCopyWith<$Res> implements $FcrmChatEventCopyWith<$Res> {
+  factory _$GetMessagesCopyWith(_GetMessages value, $Res Function(_GetMessages) _then) = __$GetMessagesCopyWithImpl;
+@useResult
+$Res call({
+ int page
+});
+
+
+
+
+}
+/// @nodoc
+class __$GetMessagesCopyWithImpl<$Res>
+    implements _$GetMessagesCopyWith<$Res> {
+  __$GetMessagesCopyWithImpl(this._self, this._then);
+
+  final _GetMessages _self;
+  final $Res Function(_GetMessages) _then;
+
+/// Create a copy of FcrmChatEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? page = null,}) {
+  return _then(_GetMessages(
+page: null == page ? _self.page : page // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
-class __$$RegisterImplCopyWithImpl<$Res>
-    extends _$FcrmChatEventCopyWithImpl<$Res, _$RegisterImpl>
-    implements _$$RegisterImplCopyWith<$Res> {
-  __$$RegisterImplCopyWithImpl(
-    _$RegisterImpl _value,
-    $Res Function(_$RegisterImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? userData = null,
-    Object? onSuccess = freezed,
-    Object? onError = freezed,
-  }) {
-    return _then(
-      _$RegisterImpl(
-        userData: null == userData
-            ? _value._userData
-            : userData // ignore: cast_nullable_to_non_nullable
-                  as Map<String, dynamic>,
-        onSuccess: freezed == onSuccess
-            ? _value.onSuccess
-            : onSuccess // ignore: cast_nullable_to_non_nullable
-                  as void Function()?,
-        onError: freezed == onError
-            ? _value.onError
-            : onError // ignore: cast_nullable_to_non_nullable
-                  as void Function(String)?,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$RegisterImpl implements _Register {
-  const _$RegisterImpl({
-    required final Map<String, dynamic> userData,
-    this.onSuccess,
-    this.onError,
-  }) : _userData = userData;
 
-  final Map<String, dynamic> _userData;
-  @override
-  Map<String, dynamic> get userData {
-    if (_userData is EqualUnmodifiableMapView) return _userData;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_userData);
-  }
+class _Register implements FcrmChatEvent {
+  const _Register({required this.data, this.onSuccess, this.onError});
+  
 
-  @override
-  final void Function()? onSuccess;
-  @override
-  final void Function(String)? onError;
+ final  FcrmRegisterModel data;
+ final  void Function()? onSuccess;
+ final  void Function(String error)? onError;
 
-  @override
-  String toString() {
-    return 'FcrmChatEvent.register(userData: $userData, onSuccess: $onSuccess, onError: $onError)';
-  }
+/// Create a copy of FcrmChatEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RegisterCopyWith<_Register> get copyWith => __$RegisterCopyWithImpl<_Register>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RegisterImpl &&
-            const DeepCollectionEquality().equals(other._userData, _userData) &&
-            (identical(other.onSuccess, onSuccess) ||
-                other.onSuccess == onSuccess) &&
-            (identical(other.onError, onError) || other.onError == onError));
-  }
 
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_userData),
-    onSuccess,
-    onError,
-  );
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RegisterImplCopyWith<_$RegisterImpl> get copyWith =>
-      __$$RegisterImplCopyWithImpl<_$RegisterImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )
-    initialize,
-    required TResult Function(int page) getMessages,
-    required TResult Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )
-    register,
-    required TResult Function(String message, String? endpoint) sendMessage,
-    required TResult Function(String imagePath, String? endpoint) sendImage,
-    required TResult Function(ChatMessage message) addMessage,
-  }) {
-    return register(userData, onSuccess, onError);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )?
-    initialize,
-    TResult? Function(int page)? getMessages,
-    TResult? Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )?
-    register,
-    TResult? Function(String message, String? endpoint)? sendMessage,
-    TResult? Function(String imagePath, String? endpoint)? sendImage,
-    TResult? Function(ChatMessage message)? addMessage,
-  }) {
-    return register?.call(userData, onSuccess, onError);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )?
-    initialize,
-    TResult Function(int page)? getMessages,
-    TResult Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )?
-    register,
-    TResult Function(String message, String? endpoint)? sendMessage,
-    TResult Function(String imagePath, String? endpoint)? sendImage,
-    TResult Function(ChatMessage message)? addMessage,
-    required TResult orElse(),
-  }) {
-    if (register != null) {
-      return register(userData, onSuccess, onError);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialize value) initialize,
-    required TResult Function(_GetMessages value) getMessages,
-    required TResult Function(_Register value) register,
-    required TResult Function(_SendMessage value) sendMessage,
-    required TResult Function(_SendImage value) sendImage,
-    required TResult Function(_AddMessage value) addMessage,
-  }) {
-    return register(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialize value)? initialize,
-    TResult? Function(_GetMessages value)? getMessages,
-    TResult? Function(_Register value)? register,
-    TResult? Function(_SendMessage value)? sendMessage,
-    TResult? Function(_SendImage value)? sendImage,
-    TResult? Function(_AddMessage value)? addMessage,
-  }) {
-    return register?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialize value)? initialize,
-    TResult Function(_GetMessages value)? getMessages,
-    TResult Function(_Register value)? register,
-    TResult Function(_SendMessage value)? sendMessage,
-    TResult Function(_SendImage value)? sendImage,
-    TResult Function(_AddMessage value)? addMessage,
-    required TResult orElse(),
-  }) {
-    if (register != null) {
-      return register(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Register&&(identical(other.data, data) || other.data == data)&&(identical(other.onSuccess, onSuccess) || other.onSuccess == onSuccess)&&(identical(other.onError, onError) || other.onError == onError));
 }
 
-abstract class _Register implements FcrmChatEvent {
-  const factory _Register({
-    required final Map<String, dynamic> userData,
-    final void Function()? onSuccess,
-    final void Function(String)? onError,
-  }) = _$RegisterImpl;
 
-  Map<String, dynamic> get userData;
-  void Function()? get onSuccess;
-  void Function(String)? get onError;
+@override
+int get hashCode => Object.hash(runtimeType,data,onSuccess,onError);
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RegisterImplCopyWith<_$RegisterImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'FcrmChatEvent.register(data: $data, onSuccess: $onSuccess, onError: $onError)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$SendMessageImplCopyWith<$Res> {
-  factory _$$SendMessageImplCopyWith(
-    _$SendMessageImpl value,
-    $Res Function(_$SendMessageImpl) then,
-  ) = __$$SendMessageImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message, String? endpoint});
+abstract mixin class _$RegisterCopyWith<$Res> implements $FcrmChatEventCopyWith<$Res> {
+  factory _$RegisterCopyWith(_Register value, $Res Function(_Register) _then) = __$RegisterCopyWithImpl;
+@useResult
+$Res call({
+ FcrmRegisterModel data, void Function()? onSuccess, void Function(String error)? onError
+});
+
+
+
+
+}
+/// @nodoc
+class __$RegisterCopyWithImpl<$Res>
+    implements _$RegisterCopyWith<$Res> {
+  __$RegisterCopyWithImpl(this._self, this._then);
+
+  final _Register _self;
+  final $Res Function(_Register) _then;
+
+/// Create a copy of FcrmChatEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? data = null,Object? onSuccess = freezed,Object? onError = freezed,}) {
+  return _then(_Register(
+data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as FcrmRegisterModel,onSuccess: freezed == onSuccess ? _self.onSuccess : onSuccess // ignore: cast_nullable_to_non_nullable
+as void Function()?,onError: freezed == onError ? _self.onError : onError // ignore: cast_nullable_to_non_nullable
+as void Function(String error)?,
+  ));
 }
 
-/// @nodoc
-class __$$SendMessageImplCopyWithImpl<$Res>
-    extends _$FcrmChatEventCopyWithImpl<$Res, _$SendMessageImpl>
-    implements _$$SendMessageImplCopyWith<$Res> {
-  __$$SendMessageImplCopyWithImpl(
-    _$SendMessageImpl _value,
-    $Res Function(_$SendMessageImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? message = null, Object? endpoint = freezed}) {
-    return _then(
-      _$SendMessageImpl(
-        null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-        endpoint: freezed == endpoint
-            ? _value.endpoint
-            : endpoint // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$SendMessageImpl implements _SendMessage {
-  const _$SendMessageImpl(this.message, {this.endpoint});
 
-  @override
-  final String message;
-  @override
-  final String? endpoint;
+class _SendMessage implements FcrmChatEvent {
+  const _SendMessage(this.message, {this.endpoint});
+  
 
-  @override
-  String toString() {
-    return 'FcrmChatEvent.sendMessage(message: $message, endpoint: $endpoint)';
-  }
+ final  String message;
+ final  String? endpoint;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SendMessageImpl &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.endpoint, endpoint) ||
-                other.endpoint == endpoint));
-  }
+/// Create a copy of FcrmChatEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SendMessageCopyWith<_SendMessage> get copyWith => __$SendMessageCopyWithImpl<_SendMessage>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, message, endpoint);
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SendMessageImplCopyWith<_$SendMessageImpl> get copyWith =>
-      __$$SendMessageImplCopyWithImpl<_$SendMessageImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )
-    initialize,
-    required TResult Function(int page) getMessages,
-    required TResult Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )
-    register,
-    required TResult Function(String message, String? endpoint) sendMessage,
-    required TResult Function(String imagePath, String? endpoint) sendImage,
-    required TResult Function(ChatMessage message) addMessage,
-  }) {
-    return sendMessage(message, endpoint);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )?
-    initialize,
-    TResult? Function(int page)? getMessages,
-    TResult? Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )?
-    register,
-    TResult? Function(String message, String? endpoint)? sendMessage,
-    TResult? Function(String imagePath, String? endpoint)? sendImage,
-    TResult? Function(ChatMessage message)? addMessage,
-  }) {
-    return sendMessage?.call(message, endpoint);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )?
-    initialize,
-    TResult Function(int page)? getMessages,
-    TResult Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )?
-    register,
-    TResult Function(String message, String? endpoint)? sendMessage,
-    TResult Function(String imagePath, String? endpoint)? sendImage,
-    TResult Function(ChatMessage message)? addMessage,
-    required TResult orElse(),
-  }) {
-    if (sendMessage != null) {
-      return sendMessage(message, endpoint);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialize value) initialize,
-    required TResult Function(_GetMessages value) getMessages,
-    required TResult Function(_Register value) register,
-    required TResult Function(_SendMessage value) sendMessage,
-    required TResult Function(_SendImage value) sendImage,
-    required TResult Function(_AddMessage value) addMessage,
-  }) {
-    return sendMessage(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialize value)? initialize,
-    TResult? Function(_GetMessages value)? getMessages,
-    TResult? Function(_Register value)? register,
-    TResult? Function(_SendMessage value)? sendMessage,
-    TResult? Function(_SendImage value)? sendImage,
-    TResult? Function(_AddMessage value)? addMessage,
-  }) {
-    return sendMessage?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialize value)? initialize,
-    TResult Function(_GetMessages value)? getMessages,
-    TResult Function(_Register value)? register,
-    TResult Function(_SendMessage value)? sendMessage,
-    TResult Function(_SendImage value)? sendImage,
-    TResult Function(_AddMessage value)? addMessage,
-    required TResult orElse(),
-  }) {
-    if (sendMessage != null) {
-      return sendMessage(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SendMessage&&(identical(other.message, message) || other.message == message)&&(identical(other.endpoint, endpoint) || other.endpoint == endpoint));
 }
 
-abstract class _SendMessage implements FcrmChatEvent {
-  const factory _SendMessage(final String message, {final String? endpoint}) =
-      _$SendMessageImpl;
 
-  String get message;
-  String? get endpoint;
+@override
+int get hashCode => Object.hash(runtimeType,message,endpoint);
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SendMessageImplCopyWith<_$SendMessageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'FcrmChatEvent.sendMessage(message: $message, endpoint: $endpoint)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$SendImageImplCopyWith<$Res> {
-  factory _$$SendImageImplCopyWith(
-    _$SendImageImpl value,
-    $Res Function(_$SendImageImpl) then,
-  ) = __$$SendImageImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String imagePath, String? endpoint});
+abstract mixin class _$SendMessageCopyWith<$Res> implements $FcrmChatEventCopyWith<$Res> {
+  factory _$SendMessageCopyWith(_SendMessage value, $Res Function(_SendMessage) _then) = __$SendMessageCopyWithImpl;
+@useResult
+$Res call({
+ String message, String? endpoint
+});
+
+
+
+
+}
+/// @nodoc
+class __$SendMessageCopyWithImpl<$Res>
+    implements _$SendMessageCopyWith<$Res> {
+  __$SendMessageCopyWithImpl(this._self, this._then);
+
+  final _SendMessage _self;
+  final $Res Function(_SendMessage) _then;
+
+/// Create a copy of FcrmChatEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? message = null,Object? endpoint = freezed,}) {
+  return _then(_SendMessage(
+null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,endpoint: freezed == endpoint ? _self.endpoint : endpoint // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-class __$$SendImageImplCopyWithImpl<$Res>
-    extends _$FcrmChatEventCopyWithImpl<$Res, _$SendImageImpl>
-    implements _$$SendImageImplCopyWith<$Res> {
-  __$$SendImageImplCopyWithImpl(
-    _$SendImageImpl _value,
-    $Res Function(_$SendImageImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? imagePath = null, Object? endpoint = freezed}) {
-    return _then(
-      _$SendImageImpl(
-        null == imagePath
-            ? _value.imagePath
-            : imagePath // ignore: cast_nullable_to_non_nullable
-                  as String,
-        endpoint: freezed == endpoint
-            ? _value.endpoint
-            : endpoint // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$SendImageImpl implements _SendImage {
-  const _$SendImageImpl(this.imagePath, {this.endpoint});
 
-  @override
-  final String imagePath;
-  @override
-  final String? endpoint;
+class _SendImage implements FcrmChatEvent {
+  const _SendImage(this.imagePath, {this.endpoint});
+  
 
-  @override
-  String toString() {
-    return 'FcrmChatEvent.sendImage(imagePath: $imagePath, endpoint: $endpoint)';
-  }
+ final  String imagePath;
+ final  String? endpoint;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SendImageImpl &&
-            (identical(other.imagePath, imagePath) ||
-                other.imagePath == imagePath) &&
-            (identical(other.endpoint, endpoint) ||
-                other.endpoint == endpoint));
-  }
+/// Create a copy of FcrmChatEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SendImageCopyWith<_SendImage> get copyWith => __$SendImageCopyWithImpl<_SendImage>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, imagePath, endpoint);
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SendImageImplCopyWith<_$SendImageImpl> get copyWith =>
-      __$$SendImageImplCopyWithImpl<_$SendImageImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )
-    initialize,
-    required TResult Function(int page) getMessages,
-    required TResult Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )
-    register,
-    required TResult Function(String message, String? endpoint) sendMessage,
-    required TResult Function(String imagePath, String? endpoint) sendImage,
-    required TResult Function(ChatMessage message) addMessage,
-  }) {
-    return sendImage(imagePath, endpoint);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )?
-    initialize,
-    TResult? Function(int page)? getMessages,
-    TResult? Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )?
-    register,
-    TResult? Function(String message, String? endpoint)? sendMessage,
-    TResult? Function(String imagePath, String? endpoint)? sendImage,
-    TResult? Function(ChatMessage message)? addMessage,
-  }) {
-    return sendImage?.call(imagePath, endpoint);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )?
-    initialize,
-    TResult Function(int page)? getMessages,
-    TResult Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )?
-    register,
-    TResult Function(String message, String? endpoint)? sendMessage,
-    TResult Function(String imagePath, String? endpoint)? sendImage,
-    TResult Function(ChatMessage message)? addMessage,
-    required TResult orElse(),
-  }) {
-    if (sendImage != null) {
-      return sendImage(imagePath, endpoint);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialize value) initialize,
-    required TResult Function(_GetMessages value) getMessages,
-    required TResult Function(_Register value) register,
-    required TResult Function(_SendMessage value) sendMessage,
-    required TResult Function(_SendImage value) sendImage,
-    required TResult Function(_AddMessage value) addMessage,
-  }) {
-    return sendImage(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialize value)? initialize,
-    TResult? Function(_GetMessages value)? getMessages,
-    TResult? Function(_Register value)? register,
-    TResult? Function(_SendMessage value)? sendMessage,
-    TResult? Function(_SendImage value)? sendImage,
-    TResult? Function(_AddMessage value)? addMessage,
-  }) {
-    return sendImage?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialize value)? initialize,
-    TResult Function(_GetMessages value)? getMessages,
-    TResult Function(_Register value)? register,
-    TResult Function(_SendMessage value)? sendMessage,
-    TResult Function(_SendImage value)? sendImage,
-    TResult Function(_AddMessage value)? addMessage,
-    required TResult orElse(),
-  }) {
-    if (sendImage != null) {
-      return sendImage(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SendImage&&(identical(other.imagePath, imagePath) || other.imagePath == imagePath)&&(identical(other.endpoint, endpoint) || other.endpoint == endpoint));
 }
 
-abstract class _SendImage implements FcrmChatEvent {
-  const factory _SendImage(final String imagePath, {final String? endpoint}) =
-      _$SendImageImpl;
 
-  String get imagePath;
-  String? get endpoint;
+@override
+int get hashCode => Object.hash(runtimeType,imagePath,endpoint);
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SendImageImplCopyWith<_$SendImageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'FcrmChatEvent.sendImage(imagePath: $imagePath, endpoint: $endpoint)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$AddMessageImplCopyWith<$Res> {
-  factory _$$AddMessageImplCopyWith(
-    _$AddMessageImpl value,
-    $Res Function(_$AddMessageImpl) then,
-  ) = __$$AddMessageImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({ChatMessage message});
+abstract mixin class _$SendImageCopyWith<$Res> implements $FcrmChatEventCopyWith<$Res> {
+  factory _$SendImageCopyWith(_SendImage value, $Res Function(_SendImage) _then) = __$SendImageCopyWithImpl;
+@useResult
+$Res call({
+ String imagePath, String? endpoint
+});
+
+
+
+
+}
+/// @nodoc
+class __$SendImageCopyWithImpl<$Res>
+    implements _$SendImageCopyWith<$Res> {
+  __$SendImageCopyWithImpl(this._self, this._then);
+
+  final _SendImage _self;
+  final $Res Function(_SendImage) _then;
+
+/// Create a copy of FcrmChatEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? imagePath = null,Object? endpoint = freezed,}) {
+  return _then(_SendImage(
+null == imagePath ? _self.imagePath : imagePath // ignore: cast_nullable_to_non_nullable
+as String,endpoint: freezed == endpoint ? _self.endpoint : endpoint // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-class __$$AddMessageImplCopyWithImpl<$Res>
-    extends _$FcrmChatEventCopyWithImpl<$Res, _$AddMessageImpl>
-    implements _$$AddMessageImplCopyWith<$Res> {
-  __$$AddMessageImplCopyWithImpl(
-    _$AddMessageImpl _value,
-    $Res Function(_$AddMessageImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$AddMessageImpl(
-        null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as ChatMessage,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$AddMessageImpl implements _AddMessage {
-  const _$AddMessageImpl(this.message);
 
-  @override
-  final ChatMessage message;
+class _AddMessage implements FcrmChatEvent {
+  const _AddMessage(this.message);
+  
 
-  @override
-  String toString() {
-    return 'FcrmChatEvent.addMessage(message: $message)';
-  }
+ final  ChatMessage message;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AddMessageImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
+/// Create a copy of FcrmChatEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AddMessageCopyWith<_AddMessage> get copyWith => __$AddMessageCopyWithImpl<_AddMessage>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AddMessageImplCopyWith<_$AddMessageImpl> get copyWith =>
-      __$$AddMessageImplCopyWithImpl<_$AddMessageImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )
-    initialize,
-    required TResult Function(int page) getMessages,
-    required TResult Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )
-    register,
-    required TResult Function(String message, String? endpoint) sendMessage,
-    required TResult Function(String imagePath, String? endpoint) sendImage,
-    required TResult Function(ChatMessage message) addMessage,
-  }) {
-    return addMessage(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )?
-    initialize,
-    TResult? Function(int page)? getMessages,
-    TResult? Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )?
-    register,
-    TResult? Function(String message, String? endpoint)? sendMessage,
-    TResult? Function(String imagePath, String? endpoint)? sendImage,
-    TResult? Function(ChatMessage message)? addMessage,
-  }) {
-    return addMessage?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-      String baseUrl,
-      String companyToken,
-      String appKey,
-      String appSecret,
-      String socketUrl,
-      bool enableLogging,
-      String? defaultEndpoint,
-    )?
-    initialize,
-    TResult Function(int page)? getMessages,
-    TResult Function(
-      Map<String, dynamic> userData,
-      void Function()? onSuccess,
-      void Function(String)? onError,
-    )?
-    register,
-    TResult Function(String message, String? endpoint)? sendMessage,
-    TResult Function(String imagePath, String? endpoint)? sendImage,
-    TResult Function(ChatMessage message)? addMessage,
-    required TResult orElse(),
-  }) {
-    if (addMessage != null) {
-      return addMessage(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialize value) initialize,
-    required TResult Function(_GetMessages value) getMessages,
-    required TResult Function(_Register value) register,
-    required TResult Function(_SendMessage value) sendMessage,
-    required TResult Function(_SendImage value) sendImage,
-    required TResult Function(_AddMessage value) addMessage,
-  }) {
-    return addMessage(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialize value)? initialize,
-    TResult? Function(_GetMessages value)? getMessages,
-    TResult? Function(_Register value)? register,
-    TResult? Function(_SendMessage value)? sendMessage,
-    TResult? Function(_SendImage value)? sendImage,
-    TResult? Function(_AddMessage value)? addMessage,
-  }) {
-    return addMessage?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialize value)? initialize,
-    TResult Function(_GetMessages value)? getMessages,
-    TResult Function(_Register value)? register,
-    TResult Function(_SendMessage value)? sendMessage,
-    TResult Function(_SendImage value)? sendImage,
-    TResult Function(_AddMessage value)? addMessage,
-    required TResult orElse(),
-  }) {
-    if (addMessage != null) {
-      return addMessage(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddMessage&&(identical(other.message, message) || other.message == message));
 }
 
-abstract class _AddMessage implements FcrmChatEvent {
-  const factory _AddMessage(final ChatMessage message) = _$AddMessageImpl;
 
-  ChatMessage get message;
+@override
+int get hashCode => Object.hash(runtimeType,message);
 
-  /// Create a copy of FcrmChatEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AddMessageImplCopyWith<_$AddMessageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'FcrmChatEvent.addMessage(message: $message)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AddMessageCopyWith<$Res> implements $FcrmChatEventCopyWith<$Res> {
+  factory _$AddMessageCopyWith(_AddMessage value, $Res Function(_AddMessage) _then) = __$AddMessageCopyWithImpl;
+@useResult
+$Res call({
+ ChatMessage message
+});
+
+
+
+
+}
+/// @nodoc
+class __$AddMessageCopyWithImpl<$Res>
+    implements _$AddMessageCopyWith<$Res> {
+  __$AddMessageCopyWithImpl(this._self, this._then);
+
+  final _AddMessage _self;
+  final $Res Function(_AddMessage) _then;
+
+/// Create a copy of FcrmChatEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(_AddMessage(
+null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as ChatMessage,
+  ));
+}
+
+
 }
 
 /// @nodoc
 mixin _$FcrmChatState {
-  FormzSubmissionStatus get status => throw _privateConstructorUsedError;
-  List<ChatMessage> get messages => throw _privateConstructorUsedError;
-  FcrmChat? get chat => throw _privateConstructorUsedError;
-  String? get defaultEndpoint => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-      FormzSubmissionStatus status,
-      List<ChatMessage> messages,
-      FcrmChat? chat,
-      String? defaultEndpoint,
-    )
-    initial,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-      FormzSubmissionStatus status,
-      List<ChatMessage> messages,
-      FcrmChat? chat,
-      String? defaultEndpoint,
-    )?
-    initial,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-      FormzSubmissionStatus status,
-      List<ChatMessage> messages,
-      FcrmChat? chat,
-      String? defaultEndpoint,
-    )?
-    initial,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
 
-  /// Create a copy of FcrmChatState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $FcrmChatStateCopyWith<FcrmChatState> get copyWith =>
-      throw _privateConstructorUsedError;
+ FormzSubmissionStatus get status; List<ChatMessage> get messages; FcrmChat? get chat; String? get defaultEndpoint; bool get isREgistered;
+/// Create a copy of FcrmChatState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FcrmChatStateCopyWith<FcrmChatState> get copyWith => _$FcrmChatStateCopyWithImpl<FcrmChatState>(this as FcrmChatState, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FcrmChatState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.messages, messages)&&(identical(other.chat, chat) || other.chat == chat)&&(identical(other.defaultEndpoint, defaultEndpoint) || other.defaultEndpoint == defaultEndpoint)&&(identical(other.isREgistered, isREgistered) || other.isREgistered == isREgistered));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(messages),chat,defaultEndpoint,isREgistered);
+
+@override
+String toString() {
+  return 'FcrmChatState(status: $status, messages: $messages, chat: $chat, defaultEndpoint: $defaultEndpoint, isREgistered: $isREgistered)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $FcrmChatStateCopyWith<$Res> {
-  factory $FcrmChatStateCopyWith(
-    FcrmChatState value,
-    $Res Function(FcrmChatState) then,
-  ) = _$FcrmChatStateCopyWithImpl<$Res, FcrmChatState>;
-  @useResult
-  $Res call({
-    FormzSubmissionStatus status,
-    List<ChatMessage> messages,
-    FcrmChat? chat,
-    String? defaultEndpoint,
-  });
-}
+abstract mixin class $FcrmChatStateCopyWith<$Res>  {
+  factory $FcrmChatStateCopyWith(FcrmChatState value, $Res Function(FcrmChatState) _then) = _$FcrmChatStateCopyWithImpl;
+@useResult
+$Res call({
+ FormzSubmissionStatus status, List<ChatMessage> messages, FcrmChat? chat, String? defaultEndpoint, bool isREgistered
+});
 
+
+
+
+}
 /// @nodoc
-class _$FcrmChatStateCopyWithImpl<$Res, $Val extends FcrmChatState>
+class _$FcrmChatStateCopyWithImpl<$Res>
     implements $FcrmChatStateCopyWith<$Res> {
-  _$FcrmChatStateCopyWithImpl(this._value, this._then);
+  _$FcrmChatStateCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final FcrmChatState _self;
+  final $Res Function(FcrmChatState) _then;
 
-  /// Create a copy of FcrmChatState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-    Object? messages = null,
-    Object? chat = freezed,
-    Object? defaultEndpoint = freezed,
-  }) {
-    return _then(
-      _value.copyWith(
-            status: null == status
-                ? _value.status
-                : status // ignore: cast_nullable_to_non_nullable
-                      as FormzSubmissionStatus,
-            messages: null == messages
-                ? _value.messages
-                : messages // ignore: cast_nullable_to_non_nullable
-                      as List<ChatMessage>,
-            chat: freezed == chat
-                ? _value.chat
-                : chat // ignore: cast_nullable_to_non_nullable
-                      as FcrmChat?,
-            defaultEndpoint: freezed == defaultEndpoint
-                ? _value.defaultEndpoint
-                : defaultEndpoint // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of FcrmChatState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? messages = null,Object? chat = freezed,Object? defaultEndpoint = freezed,Object? isREgistered = null,}) {
+  return _then(_self.copyWith(
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as FormzSubmissionStatus,messages: null == messages ? _self.messages : messages // ignore: cast_nullable_to_non_nullable
+as List<ChatMessage>,chat: freezed == chat ? _self.chat : chat // ignore: cast_nullable_to_non_nullable
+as FcrmChat?,defaultEndpoint: freezed == defaultEndpoint ? _self.defaultEndpoint : defaultEndpoint // ignore: cast_nullable_to_non_nullable
+as String?,isREgistered: null == isREgistered ? _self.isREgistered : isREgistered // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [FcrmChatState].
+extension FcrmChatStatePatterns on FcrmChatState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Initial() when initial != null:
+return initial(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,}){
+final _that = this;
+switch (_that) {
+case _Initial():
+return initial(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,}){
+final _that = this;
+switch (_that) {
+case _Initial() when initial != null:
+return initial(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( FormzSubmissionStatus status,  List<ChatMessage> messages,  FcrmChat? chat,  String? defaultEndpoint,  bool isREgistered)?  initial,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Initial() when initial != null:
+return initial(_that.status,_that.messages,_that.chat,_that.defaultEndpoint,_that.isREgistered);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( FormzSubmissionStatus status,  List<ChatMessage> messages,  FcrmChat? chat,  String? defaultEndpoint,  bool isREgistered)  initial,}) {final _that = this;
+switch (_that) {
+case _Initial():
+return initial(_that.status,_that.messages,_that.chat,_that.defaultEndpoint,_that.isREgistered);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( FormzSubmissionStatus status,  List<ChatMessage> messages,  FcrmChat? chat,  String? defaultEndpoint,  bool isREgistered)?  initial,}) {final _that = this;
+switch (_that) {
+case _Initial() when initial != null:
+return initial(_that.status,_that.messages,_that.chat,_that.defaultEndpoint,_that.isREgistered);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res>
-    implements $FcrmChatStateCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-    _$InitialImpl value,
-    $Res Function(_$InitialImpl) then,
-  ) = __$$InitialImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    FormzSubmissionStatus status,
-    List<ChatMessage> messages,
-    FcrmChat? chat,
-    String? defaultEndpoint,
-  });
+
+
+class _Initial implements FcrmChatState {
+  const _Initial({this.status = FormzSubmissionStatus.initial, final  List<ChatMessage> messages = const [], this.chat, this.defaultEndpoint, this.isREgistered = false}): _messages = messages;
+  
+
+@override@JsonKey() final  FormzSubmissionStatus status;
+ final  List<ChatMessage> _messages;
+@override@JsonKey() List<ChatMessage> get messages {
+  if (_messages is EqualUnmodifiableListView) return _messages;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_messages);
+}
+
+@override final  FcrmChat? chat;
+@override final  String? defaultEndpoint;
+@override@JsonKey() final  bool isREgistered;
+
+/// Create a copy of FcrmChatState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$InitialCopyWith<_Initial> get copyWith => __$InitialCopyWithImpl<_Initial>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._messages, _messages)&&(identical(other.chat, chat) || other.chat == chat)&&(identical(other.defaultEndpoint, defaultEndpoint) || other.defaultEndpoint == defaultEndpoint)&&(identical(other.isREgistered, isREgistered) || other.isREgistered == isREgistered));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_messages),chat,defaultEndpoint,isREgistered);
+
+@override
+String toString() {
+  return 'FcrmChatState.initial(status: $status, messages: $messages, chat: $chat, defaultEndpoint: $defaultEndpoint, isREgistered: $isREgistered)';
+}
+
+
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$FcrmChatStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-    _$InitialImpl _value,
-    $Res Function(_$InitialImpl) _then,
-  ) : super(_value, _then);
+abstract mixin class _$InitialCopyWith<$Res> implements $FcrmChatStateCopyWith<$Res> {
+  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) _then) = __$InitialCopyWithImpl;
+@override @useResult
+$Res call({
+ FormzSubmissionStatus status, List<ChatMessage> messages, FcrmChat? chat, String? defaultEndpoint, bool isREgistered
+});
 
-  /// Create a copy of FcrmChatState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-    Object? messages = null,
-    Object? chat = freezed,
-    Object? defaultEndpoint = freezed,
-  }) {
-    return _then(
-      _$InitialImpl(
-        status: null == status
-            ? _value.status
-            : status // ignore: cast_nullable_to_non_nullable
-                  as FormzSubmissionStatus,
-        messages: null == messages
-            ? _value._messages
-            : messages // ignore: cast_nullable_to_non_nullable
-                  as List<ChatMessage>,
-        chat: freezed == chat
-            ? _value.chat
-            : chat // ignore: cast_nullable_to_non_nullable
-                  as FcrmChat?,
-        defaultEndpoint: freezed == defaultEndpoint
-            ? _value.defaultEndpoint
-            : defaultEndpoint // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
-  }
+
+
+
 }
-
 /// @nodoc
+class __$InitialCopyWithImpl<$Res>
+    implements _$InitialCopyWith<$Res> {
+  __$InitialCopyWithImpl(this._self, this._then);
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl({
-    this.status = FormzSubmissionStatus.initial,
-    final List<ChatMessage> messages = const [],
-    this.chat,
-    this.defaultEndpoint,
-  }) : _messages = messages;
+  final _Initial _self;
+  final $Res Function(_Initial) _then;
 
-  @override
-  @JsonKey()
-  final FormzSubmissionStatus status;
-  final List<ChatMessage> _messages;
-  @override
-  @JsonKey()
-  List<ChatMessage> get messages {
-    if (_messages is EqualUnmodifiableListView) return _messages;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_messages);
-  }
-
-  @override
-  final FcrmChat? chat;
-  @override
-  final String? defaultEndpoint;
-
-  @override
-  String toString() {
-    return 'FcrmChatState.initial(status: $status, messages: $messages, chat: $chat, defaultEndpoint: $defaultEndpoint)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$InitialImpl &&
-            (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality().equals(other._messages, _messages) &&
-            (identical(other.chat, chat) || other.chat == chat) &&
-            (identical(other.defaultEndpoint, defaultEndpoint) ||
-                other.defaultEndpoint == defaultEndpoint));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    status,
-    const DeepCollectionEquality().hash(_messages),
-    chat,
-    defaultEndpoint,
-  );
-
-  /// Create a copy of FcrmChatState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-      FormzSubmissionStatus status,
-      List<ChatMessage> messages,
-      FcrmChat? chat,
-      String? defaultEndpoint,
-    )
-    initial,
-  }) {
-    return initial(status, messages, chat, defaultEndpoint);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-      FormzSubmissionStatus status,
-      List<ChatMessage> messages,
-      FcrmChat? chat,
-      String? defaultEndpoint,
-    )?
-    initial,
-  }) {
-    return initial?.call(status, messages, chat, defaultEndpoint);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-      FormzSubmissionStatus status,
-      List<ChatMessage> messages,
-      FcrmChat? chat,
-      String? defaultEndpoint,
-    )?
-    initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(status, messages, chat, defaultEndpoint);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+/// Create a copy of FcrmChatState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? messages = null,Object? chat = freezed,Object? defaultEndpoint = freezed,Object? isREgistered = null,}) {
+  return _then(_Initial(
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as FormzSubmissionStatus,messages: null == messages ? _self._messages : messages // ignore: cast_nullable_to_non_nullable
+as List<ChatMessage>,chat: freezed == chat ? _self.chat : chat // ignore: cast_nullable_to_non_nullable
+as FcrmChat?,defaultEndpoint: freezed == defaultEndpoint ? _self.defaultEndpoint : defaultEndpoint // ignore: cast_nullable_to_non_nullable
+as String?,isREgistered: null == isREgistered ? _self.isREgistered : isREgistered // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
 }
 
-abstract class _Initial implements FcrmChatState {
-  const factory _Initial({
-    final FormzSubmissionStatus status,
-    final List<ChatMessage> messages,
-    final FcrmChat? chat,
-    final String? defaultEndpoint,
-  }) = _$InitialImpl;
 
-  @override
-  FormzSubmissionStatus get status;
-  @override
-  List<ChatMessage> get messages;
-  @override
-  FcrmChat? get chat;
-  @override
-  String? get defaultEndpoint;
-
-  /// Create a copy of FcrmChatState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+// dart format on
