@@ -54,54 +54,55 @@ class _HilolChatInputState extends State<HilolChatInput> {
         children: [
           const HilolChatFilePickerButton(),
           Expanded(
-            child: TextFormField(
-              controller: controller,
-              textInputAction: TextInputAction.newline,
-              textCapitalization: TextCapitalization.sentences,
-              maxLines: null,
-              cursorHeight: 18,
-              onTapOutside: (event) => FocusScope.of(context).unfocus(),
-              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+            child: Stack(
+              children: [
+                TextFormField(
+                  controller: controller,
+                  textInputAction: TextInputAction.newline,
+                  textCapitalization: TextCapitalization.sentences,
+                  maxLines: null,
+                  cursorHeight: 18,
+                  onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  decoration: InputDecoration(
+                    suffixIcon: showButton ? const SizedBox() : null,
+                    contentPadding: const EdgeInsets.all(12),
+                    fillColor: Theme.of(context).cardColor,
+                    filled: true,
+                    hintText: 'Message',
+                    constraints: const BoxConstraints(
+                      maxHeight: 150,
+                      minHeight: 42,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: .none,
+                    ),
+                  ),
+                ),
 
-              decoration: InputDecoration(
-                suffixIcon: showButton
-                    ? Container(
-                        width: 32,
-                        alignment: .bottomRight,
-                        child: IconButton(
-                          onPressed: () {
-                            final message = controller.text.trim();
-                            if (message.isEmpty) {
-                              return;
-                            }
-                            context.read<HilolChatBloc>().add(
-                              HilolChatEvent.sendMessage(message),
-                            );
-                            controller.clear();
-                          },
-                          icon: SvgPicture.asset(
-                            HilolChatIcons.send,
-                            colorFilter: ColorFilter.mode(
-                              Theme.of(context).primaryColor,
-                              BlendMode.srcIn,
-                            ),
-                          ),
-                        ),
-                      )
-                    : null,
-                contentPadding: const EdgeInsets.all(12),
-                fillColor: Theme.of(context).cardColor,
-                filled: true,
-                hintText: 'Message',
-                constraints: const BoxConstraints(
-                  maxHeight: 150,
-                  minHeight: 42,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: .none,
-                ),
-              ),
+                if (showButton) ...{
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: SendButton(
+                      onPressed: () {
+                        final message = controller.text.trim();
+                        if (message.isEmpty) {
+                          return;
+                        }
+                        context.read<HilolChatBloc>().add(
+                          HilolChatEvent.sendMessage(message),
+                        );
+                        controller.clear();
+                      },
+                    ),
+                  ),
+                },
+              ],
             ),
           ),
         ],
@@ -114,5 +115,24 @@ class _HilolChatInputState extends State<HilolChatInput> {
     controller.removeListener(listener);
     controller.dispose();
     super.dispose();
+  }
+}
+
+class SendButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  const SendButton({super.key, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: onPressed,
+      icon: SvgPicture.asset(
+        HilolChatIcons.send,
+        colorFilter: ColorFilter.mode(
+          Theme.of(context).primaryColor,
+          BlendMode.srcIn,
+        ),
+      ),
+    );
   }
 }

@@ -52,31 +52,37 @@ class _HilolChatPageState extends State<HilolChatPage> {
           body: Column(
             children: [
               Expanded(
-                child: state.status.isInProgress && state.messages.isEmpty
-                    ? const HilolChatShimmer()
-                    : ListView.separated(
-                        controller: scrollController,
-                        itemCount: state.messages.length + 1,
-                        padding: const EdgeInsets.all(16),
-                        separatorBuilder: (_, _) => const SizedBox(height: 16),
-                        itemBuilder: (context, index) {
-                          if (index == 0) {
-                            return HilolChatLoadMore(
-                              showLoading: state.hasMoreMessages,
-                              onVisible: () {
-                                context.read<HilolChatBloc>().add(
-                                  HilolChatEvent.getMessages(
-                                    page: state.currentPage + 1,
-                                  ),
-                                );
-                              },
-                            );
-                          }
-                          final realIndex = index - 1;
-                          final message = state.messages[realIndex];
-                          return HilolChatBubble(message: message);
-                        },
-                      ),
+                child: Builder(
+                  builder: (context) {
+                    if (state.status.isInProgress && state.messages.isEmpty) {
+                      return const HilolChatShimmer();
+                    }
+
+                    return ListView.separated(
+                      controller: scrollController,
+                      itemCount: state.messages.length + 1,
+                      padding: const EdgeInsets.all(16),
+                      separatorBuilder: (_, _) => const SizedBox(height: 16),
+                      itemBuilder: (context, index) {
+                        if (index == 0) {
+                          return HilolChatLoadMore(
+                            showLoading: state.hasMoreMessages,
+                            onVisible: () {
+                              context.read<HilolChatBloc>().add(
+                                HilolChatEvent.getMessages(
+                                  page: state.currentPage + 1,
+                                ),
+                              );
+                            },
+                          );
+                        }
+                        final realIndex = index - 1;
+                        final message = state.messages[realIndex];
+                        return HilolChatBubble(message: message);
+                      },
+                    );
+                  },
+                ),
               ),
               const HilolChatInput(),
             ],

@@ -10,6 +10,7 @@ class HilolChatEvent with _$HilolChatEvent {
     required String socketUrl,
     @Default(true) bool enableLogging,
     String? defaultEndpoint,
+    HilolChatRegisterModel? userData,
     void Function()? onSuccess,
   }) = _Initialize;
 

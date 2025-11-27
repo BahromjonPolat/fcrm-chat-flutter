@@ -26,6 +26,11 @@ class MyApp extends StatelessWidget {
                 appSecret: Env.appSecret,
                 socketUrl: Env.socketUrl,
                 defaultEndpoint: 'Hilol (Example)',
+                userData: HilolChatRegisterModel(
+                  name: 'Bahromjon',
+                  email: 'bahromjon@gmail.com',
+                  phone: '+998901234567',
+                ),
               ),
             ),
           child: Container(),

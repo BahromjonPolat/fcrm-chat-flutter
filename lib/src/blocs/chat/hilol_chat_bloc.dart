@@ -32,6 +32,7 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
               socketUrl,
               enableLogging,
               defaultEndpoint,
+              userData,
               onSuccess,
             ) async {
               final chat = FcrmChat(
@@ -57,17 +58,30 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
               );
 
               onSuccess?.call();
-              if (!registered) {
+              if (registered) {
+                add(const HilolChatEvent.getMessages());
                 return;
               }
 
-              // await chat.sendMessage('Assalomu alaykum! Bu birinchi xabar.');
-              add(const HilolChatEvent.getMessages());
+              if (userData == null) {
+                return;
+              }
+              add(HilolChatEvent.register(data: userData));
             },
         register: (data, onSuccess, onError) async {
           if (state.status.isInProgress) {
             return;
           }
+          final chat = state.chat;
+          if (chat == null) {
+            return;
+          }
+
+          final isRegistered = await chat.isRegistered();
+          if (isRegistered) {
+            return;
+          }
+
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
           await state.chat?.register(userData: data.toJson());
           onSuccess?.call();
