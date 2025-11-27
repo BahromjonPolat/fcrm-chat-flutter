@@ -10,12 +10,25 @@ import 'package:hilol_chat_flutter/src/ui/widgets/hilol_chat_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HilolChatPage extends StatelessWidget {
+class HilolChatPage extends StatefulWidget {
   const HilolChatPage({super.key});
 
   @override
+  State<HilolChatPage> createState() => _HilolChatPageState();
+}
+
+class _HilolChatPageState extends State<HilolChatPage> {
+  final scrollController = ScrollController(initialScrollOffset: 100000);
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HilolChatBloc, HilolChatState>(
+    return BlocConsumer<HilolChatBloc, HilolChatState>(
+      listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
           appBar: HilolChatAppBar(chat: state.chat),
@@ -23,6 +36,7 @@ class HilolChatPage extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView.separated(
+                  controller: scrollController,
                   itemCount: state.messages.length,
                   padding: const EdgeInsets.all(16),
                   separatorBuilder: (_, _) => const SizedBox(height: 16),
@@ -40,4 +54,10 @@ class HilolChatPage extends StatelessWidget {
       },
     );
   }
+
+  // void _scrollToBottom() {
+  //   if (scrollController.hasClients) {
+  //     scrollController.jumpTo(scrollController.position.maxScrollExtent);
+  //   }
+  // }
 }

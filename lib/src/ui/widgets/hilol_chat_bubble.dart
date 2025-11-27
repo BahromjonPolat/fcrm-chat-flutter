@@ -6,6 +6,7 @@
 */
 
 import 'package:hilol_chat_flutter/src/extensions/widget_x.dart';
+import 'package:hilol_chat_flutter/src/ui/widgets/hilol_chat_image.dart';
 import 'package:hilol_chat_flutter/src/utils/date_utils.dart';
 import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 import 'package:flutter/material.dart';
@@ -52,90 +53,95 @@ class HilolChatBubble extends StatelessWidget {
           ),
         },
 
-        Container(
-          margin: EdgeInsets.only(
-            left: isSendBubble ? 56 : 0,
-            right: isSendBubble ? 0 : 56,
-            bottom: isSendBubble ? 0 : 16,
-          ),
-          child: PhysicalShape(
-            clipper: ChatBubbleClipper(
-              type: isSendBubble
-                  ? BubbleType.sendBubble
-                  : BubbleType.receiverBubble,
+        GestureDetector(
+          onTap: message.isImage ? () {} : null,
+          child: Container(
+            margin: EdgeInsets.only(
+              left: isSendBubble ? 56 : 0,
+              right: isSendBubble ? 0 : 56,
+              bottom: isSendBubble ? 0 : 16,
             ),
-            elevation: elevation ?? 2,
-            color: isSendBubble
-                ? Theme.of(context).primaryColor
-                : Theme.of(context).cardColor,
-            shadowColor: shadowColor ?? Colors.grey.shade200,
-            child: Padding(
-              padding: EdgeInsets.only(
-                bottom: 8,
-                top: 8,
-                right: isSendBubble ? 16 : 8,
-                left: isSendBubble ? 8 : 16,
+            child: PhysicalShape(
+              clipper: ChatBubbleClipper(
+                type: isSendBubble
+                    ? BubbleType.sendBubble
+                    : BubbleType.receiverBubble,
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    message.content,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: isSendBubble ? Colors.white : null,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Row(
-                    spacing: 7,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      if (isSendBubble) ...{
-                        Text(
-                          AppDateUtils.formatDate(
-                            message.createdAt.toLocal(),
-                            pattern: 'hh:mm',
+              elevation: elevation ?? 2,
+              color: isSendBubble
+                  ? Theme.of(context).primaryColor
+                  : Theme.of(context).cardColor,
+              shadowColor: shadowColor ?? Colors.grey.shade200,
+              child: Padding(
+                padding: EdgeInsets.only(
+                  bottom: 8,
+                  top: 8,
+                  right: isSendBubble ? 16 : 8,
+                  left: isSendBubble ? 8 : 16,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    message.isImage
+                        ? HilolChatImage(imageUrl: message.content)
+                        : Text(
+                            message.content,
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: isSendBubble ? Colors.white : null,
+                            ),
                           ),
-                          style: const TextStyle(
-                            fontSize: 10,
-                            color: Colors.white,
+                    const SizedBox(height: 4),
+                    Row(
+                      spacing: 7,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        if (isSendBubble) ...{
+                          Text(
+                            AppDateUtils.formatDate(
+                              message.createdAt.toLocal(),
+                              pattern: 'hh:mm',
+                            ),
+                            style: const TextStyle(
+                              fontSize: 10,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
 
-                        const Icon(
-                          Icons.done_all,
-                          color: Colors.white,
-                          size: 20,
-                        ),
-                      } else ...{
-                        Text.rich(
-                          TextSpan(
-                            children: [
-                              TextSpan(text: '${message.senderName} / '),
-                              TextSpan(
-                                text: AppDateUtils.formatDate(
-                                  message.createdAt.toLocal(),
-                                  pattern: 'hh:mm',
+                          const Icon(
+                            Icons.done_all,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                        } else ...{
+                          Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(text: '${message.senderName} / '),
+                                TextSpan(
+                                  text: AppDateUtils.formatDate(
+                                    message.createdAt.toLocal(),
+                                    pattern: 'hh:mm',
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: Colors.grey.shade500,
+                            ),
                           ),
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: Colors.grey.shade500,
-                          ),
-                        ),
-                      },
-                    ],
-                  ),
-                ],
+                        },
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ).wrapExpandedOrNot(wrap: message.content.length > 60),
+        ).wrapExpandedOrNot(wrap: message.content.length > 50),
       ],
     );
   }
