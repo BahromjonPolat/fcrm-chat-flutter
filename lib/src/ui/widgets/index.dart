@@ -7,3 +7,4 @@
 
 export 'hilol_chat_app_bar.dart';
 export 'hilol_chat_bubble.dart';
+export 'hilol_chat_shimmer.dart';

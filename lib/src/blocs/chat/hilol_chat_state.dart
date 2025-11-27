@@ -7,6 +7,8 @@ sealed class HilolChatState with _$HilolChatState {
     @Default([]) List<ChatMessage> messages,
     FcrmChat? chat,
     String? defaultEndpoint,
-    @Default(false) bool isREgistered,
+    @Default(false) bool isRegistered,
+    @Default(false) bool hasMoreMessages,
+    @Default(1) int currentPage,
   }) = _Initial;
 }

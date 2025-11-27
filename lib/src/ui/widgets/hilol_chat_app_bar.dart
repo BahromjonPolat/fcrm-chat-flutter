@@ -8,7 +8,9 @@
 import 'package:hilol_chat_flutter/src/constants/hilol_chat_icons.dart';
 import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 import 'package:flutter/material.dart';
+import 'package:hilol_chat_flutter/src/utils/logger.dart';
 import 'package:svg_flutter/svg.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class HilolChatAppBar extends StatelessWidget implements PreferredSizeWidget {
   final FcrmChat? chat;
@@ -36,7 +38,16 @@ class HilolChatAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () async {
+            try {
+              await launchUrlString(
+                'tel:+998712175999',
+                mode: LaunchMode.externalApplication,
+              );
+            } catch (e) {
+              Log.e(e, fileName: 'hilol_chat_app_bar');
+            }
+          },
           icon: SvgPicture.asset(
             HilolChatIcons.call,
             colorFilter: ColorFilter.mode(

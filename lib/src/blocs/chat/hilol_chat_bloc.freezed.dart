@@ -622,7 +622,7 @@ as ChatMessage,
 /// @nodoc
 mixin _$HilolChatState {
 
- FormzSubmissionStatus get status; List<ChatMessage> get messages; FcrmChat? get chat; String? get defaultEndpoint; bool get isREgistered;
+ FormzSubmissionStatus get status; List<ChatMessage> get messages; FcrmChat? get chat; String? get defaultEndpoint; bool get isRegistered; bool get hasMoreMessages; int get currentPage;
 /// Create a copy of HilolChatState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -633,16 +633,16 @@ $HilolChatStateCopyWith<HilolChatState> get copyWith => _$HilolChatStateCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HilolChatState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.messages, messages)&&(identical(other.chat, chat) || other.chat == chat)&&(identical(other.defaultEndpoint, defaultEndpoint) || other.defaultEndpoint == defaultEndpoint)&&(identical(other.isREgistered, isREgistered) || other.isREgistered == isREgistered));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HilolChatState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.messages, messages)&&(identical(other.chat, chat) || other.chat == chat)&&(identical(other.defaultEndpoint, defaultEndpoint) || other.defaultEndpoint == defaultEndpoint)&&(identical(other.isRegistered, isRegistered) || other.isRegistered == isRegistered)&&(identical(other.hasMoreMessages, hasMoreMessages) || other.hasMoreMessages == hasMoreMessages)&&(identical(other.currentPage, currentPage) || other.currentPage == currentPage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(messages),chat,defaultEndpoint,isREgistered);
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(messages),chat,defaultEndpoint,isRegistered,hasMoreMessages,currentPage);
 
 @override
 String toString() {
-  return 'HilolChatState(status: $status, messages: $messages, chat: $chat, defaultEndpoint: $defaultEndpoint, isREgistered: $isREgistered)';
+  return 'HilolChatState(status: $status, messages: $messages, chat: $chat, defaultEndpoint: $defaultEndpoint, isRegistered: $isRegistered, hasMoreMessages: $hasMoreMessages, currentPage: $currentPage)';
 }
 
 
@@ -653,7 +653,7 @@ abstract mixin class $HilolChatStateCopyWith<$Res>  {
   factory $HilolChatStateCopyWith(HilolChatState value, $Res Function(HilolChatState) _then) = _$HilolChatStateCopyWithImpl;
 @useResult
 $Res call({
- FormzSubmissionStatus status, List<ChatMessage> messages, FcrmChat? chat, String? defaultEndpoint, bool isREgistered
+ FormzSubmissionStatus status, List<ChatMessage> messages, FcrmChat? chat, String? defaultEndpoint, bool isRegistered, bool hasMoreMessages, int currentPage
 });
 
 
@@ -670,14 +670,16 @@ class _$HilolChatStateCopyWithImpl<$Res>
 
 /// Create a copy of HilolChatState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? messages = null,Object? chat = freezed,Object? defaultEndpoint = freezed,Object? isREgistered = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? messages = null,Object? chat = freezed,Object? defaultEndpoint = freezed,Object? isRegistered = null,Object? hasMoreMessages = null,Object? currentPage = null,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,messages: null == messages ? _self.messages : messages // ignore: cast_nullable_to_non_nullable
 as List<ChatMessage>,chat: freezed == chat ? _self.chat : chat // ignore: cast_nullable_to_non_nullable
 as FcrmChat?,defaultEndpoint: freezed == defaultEndpoint ? _self.defaultEndpoint : defaultEndpoint // ignore: cast_nullable_to_non_nullable
-as String?,isREgistered: null == isREgistered ? _self.isREgistered : isREgistered // ignore: cast_nullable_to_non_nullable
-as bool,
+as String?,isRegistered: null == isRegistered ? _self.isRegistered : isRegistered // ignore: cast_nullable_to_non_nullable
+as bool,hasMoreMessages: null == hasMoreMessages ? _self.hasMoreMessages : hasMoreMessages // ignore: cast_nullable_to_non_nullable
+as bool,currentPage: null == currentPage ? _self.currentPage : currentPage // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 
@@ -759,10 +761,10 @@ return initial(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( FormzSubmissionStatus status,  List<ChatMessage> messages,  FcrmChat? chat,  String? defaultEndpoint,  bool isREgistered)?  initial,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( FormzSubmissionStatus status,  List<ChatMessage> messages,  FcrmChat? chat,  String? defaultEndpoint,  bool isRegistered,  bool hasMoreMessages,  int currentPage)?  initial,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
-return initial(_that.status,_that.messages,_that.chat,_that.defaultEndpoint,_that.isREgistered);case _:
+return initial(_that.status,_that.messages,_that.chat,_that.defaultEndpoint,_that.isRegistered,_that.hasMoreMessages,_that.currentPage);case _:
   return orElse();
 
 }
@@ -780,10 +782,10 @@ return initial(_that.status,_that.messages,_that.chat,_that.defaultEndpoint,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( FormzSubmissionStatus status,  List<ChatMessage> messages,  FcrmChat? chat,  String? defaultEndpoint,  bool isREgistered)  initial,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( FormzSubmissionStatus status,  List<ChatMessage> messages,  FcrmChat? chat,  String? defaultEndpoint,  bool isRegistered,  bool hasMoreMessages,  int currentPage)  initial,}) {final _that = this;
 switch (_that) {
 case _Initial():
-return initial(_that.status,_that.messages,_that.chat,_that.defaultEndpoint,_that.isREgistered);}
+return initial(_that.status,_that.messages,_that.chat,_that.defaultEndpoint,_that.isRegistered,_that.hasMoreMessages,_that.currentPage);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -797,10 +799,10 @@ return initial(_that.status,_that.messages,_that.chat,_that.defaultEndpoint,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( FormzSubmissionStatus status,  List<ChatMessage> messages,  FcrmChat? chat,  String? defaultEndpoint,  bool isREgistered)?  initial,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( FormzSubmissionStatus status,  List<ChatMessage> messages,  FcrmChat? chat,  String? defaultEndpoint,  bool isRegistered,  bool hasMoreMessages,  int currentPage)?  initial,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
-return initial(_that.status,_that.messages,_that.chat,_that.defaultEndpoint,_that.isREgistered);case _:
+return initial(_that.status,_that.messages,_that.chat,_that.defaultEndpoint,_that.isRegistered,_that.hasMoreMessages,_that.currentPage);case _:
   return null;
 
 }
@@ -812,7 +814,7 @@ return initial(_that.status,_that.messages,_that.chat,_that.defaultEndpoint,_tha
 
 
 class _Initial implements HilolChatState {
-  const _Initial({this.status = FormzSubmissionStatus.initial, final  List<ChatMessage> messages = const [], this.chat, this.defaultEndpoint, this.isREgistered = false}): _messages = messages;
+  const _Initial({this.status = FormzSubmissionStatus.initial, final  List<ChatMessage> messages = const [], this.chat, this.defaultEndpoint, this.isRegistered = false, this.hasMoreMessages = false, this.currentPage = 1}): _messages = messages;
   
 
 @override@JsonKey() final  FormzSubmissionStatus status;
@@ -825,7 +827,9 @@ class _Initial implements HilolChatState {
 
 @override final  FcrmChat? chat;
 @override final  String? defaultEndpoint;
-@override@JsonKey() final  bool isREgistered;
+@override@JsonKey() final  bool isRegistered;
+@override@JsonKey() final  bool hasMoreMessages;
+@override@JsonKey() final  int currentPage;
 
 /// Create a copy of HilolChatState
 /// with the given fields replaced by the non-null parameter values.
@@ -837,16 +841,16 @@ _$InitialCopyWith<_Initial> get copyWith => __$InitialCopyWithImpl<_Initial>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._messages, _messages)&&(identical(other.chat, chat) || other.chat == chat)&&(identical(other.defaultEndpoint, defaultEndpoint) || other.defaultEndpoint == defaultEndpoint)&&(identical(other.isREgistered, isREgistered) || other.isREgistered == isREgistered));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._messages, _messages)&&(identical(other.chat, chat) || other.chat == chat)&&(identical(other.defaultEndpoint, defaultEndpoint) || other.defaultEndpoint == defaultEndpoint)&&(identical(other.isRegistered, isRegistered) || other.isRegistered == isRegistered)&&(identical(other.hasMoreMessages, hasMoreMessages) || other.hasMoreMessages == hasMoreMessages)&&(identical(other.currentPage, currentPage) || other.currentPage == currentPage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_messages),chat,defaultEndpoint,isREgistered);
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_messages),chat,defaultEndpoint,isRegistered,hasMoreMessages,currentPage);
 
 @override
 String toString() {
-  return 'HilolChatState.initial(status: $status, messages: $messages, chat: $chat, defaultEndpoint: $defaultEndpoint, isREgistered: $isREgistered)';
+  return 'HilolChatState.initial(status: $status, messages: $messages, chat: $chat, defaultEndpoint: $defaultEndpoint, isRegistered: $isRegistered, hasMoreMessages: $hasMoreMessages, currentPage: $currentPage)';
 }
 
 
@@ -857,7 +861,7 @@ abstract mixin class _$InitialCopyWith<$Res> implements $HilolChatStateCopyWith<
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) _then) = __$InitialCopyWithImpl;
 @override @useResult
 $Res call({
- FormzSubmissionStatus status, List<ChatMessage> messages, FcrmChat? chat, String? defaultEndpoint, bool isREgistered
+ FormzSubmissionStatus status, List<ChatMessage> messages, FcrmChat? chat, String? defaultEndpoint, bool isRegistered, bool hasMoreMessages, int currentPage
 });
 
 
@@ -874,14 +878,16 @@ class __$InitialCopyWithImpl<$Res>
 
 /// Create a copy of HilolChatState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? messages = null,Object? chat = freezed,Object? defaultEndpoint = freezed,Object? isREgistered = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? messages = null,Object? chat = freezed,Object? defaultEndpoint = freezed,Object? isRegistered = null,Object? hasMoreMessages = null,Object? currentPage = null,}) {
   return _then(_Initial(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,messages: null == messages ? _self._messages : messages // ignore: cast_nullable_to_non_nullable
 as List<ChatMessage>,chat: freezed == chat ? _self.chat : chat // ignore: cast_nullable_to_non_nullable
 as FcrmChat?,defaultEndpoint: freezed == defaultEndpoint ? _self.defaultEndpoint : defaultEndpoint // ignore: cast_nullable_to_non_nullable
-as String?,isREgistered: null == isREgistered ? _self.isREgistered : isREgistered // ignore: cast_nullable_to_non_nullable
-as bool,
+as String?,isRegistered: null == isRegistered ? _self.isRegistered : isRegistered // ignore: cast_nullable_to_non_nullable
+as bool,hasMoreMessages: null == hasMoreMessages ? _self.hasMoreMessages : hasMoreMessages // ignore: cast_nullable_to_non_nullable
+as bool,currentPage: null == currentPage ? _self.currentPage : currentPage // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 

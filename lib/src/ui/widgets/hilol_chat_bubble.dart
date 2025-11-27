@@ -5,8 +5,10 @@
 
 */
 
+import 'package:hilol_chat_flutter/src/extensions/context_x.dart';
 import 'package:hilol_chat_flutter/src/extensions/widget_x.dart';
 import 'package:hilol_chat_flutter/src/ui/widgets/hilol_chat_image.dart';
+import 'package:hilol_chat_flutter/src/ui/widgets/hilol_chat_image_viewer.dart';
 import 'package:hilol_chat_flutter/src/utils/date_utils.dart';
 import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +56,11 @@ class HilolChatBubble extends StatelessWidget {
         },
 
         GestureDetector(
-          onTap: message.isImage ? () {} : null,
+          onTap: message.isImage
+              ? () {
+                  context.push(HilolChatImageViewer(imageUrl: message.content));
+                }
+              : null,
           child: Container(
             margin: EdgeInsets.only(
               left: isSendBubble ? 56 : 0,

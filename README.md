@@ -33,7 +33,41 @@ flutter pub get
 
 ## Getting Started
 
-### 1. Configuration
+### 1. Platform Configuration
+
+#### iOS Configuration
+
+Add the following to your `ios/Runner/Info.plist` file to enable phone call functionality:
+
+```xml
+<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>tel</string>
+</array>
+```
+
+This allows the app to check if the device can make phone calls and open the phone dialer when the call button is tapped in the chat interface.
+
+#### Android Configuration
+
+Add the following permission to your `android/app/src/main/AndroidManifest.xml` file:
+
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Add this inside the manifest tag -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+        </intent>
+    </queries>
+
+    <!-- Rest of your manifest -->
+</manifest>
+```
+
+**Note:** The package uses `url_launcher` for phone call functionality. No additional permissions are required as the app only opens the phone dialer with a pre-filled number - the user must manually initiate the actual call.
+
+### 2. API Configuration
 
 First, you need to obtain the following credentials from your Hilol dashboard:
 - `baseUrl` - API base URL
@@ -43,7 +77,7 @@ First, you need to obtain the following credentials from your Hilol dashboard:
 - `socketUrl` - WebSocket server URL
 - `defaultEndpoint` - Default chat endpoint name
 
-### 2. Initialize the BLoC
+### 3. Initialize the BLoC
 
 Wrap your app with `MultiBlocProvider` and initialize the `HilolChatBloc`:
 
@@ -90,7 +124,7 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-### 3. Navigate to Chat Page
+### 4. Navigate to Chat Page
 
 To open the chat interface, navigate to `HilolChatPage`:
 

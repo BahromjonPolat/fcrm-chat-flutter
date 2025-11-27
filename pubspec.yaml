@@ -26,6 +26,8 @@ dependencies:
   json_annotation: ^4.9.0
   shared_preferences: ^2.3.3
   svg_flutter: ^0.0.1
+  url_launcher: ^6.3.2
+  visibility_detector: ^0.4.0+2
 
 dev_dependencies:
   bloc_test: ^10.0.0

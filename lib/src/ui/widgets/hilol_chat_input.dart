@@ -65,22 +65,26 @@ class _HilolChatInputState extends State<HilolChatInput> {
 
               decoration: InputDecoration(
                 suffixIcon: showButton
-                    ? IconButton(
-                        onPressed: () {
-                          final message = controller.text.trim();
-                          if (message.isEmpty) {
-                            return;
-                          }
-                          context.read<HilolChatBloc>().add(
-                            HilolChatEvent.sendMessage(message),
-                          );
-                          controller.clear();
-                        },
-                        icon: SvgPicture.asset(
-                          HilolChatIcons.send,
-                          colorFilter: ColorFilter.mode(
-                            Theme.of(context).primaryColor,
-                            BlendMode.srcIn,
+                    ? Container(
+                        width: 32,
+                        alignment: .bottomRight,
+                        child: IconButton(
+                          onPressed: () {
+                            final message = controller.text.trim();
+                            if (message.isEmpty) {
+                              return;
+                            }
+                            context.read<HilolChatBloc>().add(
+                              HilolChatEvent.sendMessage(message),
+                            );
+                            controller.clear();
+                          },
+                          icon: SvgPicture.asset(
+                            HilolChatIcons.send,
+                            colorFilter: ColorFilter.mode(
+                              Theme.of(context).primaryColor,
+                              BlendMode.srcIn,
+                            ),
                           ),
                         ),
                       )

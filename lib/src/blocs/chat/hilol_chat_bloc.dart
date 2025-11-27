@@ -77,11 +77,15 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
             return;
           }
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-          final messages = await state.chat?.getMessages();
+          final result = await state.chat?.getMessages(page: page);
+
+          final messages = [...?result?.messages, ...state.messages];
           emit(
             state.copyWith(
-              messages: messages?.messages ?? [],
+              messages: messages,
               status: FormzSubmissionStatus.success,
+              hasMoreMessages: result?.hasMore == true,
+              currentPage: page,
             ),
           );
         },
