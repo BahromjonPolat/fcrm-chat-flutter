@@ -5,22 +5,22 @@
 
 */
 
-import 'package:fcrm_chat_flutter/fcrm_chat_flutter.dart';
-import 'package:fcrm_chat_flutter/src/constants/fcrm_icons.dart';
+import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
+import 'package:hilol_chat_flutter/src/constants/hilol_chat_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
-import 'fcrm_file_picker_button.dart';
+import 'hilol_chat_file_picker_button.dart';
 
-class FcrmChatInput extends StatefulWidget {
-  const FcrmChatInput({super.key});
+class HilolChatInput extends StatefulWidget {
+  const HilolChatInput({super.key});
 
   @override
-  State<FcrmChatInput> createState() => _FcrmChatInputState();
+  State<HilolChatInput> createState() => _HilolChatInputState();
 }
 
-class _FcrmChatInputState extends State<FcrmChatInput> {
+class _HilolChatInputState extends State<HilolChatInput> {
   final controller = TextEditingController();
   bool showButton = false;
 
@@ -52,7 +52,7 @@ class _FcrmChatInputState extends State<FcrmChatInput> {
         crossAxisAlignment: .end,
         spacing: 8,
         children: [
-          FcrmFilePickerButton(),
+          const HilolChatFilePickerButton(),
           Expanded(
             child: TextFormField(
               controller: controller,
@@ -61,7 +61,7 @@ class _FcrmChatInputState extends State<FcrmChatInput> {
               maxLines: null,
               cursorHeight: 18,
               onTapOutside: (event) => FocusScope.of(context).unfocus(),
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
 
               decoration: InputDecoration(
                 suffixIcon: showButton
@@ -71,13 +71,13 @@ class _FcrmChatInputState extends State<FcrmChatInput> {
                           if (message.isEmpty) {
                             return;
                           }
-                          context.read<FcrmChatBloc>().add(
-                            FcrmChatEvent.sendMessage(message),
+                          context.read<HilolChatBloc>().add(
+                            HilolChatEvent.sendMessage(message),
                           );
                           controller.clear();
                         },
                         icon: SvgPicture.asset(
-                          FcrmIcons.send,
+                          HilolChatIcons.send,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).primaryColor,
                             BlendMode.srcIn,
@@ -85,11 +85,14 @@ class _FcrmChatInputState extends State<FcrmChatInput> {
                         ),
                       )
                     : null,
-                contentPadding: EdgeInsets.all(12),
+                contentPadding: const EdgeInsets.all(12),
                 fillColor: Theme.of(context).cardColor,
                 filled: true,
                 hintText: 'Message',
-                constraints: BoxConstraints(maxHeight: 150, minHeight: 42),
+                constraints: const BoxConstraints(
+                  maxHeight: 150,
+                  minHeight: 42,
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: .none,

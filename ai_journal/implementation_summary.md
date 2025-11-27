@@ -9,7 +9,7 @@ Successfully created a complete Flutter chat package using the fcrm_chat_sdk wit
 
 ```
 lib/
-├── fcrm_chat_flutter.dart (main export)
+├── hilol_chat_flutter.dart (main export)
 └── src/
     ├── config/
     │   └── chat_config.dart

@@ -1,6 +1,7 @@
-name: fcrm_chat_flutter
-description: "A new Flutter package project."
+name: hilol_chat_flutter
+description: "Hilol Chat Flutter"
 version: 0.0.2
+publish_to: none
 
 environment:
   sdk: ^3.10.0

@@ -9,19 +9,19 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
-import 'package:fcrm_chat_flutter/src/models/fcrm_register_model.dart';
+import 'package:hilol_chat_flutter/src/models/hilol_chat_register_model.dart';
 import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:formz/formz.dart';
 
-part 'fcrm_chat_event.dart';
-part 'fcrm_chat_state.dart';
-part 'fcrm_chat_bloc.freezed.dart';
+part 'hilol_chat_event.dart';
+part 'hilol_chat_state.dart';
+part 'hilol_chat_bloc.freezed.dart';
 
-class FcrmChatBloc extends Bloc<FcrmChatEvent, FcrmChatState> {
+class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
   StreamSubscription<ChatMessage>? _messageSubscription;
-  FcrmChatBloc() : super(FcrmChatState.initial()) {
-    on<FcrmChatEvent>((event, emit) async {
+  HilolChatBloc() : super(const HilolChatState.initial()) {
+    on<HilolChatEvent>((event, emit) async {
       await event.when(
         initialize:
             (
@@ -48,7 +48,7 @@ class FcrmChatBloc extends Bloc<FcrmChatEvent, FcrmChatState> {
               await chat.initialize();
 
               _messageSubscription = chat.onMessage.listen((message) {
-                add(FcrmChatEvent.addMessage(message));
+                add(HilolChatEvent.addMessage(message));
               });
               final registered = await chat.isRegistered();
 
@@ -62,7 +62,7 @@ class FcrmChatBloc extends Bloc<FcrmChatEvent, FcrmChatState> {
               }
 
               // await chat.sendMessage('Assalomu alaykum! Bu birinchi xabar.');
-              add(FcrmChatEvent.getMessages());
+              add(const HilolChatEvent.getMessages());
             },
         register: (data, onSuccess, onError) async {
           if (state.status.isInProgress) {

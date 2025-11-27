@@ -5,13 +5,13 @@
 
 */
 
-import 'package:fcrm_chat_flutter/src/constants/fcrm_images.dart';
+import 'package:hilol_chat_flutter/src/constants/hilol_chat_images.dart';
 import 'package:flutter/material.dart';
 
-class FcrmSenderAvatar extends StatelessWidget {
+class HilolChatSenderAvatar extends StatelessWidget {
   final String imageUrl;
   final bool isOnline;
-  const FcrmSenderAvatar({
+  const HilolChatSenderAvatar({
     super.key,
     required this.imageUrl,
     required this.isOnline,
@@ -27,15 +27,15 @@ class FcrmSenderAvatar extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             border: .all(color: Colors.green),
-            image: DecorationImage(
-              image: AssetImage(FcrmImages.support),
+            image: const DecorationImage(
+              image: AssetImage(HilolChatImages.support),
               fit: BoxFit.cover,
             ),
           ),
         ),
 
         if (isOnline) ...{
-          Positioned(
+          const Positioned(
             bottom: 0,
             right: 0,
             child: CircleAvatar(backgroundColor: Colors.green, radius: 5),

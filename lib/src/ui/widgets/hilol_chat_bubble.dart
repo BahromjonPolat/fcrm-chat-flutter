@@ -5,15 +5,15 @@
 
 */
 
-import 'package:fcrm_chat_flutter/src/extensions/widget_x.dart';
-import 'package:fcrm_chat_flutter/src/utils/date_utils.dart';
+import 'package:hilol_chat_flutter/src/extensions/widget_x.dart';
+import 'package:hilol_chat_flutter/src/utils/date_utils.dart';
 import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 import 'package:flutter/material.dart';
 
 import '../../enums/bubble_type.dart';
-import 'fcrm_sender_avatar.dart';
+import 'hilol_chat_sender_avatar.dart';
 
-class FcrmChatBubble extends StatelessWidget {
+class HilolChatBubble extends StatelessWidget {
   final CustomClipper? clipper;
   final EdgeInsetsGeometry? margin;
   final double? elevation;
@@ -23,7 +23,7 @@ class FcrmChatBubble extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final ChatMessage message;
 
-  const FcrmChatBubble({
+  const HilolChatBubble({
     super.key,
     this.clipper,
     required this.message,
@@ -45,7 +45,7 @@ class FcrmChatBubble extends StatelessWidget {
           : MainAxisAlignment.start,
       children: [
         if (!isSendBubble) ...{
-          FcrmSenderAvatar(
+          const HilolChatSenderAvatar(
             imageUrl:
                 'https://cdn.pixabay.com/photo/2013/07/12/12/40/help-146073_1280.png',
             isOnline: true,
@@ -99,10 +99,17 @@ class FcrmChatBubble extends StatelessWidget {
                             message.createdAt.toLocal(),
                             pattern: 'hh:mm',
                           ),
-                          style: TextStyle(fontSize: 10, color: Colors.white),
+                          style: const TextStyle(
+                            fontSize: 10,
+                            color: Colors.white,
+                          ),
                         ),
 
-                        Icon(Icons.done_all, color: Colors.white, size: 20),
+                        const Icon(
+                          Icons.done_all,
+                          color: Colors.white,
+                          size: 20,
+                        ),
                       } else ...{
                         Text.rich(
                           TextSpan(

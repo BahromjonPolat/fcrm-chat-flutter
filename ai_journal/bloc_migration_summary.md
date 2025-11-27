@@ -236,7 +236,7 @@ lib/
 │   │   ├── registration_page.dart  🔄 UPDATED
 │   │   └── chat_wrapper_page.dart  🔄 UPDATED
 │   └── fcrm_chat_package.dart   🔄 UPDATED
-└── fcrm_chat_flutter.dart
+└── hilol_chat_flutter.dart
 ```
 
 ## Next Steps for Users

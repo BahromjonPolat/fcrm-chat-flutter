@@ -7,11 +7,11 @@
 
 import 'package:equatable/equatable.dart';
 
-class FcrmRegisterModel extends Equatable {
+class HilolChatRegisterModel extends Equatable {
   final String name;
   final String email;
   final String phone;
-  const FcrmRegisterModel({
+  const HilolChatRegisterModel({
     required this.name,
     required this.email,
     required this.phone,
@@ -19,8 +19,12 @@ class FcrmRegisterModel extends Equatable {
   @override
   List<Object> get props => [name, email, phone];
 
-  FcrmRegisterModel copyWith({String? name, String? email, String? phone}) {
-    return FcrmRegisterModel(
+  HilolChatRegisterModel copyWith({
+    String? name,
+    String? email,
+    String? phone,
+  }) {
+    return HilolChatRegisterModel(
       name: name ?? this.name,
       email: email ?? this.email,
       phone: phone ?? this.phone,
@@ -31,8 +35,8 @@ class FcrmRegisterModel extends Equatable {
     return <String, dynamic>{'name': name, 'email': email, 'phone': phone};
   }
 
-  factory FcrmRegisterModel.fromJson(Map<String, dynamic> map) {
-    return FcrmRegisterModel(
+  factory HilolChatRegisterModel.fromJson(Map<String, dynamic> map) {
+    return HilolChatRegisterModel(
       name: map['name'] ?? '',
       email: map['email'] ?? '',
       phone: map['phone'] ?? '',

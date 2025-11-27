@@ -1,8 +1,8 @@
-part of 'fcrm_chat_bloc.dart';
+part of 'hilol_chat_bloc.dart';
 
 @freezed
-sealed class FcrmChatState with _$FcrmChatState {
-  const factory FcrmChatState.initial({
+sealed class HilolChatState with _$HilolChatState {
+  const factory HilolChatState.initial({
     @Default(FormzSubmissionStatus.initial) FormzSubmissionStatus status,
     @Default([]) List<ChatMessage> messages,
     FcrmChat? chat,

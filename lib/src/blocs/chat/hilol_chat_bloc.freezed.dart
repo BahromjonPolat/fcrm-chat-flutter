@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'fcrm_chat_bloc.dart';
+part of 'hilol_chat_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,7 +12,7 @@ part of 'fcrm_chat_bloc.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$FcrmChatEvent {
+mixin _$HilolChatEvent {
 
 
 
@@ -20,7 +20,7 @@ mixin _$FcrmChatEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FcrmChatEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HilolChatEvent);
 }
 
 
@@ -29,20 +29,20 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'FcrmChatEvent()';
+  return 'HilolChatEvent()';
 }
 
 
 }
 
 /// @nodoc
-class $FcrmChatEventCopyWith<$Res>  {
-$FcrmChatEventCopyWith(FcrmChatEvent _, $Res Function(FcrmChatEvent) __);
+class $HilolChatEventCopyWith<$Res>  {
+$HilolChatEventCopyWith(HilolChatEvent _, $Res Function(HilolChatEvent) __);
 }
 
 
-/// Adds pattern-matching-related methods to [FcrmChatEvent].
-extension FcrmChatEventPatterns on FcrmChatEvent {
+/// Adds pattern-matching-related methods to [HilolChatEvent].
+extension HilolChatEventPatterns on HilolChatEvent {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -134,7 +134,7 @@ return addMessage(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String baseUrl,  String companyToken,  String appKey,  String appSecret,  String socketUrl,  bool enableLogging,  String? defaultEndpoint,  void Function()? onSuccess)?  initialize,TResult Function( int page)?  getMessages,TResult Function( FcrmRegisterModel data,  void Function()? onSuccess,  void Function(String error)? onError)?  register,TResult Function( String message,  String? endpoint)?  sendMessage,TResult Function( String imagePath,  String? endpoint)?  sendImage,TResult Function( ChatMessage message)?  addMessage,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String baseUrl,  String companyToken,  String appKey,  String appSecret,  String socketUrl,  bool enableLogging,  String? defaultEndpoint,  void Function()? onSuccess)?  initialize,TResult Function( int page)?  getMessages,TResult Function( HilolChatRegisterModel data,  void Function()? onSuccess,  void Function(String error)? onError)?  register,TResult Function( String message,  String? endpoint)?  sendMessage,TResult Function( String imagePath,  String? endpoint)?  sendImage,TResult Function( ChatMessage message)?  addMessage,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initialize() when initialize != null:
 return initialize(_that.baseUrl,_that.companyToken,_that.appKey,_that.appSecret,_that.socketUrl,_that.enableLogging,_that.defaultEndpoint,_that.onSuccess);case _GetMessages() when getMessages != null:
@@ -160,7 +160,7 @@ return addMessage(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String baseUrl,  String companyToken,  String appKey,  String appSecret,  String socketUrl,  bool enableLogging,  String? defaultEndpoint,  void Function()? onSuccess)  initialize,required TResult Function( int page)  getMessages,required TResult Function( FcrmRegisterModel data,  void Function()? onSuccess,  void Function(String error)? onError)  register,required TResult Function( String message,  String? endpoint)  sendMessage,required TResult Function( String imagePath,  String? endpoint)  sendImage,required TResult Function( ChatMessage message)  addMessage,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String baseUrl,  String companyToken,  String appKey,  String appSecret,  String socketUrl,  bool enableLogging,  String? defaultEndpoint,  void Function()? onSuccess)  initialize,required TResult Function( int page)  getMessages,required TResult Function( HilolChatRegisterModel data,  void Function()? onSuccess,  void Function(String error)? onError)  register,required TResult Function( String message,  String? endpoint)  sendMessage,required TResult Function( String imagePath,  String? endpoint)  sendImage,required TResult Function( ChatMessage message)  addMessage,}) {final _that = this;
 switch (_that) {
 case _Initialize():
 return initialize(_that.baseUrl,_that.companyToken,_that.appKey,_that.appSecret,_that.socketUrl,_that.enableLogging,_that.defaultEndpoint,_that.onSuccess);case _GetMessages():
@@ -185,7 +185,7 @@ return addMessage(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String baseUrl,  String companyToken,  String appKey,  String appSecret,  String socketUrl,  bool enableLogging,  String? defaultEndpoint,  void Function()? onSuccess)?  initialize,TResult? Function( int page)?  getMessages,TResult? Function( FcrmRegisterModel data,  void Function()? onSuccess,  void Function(String error)? onError)?  register,TResult? Function( String message,  String? endpoint)?  sendMessage,TResult? Function( String imagePath,  String? endpoint)?  sendImage,TResult? Function( ChatMessage message)?  addMessage,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String baseUrl,  String companyToken,  String appKey,  String appSecret,  String socketUrl,  bool enableLogging,  String? defaultEndpoint,  void Function()? onSuccess)?  initialize,TResult? Function( int page)?  getMessages,TResult? Function( HilolChatRegisterModel data,  void Function()? onSuccess,  void Function(String error)? onError)?  register,TResult? Function( String message,  String? endpoint)?  sendMessage,TResult? Function( String imagePath,  String? endpoint)?  sendImage,TResult? Function( ChatMessage message)?  addMessage,}) {final _that = this;
 switch (_that) {
 case _Initialize() when initialize != null:
 return initialize(_that.baseUrl,_that.companyToken,_that.appKey,_that.appSecret,_that.socketUrl,_that.enableLogging,_that.defaultEndpoint,_that.onSuccess);case _GetMessages() when getMessages != null:
@@ -204,7 +204,7 @@ return addMessage(_that.message);case _:
 /// @nodoc
 
 
-class _Initialize implements FcrmChatEvent {
+class _Initialize implements HilolChatEvent {
   const _Initialize({required this.baseUrl, required this.companyToken, required this.appKey, required this.appSecret, required this.socketUrl, this.enableLogging = true, this.defaultEndpoint, this.onSuccess});
   
 
@@ -217,7 +217,7 @@ class _Initialize implements FcrmChatEvent {
  final  String? defaultEndpoint;
  final  void Function()? onSuccess;
 
-/// Create a copy of FcrmChatEvent
+/// Create a copy of HilolChatEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -236,14 +236,14 @@ int get hashCode => Object.hash(runtimeType,baseUrl,companyToken,appKey,appSecre
 
 @override
 String toString() {
-  return 'FcrmChatEvent.initialize(baseUrl: $baseUrl, companyToken: $companyToken, appKey: $appKey, appSecret: $appSecret, socketUrl: $socketUrl, enableLogging: $enableLogging, defaultEndpoint: $defaultEndpoint, onSuccess: $onSuccess)';
+  return 'HilolChatEvent.initialize(baseUrl: $baseUrl, companyToken: $companyToken, appKey: $appKey, appSecret: $appSecret, socketUrl: $socketUrl, enableLogging: $enableLogging, defaultEndpoint: $defaultEndpoint, onSuccess: $onSuccess)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$InitializeCopyWith<$Res> implements $FcrmChatEventCopyWith<$Res> {
+abstract mixin class _$InitializeCopyWith<$Res> implements $HilolChatEventCopyWith<$Res> {
   factory _$InitializeCopyWith(_Initialize value, $Res Function(_Initialize) _then) = __$InitializeCopyWithImpl;
 @useResult
 $Res call({
@@ -262,7 +262,7 @@ class __$InitializeCopyWithImpl<$Res>
   final _Initialize _self;
   final $Res Function(_Initialize) _then;
 
-/// Create a copy of FcrmChatEvent
+/// Create a copy of HilolChatEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? baseUrl = null,Object? companyToken = null,Object? appKey = null,Object? appSecret = null,Object? socketUrl = null,Object? enableLogging = null,Object? defaultEndpoint = freezed,Object? onSuccess = freezed,}) {
   return _then(_Initialize(
@@ -284,13 +284,13 @@ as void Function()?,
 /// @nodoc
 
 
-class _GetMessages implements FcrmChatEvent {
+class _GetMessages implements HilolChatEvent {
   const _GetMessages({this.page = 1});
   
 
 @JsonKey() final  int page;
 
-/// Create a copy of FcrmChatEvent
+/// Create a copy of HilolChatEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -309,14 +309,14 @@ int get hashCode => Object.hash(runtimeType,page);
 
 @override
 String toString() {
-  return 'FcrmChatEvent.getMessages(page: $page)';
+  return 'HilolChatEvent.getMessages(page: $page)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$GetMessagesCopyWith<$Res> implements $FcrmChatEventCopyWith<$Res> {
+abstract mixin class _$GetMessagesCopyWith<$Res> implements $HilolChatEventCopyWith<$Res> {
   factory _$GetMessagesCopyWith(_GetMessages value, $Res Function(_GetMessages) _then) = __$GetMessagesCopyWithImpl;
 @useResult
 $Res call({
@@ -335,7 +335,7 @@ class __$GetMessagesCopyWithImpl<$Res>
   final _GetMessages _self;
   final $Res Function(_GetMessages) _then;
 
-/// Create a copy of FcrmChatEvent
+/// Create a copy of HilolChatEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? page = null,}) {
   return _then(_GetMessages(
@@ -350,15 +350,15 @@ as int,
 /// @nodoc
 
 
-class _Register implements FcrmChatEvent {
+class _Register implements HilolChatEvent {
   const _Register({required this.data, this.onSuccess, this.onError});
   
 
- final  FcrmRegisterModel data;
+ final  HilolChatRegisterModel data;
  final  void Function()? onSuccess;
  final  void Function(String error)? onError;
 
-/// Create a copy of FcrmChatEvent
+/// Create a copy of HilolChatEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -377,18 +377,18 @@ int get hashCode => Object.hash(runtimeType,data,onSuccess,onError);
 
 @override
 String toString() {
-  return 'FcrmChatEvent.register(data: $data, onSuccess: $onSuccess, onError: $onError)';
+  return 'HilolChatEvent.register(data: $data, onSuccess: $onSuccess, onError: $onError)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$RegisterCopyWith<$Res> implements $FcrmChatEventCopyWith<$Res> {
+abstract mixin class _$RegisterCopyWith<$Res> implements $HilolChatEventCopyWith<$Res> {
   factory _$RegisterCopyWith(_Register value, $Res Function(_Register) _then) = __$RegisterCopyWithImpl;
 @useResult
 $Res call({
- FcrmRegisterModel data, void Function()? onSuccess, void Function(String error)? onError
+ HilolChatRegisterModel data, void Function()? onSuccess, void Function(String error)? onError
 });
 
 
@@ -403,12 +403,12 @@ class __$RegisterCopyWithImpl<$Res>
   final _Register _self;
   final $Res Function(_Register) _then;
 
-/// Create a copy of FcrmChatEvent
+/// Create a copy of HilolChatEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? data = null,Object? onSuccess = freezed,Object? onError = freezed,}) {
   return _then(_Register(
 data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as FcrmRegisterModel,onSuccess: freezed == onSuccess ? _self.onSuccess : onSuccess // ignore: cast_nullable_to_non_nullable
+as HilolChatRegisterModel,onSuccess: freezed == onSuccess ? _self.onSuccess : onSuccess // ignore: cast_nullable_to_non_nullable
 as void Function()?,onError: freezed == onError ? _self.onError : onError // ignore: cast_nullable_to_non_nullable
 as void Function(String error)?,
   ));
@@ -420,14 +420,14 @@ as void Function(String error)?,
 /// @nodoc
 
 
-class _SendMessage implements FcrmChatEvent {
+class _SendMessage implements HilolChatEvent {
   const _SendMessage(this.message, {this.endpoint});
   
 
  final  String message;
  final  String? endpoint;
 
-/// Create a copy of FcrmChatEvent
+/// Create a copy of HilolChatEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -446,14 +446,14 @@ int get hashCode => Object.hash(runtimeType,message,endpoint);
 
 @override
 String toString() {
-  return 'FcrmChatEvent.sendMessage(message: $message, endpoint: $endpoint)';
+  return 'HilolChatEvent.sendMessage(message: $message, endpoint: $endpoint)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$SendMessageCopyWith<$Res> implements $FcrmChatEventCopyWith<$Res> {
+abstract mixin class _$SendMessageCopyWith<$Res> implements $HilolChatEventCopyWith<$Res> {
   factory _$SendMessageCopyWith(_SendMessage value, $Res Function(_SendMessage) _then) = __$SendMessageCopyWithImpl;
 @useResult
 $Res call({
@@ -472,7 +472,7 @@ class __$SendMessageCopyWithImpl<$Res>
   final _SendMessage _self;
   final $Res Function(_SendMessage) _then;
 
-/// Create a copy of FcrmChatEvent
+/// Create a copy of HilolChatEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? message = null,Object? endpoint = freezed,}) {
   return _then(_SendMessage(
@@ -488,14 +488,14 @@ as String?,
 /// @nodoc
 
 
-class _SendImage implements FcrmChatEvent {
+class _SendImage implements HilolChatEvent {
   const _SendImage(this.imagePath, {this.endpoint});
   
 
  final  String imagePath;
  final  String? endpoint;
 
-/// Create a copy of FcrmChatEvent
+/// Create a copy of HilolChatEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -514,14 +514,14 @@ int get hashCode => Object.hash(runtimeType,imagePath,endpoint);
 
 @override
 String toString() {
-  return 'FcrmChatEvent.sendImage(imagePath: $imagePath, endpoint: $endpoint)';
+  return 'HilolChatEvent.sendImage(imagePath: $imagePath, endpoint: $endpoint)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$SendImageCopyWith<$Res> implements $FcrmChatEventCopyWith<$Res> {
+abstract mixin class _$SendImageCopyWith<$Res> implements $HilolChatEventCopyWith<$Res> {
   factory _$SendImageCopyWith(_SendImage value, $Res Function(_SendImage) _then) = __$SendImageCopyWithImpl;
 @useResult
 $Res call({
@@ -540,7 +540,7 @@ class __$SendImageCopyWithImpl<$Res>
   final _SendImage _self;
   final $Res Function(_SendImage) _then;
 
-/// Create a copy of FcrmChatEvent
+/// Create a copy of HilolChatEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? imagePath = null,Object? endpoint = freezed,}) {
   return _then(_SendImage(
@@ -556,13 +556,13 @@ as String?,
 /// @nodoc
 
 
-class _AddMessage implements FcrmChatEvent {
+class _AddMessage implements HilolChatEvent {
   const _AddMessage(this.message);
   
 
  final  ChatMessage message;
 
-/// Create a copy of FcrmChatEvent
+/// Create a copy of HilolChatEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -581,14 +581,14 @@ int get hashCode => Object.hash(runtimeType,message);
 
 @override
 String toString() {
-  return 'FcrmChatEvent.addMessage(message: $message)';
+  return 'HilolChatEvent.addMessage(message: $message)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$AddMessageCopyWith<$Res> implements $FcrmChatEventCopyWith<$Res> {
+abstract mixin class _$AddMessageCopyWith<$Res> implements $HilolChatEventCopyWith<$Res> {
   factory _$AddMessageCopyWith(_AddMessage value, $Res Function(_AddMessage) _then) = __$AddMessageCopyWithImpl;
 @useResult
 $Res call({
@@ -607,7 +607,7 @@ class __$AddMessageCopyWithImpl<$Res>
   final _AddMessage _self;
   final $Res Function(_AddMessage) _then;
 
-/// Create a copy of FcrmChatEvent
+/// Create a copy of HilolChatEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
   return _then(_AddMessage(
@@ -620,20 +620,20 @@ as ChatMessage,
 }
 
 /// @nodoc
-mixin _$FcrmChatState {
+mixin _$HilolChatState {
 
  FormzSubmissionStatus get status; List<ChatMessage> get messages; FcrmChat? get chat; String? get defaultEndpoint; bool get isREgistered;
-/// Create a copy of FcrmChatState
+/// Create a copy of HilolChatState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$FcrmChatStateCopyWith<FcrmChatState> get copyWith => _$FcrmChatStateCopyWithImpl<FcrmChatState>(this as FcrmChatState, _$identity);
+$HilolChatStateCopyWith<HilolChatState> get copyWith => _$HilolChatStateCopyWithImpl<HilolChatState>(this as HilolChatState, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FcrmChatState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.messages, messages)&&(identical(other.chat, chat) || other.chat == chat)&&(identical(other.defaultEndpoint, defaultEndpoint) || other.defaultEndpoint == defaultEndpoint)&&(identical(other.isREgistered, isREgistered) || other.isREgistered == isREgistered));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HilolChatState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.messages, messages)&&(identical(other.chat, chat) || other.chat == chat)&&(identical(other.defaultEndpoint, defaultEndpoint) || other.defaultEndpoint == defaultEndpoint)&&(identical(other.isREgistered, isREgistered) || other.isREgistered == isREgistered));
 }
 
 
@@ -642,15 +642,15 @@ int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality(
 
 @override
 String toString() {
-  return 'FcrmChatState(status: $status, messages: $messages, chat: $chat, defaultEndpoint: $defaultEndpoint, isREgistered: $isREgistered)';
+  return 'HilolChatState(status: $status, messages: $messages, chat: $chat, defaultEndpoint: $defaultEndpoint, isREgistered: $isREgistered)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $FcrmChatStateCopyWith<$Res>  {
-  factory $FcrmChatStateCopyWith(FcrmChatState value, $Res Function(FcrmChatState) _then) = _$FcrmChatStateCopyWithImpl;
+abstract mixin class $HilolChatStateCopyWith<$Res>  {
+  factory $HilolChatStateCopyWith(HilolChatState value, $Res Function(HilolChatState) _then) = _$HilolChatStateCopyWithImpl;
 @useResult
 $Res call({
  FormzSubmissionStatus status, List<ChatMessage> messages, FcrmChat? chat, String? defaultEndpoint, bool isREgistered
@@ -661,14 +661,14 @@ $Res call({
 
 }
 /// @nodoc
-class _$FcrmChatStateCopyWithImpl<$Res>
-    implements $FcrmChatStateCopyWith<$Res> {
-  _$FcrmChatStateCopyWithImpl(this._self, this._then);
+class _$HilolChatStateCopyWithImpl<$Res>
+    implements $HilolChatStateCopyWith<$Res> {
+  _$HilolChatStateCopyWithImpl(this._self, this._then);
 
-  final FcrmChatState _self;
-  final $Res Function(FcrmChatState) _then;
+  final HilolChatState _self;
+  final $Res Function(HilolChatState) _then;
 
-/// Create a copy of FcrmChatState
+/// Create a copy of HilolChatState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? messages = null,Object? chat = freezed,Object? defaultEndpoint = freezed,Object? isREgistered = null,}) {
   return _then(_self.copyWith(
@@ -684,8 +684,8 @@ as bool,
 }
 
 
-/// Adds pattern-matching-related methods to [FcrmChatState].
-extension FcrmChatStatePatterns on FcrmChatState {
+/// Adds pattern-matching-related methods to [HilolChatState].
+extension HilolChatStatePatterns on HilolChatState {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -811,7 +811,7 @@ return initial(_that.status,_that.messages,_that.chat,_that.defaultEndpoint,_tha
 /// @nodoc
 
 
-class _Initial implements FcrmChatState {
+class _Initial implements HilolChatState {
   const _Initial({this.status = FormzSubmissionStatus.initial, final  List<ChatMessage> messages = const [], this.chat, this.defaultEndpoint, this.isREgistered = false}): _messages = messages;
   
 
@@ -827,7 +827,7 @@ class _Initial implements FcrmChatState {
 @override final  String? defaultEndpoint;
 @override@JsonKey() final  bool isREgistered;
 
-/// Create a copy of FcrmChatState
+/// Create a copy of HilolChatState
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -846,14 +846,14 @@ int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality(
 
 @override
 String toString() {
-  return 'FcrmChatState.initial(status: $status, messages: $messages, chat: $chat, defaultEndpoint: $defaultEndpoint, isREgistered: $isREgistered)';
+  return 'HilolChatState.initial(status: $status, messages: $messages, chat: $chat, defaultEndpoint: $defaultEndpoint, isREgistered: $isREgistered)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$InitialCopyWith<$Res> implements $FcrmChatStateCopyWith<$Res> {
+abstract mixin class _$InitialCopyWith<$Res> implements $HilolChatStateCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) _then) = __$InitialCopyWithImpl;
 @override @useResult
 $Res call({
@@ -872,7 +872,7 @@ class __$InitialCopyWithImpl<$Res>
   final _Initial _self;
   final $Res Function(_Initial) _then;
 
-/// Create a copy of FcrmChatState
+/// Create a copy of HilolChatState
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? messages = null,Object? chat = freezed,Object? defaultEndpoint = freezed,Object? isREgistered = null,}) {
   return _then(_Initial(

@@ -1,4 +1,27 @@
 include: package:flutter_lints/flutter.yaml
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+analyzer:
+  exclude:
+    # Web
+    - "web/**"
+    # Build
+    - "build/**"
+    # Generated code
+    - "lib/**.g.dart"
+    - "lib/**.freezed.dart"
+    - "lib/generated_plugin_registrant.dart"
+    - ".test_coverage.dart"
+    # Assets
+    - "assets/**"
+    # Mocks for test
+    - "test/data/**"
+  errors:
+    constant_identifier_names: ignore
+linter:
+  rules:
+    prefer_single_quotes: true
+    prefer_const_constructors: true
+    prefer_const_constructors_in_immutables: true
+    prefer_const_declarations: true
+    prefer_const_literals_to_create_immutables: true
+    avoid_field_initializers_in_const_classes: true

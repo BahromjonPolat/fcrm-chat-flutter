@@ -1,6 +1,6 @@
-# FCRM Chat Flutter
+# Hilol Chat Flutter
 
-A Flutter package for integrating FCRM chat functionality into your Flutter applications. This package provides a ready-to-use chat interface with real-time messaging capabilities powered by the FCRM Chat SDK.
+A Flutter package for integrating Hilol chat functionality into your Flutter applications. This package provides a ready-to-use chat interface with real-time messaging capabilities powered by the FCRM Chat SDK.
 
 ## Features
 
@@ -19,7 +19,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  fcrm_chat_flutter:
+  hilol_chat_flutter:
     git:
       url: https://github.com/BahromjonPolat/fcrm-chat-flutter.git
       ref: main
@@ -35,7 +35,7 @@ flutter pub get
 
 ### 1. Configuration
 
-First, you need to obtain the following credentials from your FCRM dashboard:
+First, you need to obtain the following credentials from your Hilol dashboard:
 - `baseUrl` - API base URL
 - `companyToken` - Your company's unique token
 - `appKey` - Application key
@@ -45,10 +45,10 @@ First, you need to obtain the following credentials from your FCRM dashboard:
 
 ### 2. Initialize the BLoC
 
-Wrap your app with `MultiBlocProvider` and initialize the `FcrmChatBloc`:
+Wrap your app with `MultiBlocProvider` and initialize the `HilolChatBloc`:
 
 ```dart
-import 'package:fcrm_chat_flutter/fcrm_chat_flutter.dart';
+import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -65,9 +65,9 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => FcrmChatBloc()
+          create: (context) => HilolChatBloc()
             ..add(
-              FcrmChatEvent.initialize(
+              HilolChatEvent.initialize(
                 baseUrl: 'YOUR_BASE_URL',
                 companyToken: 'YOUR_COMPANY_TOKEN',
                 appKey: 'YOUR_APP_KEY',
@@ -92,12 +92,12 @@ class MyApp extends StatelessWidget {
 
 ### 3. Navigate to Chat Page
 
-To open the chat interface, navigate to `FcrmChatPage`:
+To open the chat interface, navigate to `HilolChatPage`:
 
 ```dart
 Navigator.of(context).push(
   MaterialPageRoute(
-    builder: (context) => FcrmChatPage(),
+    builder: (context) => HilolChatPage(),
   ),
 );
 ```
@@ -107,7 +107,7 @@ Navigator.of(context).push(
 Here's a complete example:
 
 ```dart
-import 'package:fcrm_chat_flutter/fcrm_chat_flutter.dart';
+import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -125,7 +125,7 @@ class HomePage extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => FcrmChatPage(),
+                builder: (context) => HilolChatPage(),
               ),
             );
           },
@@ -163,27 +163,26 @@ MaterialApp(
 The package exports reusable widgets that you can use in your custom implementations:
 
 ```dart
-import 'package:fcrm_chat_flutter/fcrm_chat_flutter.dart';
+import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
 
 // Available widgets:
-// - FcrmChatBubble: Message bubble widget
-// - FcrmSenderAvatar: User avatar with online status
-// - FcrmInputPanel: Message input field with attachment options
+// - HilolChatBubble: Message bubble widget
+// - HilolChatSenderAvatar: User avatar with online status
+// - HilolChatInput: Message input field with attachment options
 ```
 
 ## Architecture
 
 This package uses the **BLoC (Business Logic Component)** pattern for state management:
 
-- `FcrmChatBloc` - Manages chat messages, user state, and real-time communication
-- `RegisterBloc` - Handles user registration flow
-- `FcrmChatEvent` - Events for chat operations (send message, load history, etc.)
-- `FcrmChatState` - Chat state (loading, success, error states)
+- `HilolChatBloc` - Manages chat messages, user state, and real-time communication
+- `HilolChatEvent` - Events for chat operations (send message, load history, etc.)
+- `HilolChatState` - Chat state (loading, success, error states)
 
 ## Dependencies
 
 This package relies on:
-- `fcrm_chat_sdk` - Core SDK for FCRM chat functionality
+- `fcrm_chat_sdk` - Core SDK for Hilol chat functionality
 - `flutter_bloc` - State management
 - `cached_network_image` - Image caching
 - `image_picker` - Image selection from gallery/camera

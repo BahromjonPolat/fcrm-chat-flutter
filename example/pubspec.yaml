@@ -12,11 +12,9 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
-  fcrm_chat_flutter:
+  hilol_chat_flutter:
     path: ../
-  dartz: ^0.10.1
-  formz: ^0.8.0
-  flutter_bloc: ^8.1.6
+  flutter_bloc: ^9.1.1
 
 dev_dependencies:
   flutter_test:

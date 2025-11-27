@@ -1,7 +1,8 @@
 import 'package:example/env.dart';
-import 'package:fcrm_chat_flutter/fcrm_chat_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,9 +17,9 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => FcrmChatBloc()
+          create: (context) => HilolChatBloc()
             ..add(
-              FcrmChatEvent.initialize(
+              HilolChatEvent.initialize(
                 baseUrl: Env.baseUrl,
                 companyToken: Env.companyToken,
                 appKey: Env.appKey,
@@ -60,7 +61,7 @@ class HomePage extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () => Navigator.of(
             context,
-          ).push(MaterialPageRoute(builder: (context) => FcrmChatPage())),
+          ).push(MaterialPageRoute(builder: (context) => HilolChatPage())),
           child: Text('Chat'),
         ),
       ),

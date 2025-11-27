@@ -5,13 +5,13 @@
 
 */
 
-import 'package:fcrm_chat_flutter/src/extensions/context_x.dart';
+import 'package:hilol_chat_flutter/src/extensions/context_x.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg.dart';
 
-class FcrmBottomModalSheetContent extends StatelessWidget {
+class HilolChatBottomModalSheetContent extends StatelessWidget {
   final List<BottomModalSheetItem> items;
-  const FcrmBottomModalSheetContent({super.key, required this.items});
+  const HilolChatBottomModalSheetContent({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +20,13 @@ class FcrmBottomModalSheetContent extends StatelessWidget {
         bottom: MediaQuery.paddingOf(context).bottom + 8,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
         color: Theme.of(context).cardColor,
       ),
       child: Column(
         mainAxisSize: .min,
         children: [
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Container(
             width: 74,
             height: 3,
@@ -58,7 +58,7 @@ class FcrmBottomModalSheetContent extends StatelessWidget {
   }
 }
 
-Future<void> showFcrmBottomModalSheet({
+Future<void> showHilolChatBottomModalSheet({
   required BuildContext context,
   required List<BottomModalSheetItem> items,
 }) async {
@@ -66,7 +66,7 @@ Future<void> showFcrmBottomModalSheet({
     useRootNavigator: true,
     useSafeArea: true,
     context: context,
-    builder: (context) => FcrmBottomModalSheetContent(items: items),
+    builder: (context) => HilolChatBottomModalSheetContent(items: items),
   );
 }
 

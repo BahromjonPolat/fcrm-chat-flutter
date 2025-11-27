@@ -161,7 +161,7 @@ lib/
 │   │   ├── registration_page.dart  ✅
 │   │   └── chat_wrapper_page.dart  ✅
 │   └── fcrm_chat_package.dart      ✅
-├── fcrm_chat_flutter.dart          ✅
+├── hilol_chat_flutter.dart          ✅
 ├── analysis_options.yaml           ✅ (new)
 └── pubspec.yaml                    ✅
 

@@ -5,5 +5,4 @@
 
 */
 
-export 'chat/fcrm_chat_bloc.dart';
-export 'register/register_bloc.dart';
+export 'chat/hilol_chat_bloc.dart';

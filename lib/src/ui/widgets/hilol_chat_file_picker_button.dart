@@ -5,39 +5,39 @@
 
 */
 
-import 'package:fcrm_chat_flutter/fcrm_chat_flutter.dart';
-import 'package:fcrm_chat_flutter/src/constants/fcrm_icons.dart';
-import 'package:fcrm_chat_flutter/src/ui/widgets/fcrm_bottom_modal_sheet.dart';
+import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
+import 'package:hilol_chat_flutter/src/constants/hilol_chat_icons.dart';
+import 'package:hilol_chat_flutter/src/ui/widgets/hilol_chat_bottom_modal_sheet.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:svg_flutter/svg.dart';
 
-class FcrmFilePickerButton extends StatelessWidget {
-  const FcrmFilePickerButton({super.key});
+class HilolChatFilePickerButton extends StatelessWidget {
+  const HilolChatFilePickerButton({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        showFcrmBottomModalSheet(
+        showHilolChatBottomModalSheet(
           context: context,
           items: [
             BottomModalSheetItem(
               title: 'File',
-              icon: FcrmIcons.file,
+              icon: HilolChatIcons.file,
               onTap: () => _pickFile(isFile: true, onPicked: (value) {}),
             ),
             BottomModalSheetItem(
               title: 'Gallery',
-              icon: FcrmIcons.gallery,
+              icon: HilolChatIcons.gallery,
               onTap: () => _pickFile(
                 isFile: false,
                 onPicked: (value) {
                   final imagePath = value.first.path;
-                  context.read<FcrmChatBloc>().add(
-                    FcrmChatEvent.sendImage(imagePath),
+                  context.read<HilolChatBloc>().add(
+                    HilolChatEvent.sendImage(imagePath),
                   );
                 },
               ),
@@ -54,7 +54,7 @@ class FcrmFilePickerButton extends StatelessWidget {
           color: Theme.of(context).cardColor,
         ),
         child: SvgPicture.asset(
-          FcrmIcons.paperclip,
+          HilolChatIcons.paperclip,
           colorFilter: ColorFilter.mode(
             Theme.of(context).iconTheme.color ?? Colors.black,
             BlendMode.srcIn,
