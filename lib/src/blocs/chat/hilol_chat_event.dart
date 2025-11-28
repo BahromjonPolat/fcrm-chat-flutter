@@ -3,13 +3,7 @@ part of 'hilol_chat_bloc.dart';
 @freezed
 class HilolChatEvent with _$HilolChatEvent {
   const factory HilolChatEvent.initialize({
-    required String baseUrl,
-    required String companyToken,
-    required String appKey,
-    required String appSecret,
-    required String socketUrl,
-    @Default(true) bool enableLogging,
-    String? defaultEndpoint,
+    required HilolChatConfig config,
     HilolChatRegisterModel? userData,
     void Function()? onSuccess,
   }) = _Initialize;

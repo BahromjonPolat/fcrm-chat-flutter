@@ -9,7 +9,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
-import 'package:hilol_chat_flutter/src/models/hilol_chat_register_model.dart';
+import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
 import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:formz/formz.dart';
@@ -23,51 +23,40 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
   HilolChatBloc() : super(const HilolChatState.initial()) {
     on<HilolChatEvent>((event, emit) async {
       await event.when(
-        initialize:
-            (
-              baseUrl,
-              companyToken,
-              appKey,
-              appSecret,
-              socketUrl,
-              enableLogging,
-              defaultEndpoint,
-              userData,
-              onSuccess,
-            ) async {
-              final chat = FcrmChat(
-                config: ChatConfig(
-                  baseUrl: baseUrl,
-                  enableLogging: true,
-                  companyToken: companyToken,
-                  appKey: appKey,
-                  appSecret: appSecret,
-                  socketUrl: socketUrl,
-                ),
-              );
+        initialize: (config, userData, onSuccess) async {
+          final chat = FcrmChat(
+            config: ChatConfig(
+              baseUrl: config.baseUrl,
+              enableLogging: config.enableLogging,
+              companyToken: config.companyToken,
+              appKey: config.appKey,
+              appSecret: config.appSecret,
+              socketUrl: config.socketUrl,
+            ),
+          );
 
-              await chat.initialize();
+          await chat.initialize();
 
-              _messageSubscription = chat.onMessage.listen((message) {
-                add(HilolChatEvent.addMessage(message));
-              });
-              final registered = await chat.isRegistered();
+          _messageSubscription = chat.onMessage.listen((message) {
+            add(HilolChatEvent.addMessage(message));
+          });
+          final registered = await chat.isRegistered();
 
-              emit(
-                state.copyWith(chat: chat, defaultEndpoint: defaultEndpoint),
-              );
+          emit(
+            state.copyWith(chat: chat, defaultEndpoint: config.defaultEndpoint),
+          );
 
-              onSuccess?.call();
-              if (registered) {
-                add(const HilolChatEvent.getMessages());
-                return;
-              }
+          onSuccess?.call();
+          if (registered) {
+            add(const HilolChatEvent.getMessages());
+            return;
+          }
 
-              if (userData == null) {
-                return;
-              }
-              add(HilolChatEvent.register(data: userData));
-            },
+          if (userData == null) {
+            return;
+          }
+          add(HilolChatEvent.register(data: userData));
+        },
         register: (data, onSuccess, onError) async {
           if (state.status.isInProgress) {
             return;

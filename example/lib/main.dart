@@ -1,4 +1,5 @@
 import 'package:example/env.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,12 +21,15 @@ class MyApp extends StatelessWidget {
           create: (context) => HilolChatBloc()
             ..add(
               HilolChatEvent.initialize(
-                baseUrl: Env.baseUrl,
-                companyToken: Env.companyToken,
-                appKey: Env.appKey,
-                appSecret: Env.appSecret,
-                socketUrl: Env.socketUrl,
-                defaultEndpoint: 'Hilol (Example)',
+                config: HilolChatConfig(
+                  baseUrl: Env.baseUrl,
+                  companyToken: Env.companyToken,
+                  appKey: Env.appKey,
+                  appSecret: Env.appSecret,
+                  socketUrl: Env.socketUrl,
+                  enableLogging: kDebugMode,
+                  defaultEndpoint: 'Chat Example',
+                ),
                 userData: HilolChatRegisterModel(
                   name: 'Bahromjon',
                   email: 'bahromjon@gmail.com',

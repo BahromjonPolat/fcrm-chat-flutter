@@ -134,10 +134,10 @@ return addMessage(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String baseUrl,  String companyToken,  String appKey,  String appSecret,  String socketUrl,  bool enableLogging,  String? defaultEndpoint,  HilolChatRegisterModel? userData,  void Function()? onSuccess)?  initialize,TResult Function( int page)?  getMessages,TResult Function( HilolChatRegisterModel data,  void Function()? onSuccess,  void Function(String error)? onError)?  register,TResult Function( String message,  String? endpoint)?  sendMessage,TResult Function( String imagePath,  String? endpoint)?  sendImage,TResult Function( ChatMessage message)?  addMessage,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( HilolChatConfig config,  HilolChatRegisterModel? userData,  void Function()? onSuccess)?  initialize,TResult Function( int page)?  getMessages,TResult Function( HilolChatRegisterModel data,  void Function()? onSuccess,  void Function(String error)? onError)?  register,TResult Function( String message,  String? endpoint)?  sendMessage,TResult Function( String imagePath,  String? endpoint)?  sendImage,TResult Function( ChatMessage message)?  addMessage,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initialize() when initialize != null:
-return initialize(_that.baseUrl,_that.companyToken,_that.appKey,_that.appSecret,_that.socketUrl,_that.enableLogging,_that.defaultEndpoint,_that.userData,_that.onSuccess);case _GetMessages() when getMessages != null:
+return initialize(_that.config,_that.userData,_that.onSuccess);case _GetMessages() when getMessages != null:
 return getMessages(_that.page);case _Register() when register != null:
 return register(_that.data,_that.onSuccess,_that.onError);case _SendMessage() when sendMessage != null:
 return sendMessage(_that.message,_that.endpoint);case _SendImage() when sendImage != null:
@@ -160,10 +160,10 @@ return addMessage(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String baseUrl,  String companyToken,  String appKey,  String appSecret,  String socketUrl,  bool enableLogging,  String? defaultEndpoint,  HilolChatRegisterModel? userData,  void Function()? onSuccess)  initialize,required TResult Function( int page)  getMessages,required TResult Function( HilolChatRegisterModel data,  void Function()? onSuccess,  void Function(String error)? onError)  register,required TResult Function( String message,  String? endpoint)  sendMessage,required TResult Function( String imagePath,  String? endpoint)  sendImage,required TResult Function( ChatMessage message)  addMessage,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( HilolChatConfig config,  HilolChatRegisterModel? userData,  void Function()? onSuccess)  initialize,required TResult Function( int page)  getMessages,required TResult Function( HilolChatRegisterModel data,  void Function()? onSuccess,  void Function(String error)? onError)  register,required TResult Function( String message,  String? endpoint)  sendMessage,required TResult Function( String imagePath,  String? endpoint)  sendImage,required TResult Function( ChatMessage message)  addMessage,}) {final _that = this;
 switch (_that) {
 case _Initialize():
-return initialize(_that.baseUrl,_that.companyToken,_that.appKey,_that.appSecret,_that.socketUrl,_that.enableLogging,_that.defaultEndpoint,_that.userData,_that.onSuccess);case _GetMessages():
+return initialize(_that.config,_that.userData,_that.onSuccess);case _GetMessages():
 return getMessages(_that.page);case _Register():
 return register(_that.data,_that.onSuccess,_that.onError);case _SendMessage():
 return sendMessage(_that.message,_that.endpoint);case _SendImage():
@@ -185,10 +185,10 @@ return addMessage(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String baseUrl,  String companyToken,  String appKey,  String appSecret,  String socketUrl,  bool enableLogging,  String? defaultEndpoint,  HilolChatRegisterModel? userData,  void Function()? onSuccess)?  initialize,TResult? Function( int page)?  getMessages,TResult? Function( HilolChatRegisterModel data,  void Function()? onSuccess,  void Function(String error)? onError)?  register,TResult? Function( String message,  String? endpoint)?  sendMessage,TResult? Function( String imagePath,  String? endpoint)?  sendImage,TResult? Function( ChatMessage message)?  addMessage,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( HilolChatConfig config,  HilolChatRegisterModel? userData,  void Function()? onSuccess)?  initialize,TResult? Function( int page)?  getMessages,TResult? Function( HilolChatRegisterModel data,  void Function()? onSuccess,  void Function(String error)? onError)?  register,TResult? Function( String message,  String? endpoint)?  sendMessage,TResult? Function( String imagePath,  String? endpoint)?  sendImage,TResult? Function( ChatMessage message)?  addMessage,}) {final _that = this;
 switch (_that) {
 case _Initialize() when initialize != null:
-return initialize(_that.baseUrl,_that.companyToken,_that.appKey,_that.appSecret,_that.socketUrl,_that.enableLogging,_that.defaultEndpoint,_that.userData,_that.onSuccess);case _GetMessages() when getMessages != null:
+return initialize(_that.config,_that.userData,_that.onSuccess);case _GetMessages() when getMessages != null:
 return getMessages(_that.page);case _Register() when register != null:
 return register(_that.data,_that.onSuccess,_that.onError);case _SendMessage() when sendMessage != null:
 return sendMessage(_that.message,_that.endpoint);case _SendImage() when sendImage != null:
@@ -205,16 +205,10 @@ return addMessage(_that.message);case _:
 
 
 class _Initialize implements HilolChatEvent {
-  const _Initialize({required this.baseUrl, required this.companyToken, required this.appKey, required this.appSecret, required this.socketUrl, this.enableLogging = true, this.defaultEndpoint, this.userData, this.onSuccess});
+  const _Initialize({required this.config, this.userData, this.onSuccess});
   
 
- final  String baseUrl;
- final  String companyToken;
- final  String appKey;
- final  String appSecret;
- final  String socketUrl;
-@JsonKey() final  bool enableLogging;
- final  String? defaultEndpoint;
+ final  HilolChatConfig config;
  final  HilolChatRegisterModel? userData;
  final  void Function()? onSuccess;
 
@@ -228,16 +222,16 @@ _$InitializeCopyWith<_Initialize> get copyWith => __$InitializeCopyWithImpl<_Ini
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initialize&&(identical(other.baseUrl, baseUrl) || other.baseUrl == baseUrl)&&(identical(other.companyToken, companyToken) || other.companyToken == companyToken)&&(identical(other.appKey, appKey) || other.appKey == appKey)&&(identical(other.appSecret, appSecret) || other.appSecret == appSecret)&&(identical(other.socketUrl, socketUrl) || other.socketUrl == socketUrl)&&(identical(other.enableLogging, enableLogging) || other.enableLogging == enableLogging)&&(identical(other.defaultEndpoint, defaultEndpoint) || other.defaultEndpoint == defaultEndpoint)&&(identical(other.userData, userData) || other.userData == userData)&&(identical(other.onSuccess, onSuccess) || other.onSuccess == onSuccess));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initialize&&(identical(other.config, config) || other.config == config)&&(identical(other.userData, userData) || other.userData == userData)&&(identical(other.onSuccess, onSuccess) || other.onSuccess == onSuccess));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,baseUrl,companyToken,appKey,appSecret,socketUrl,enableLogging,defaultEndpoint,userData,onSuccess);
+int get hashCode => Object.hash(runtimeType,config,userData,onSuccess);
 
 @override
 String toString() {
-  return 'HilolChatEvent.initialize(baseUrl: $baseUrl, companyToken: $companyToken, appKey: $appKey, appSecret: $appSecret, socketUrl: $socketUrl, enableLogging: $enableLogging, defaultEndpoint: $defaultEndpoint, userData: $userData, onSuccess: $onSuccess)';
+  return 'HilolChatEvent.initialize(config: $config, userData: $userData, onSuccess: $onSuccess)';
 }
 
 
@@ -248,7 +242,7 @@ abstract mixin class _$InitializeCopyWith<$Res> implements $HilolChatEventCopyWi
   factory _$InitializeCopyWith(_Initialize value, $Res Function(_Initialize) _then) = __$InitializeCopyWithImpl;
 @useResult
 $Res call({
- String baseUrl, String companyToken, String appKey, String appSecret, String socketUrl, bool enableLogging, String? defaultEndpoint, HilolChatRegisterModel? userData, void Function()? onSuccess
+ HilolChatConfig config, HilolChatRegisterModel? userData, void Function()? onSuccess
 });
 
 
@@ -265,16 +259,10 @@ class __$InitializeCopyWithImpl<$Res>
 
 /// Create a copy of HilolChatEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? baseUrl = null,Object? companyToken = null,Object? appKey = null,Object? appSecret = null,Object? socketUrl = null,Object? enableLogging = null,Object? defaultEndpoint = freezed,Object? userData = freezed,Object? onSuccess = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? config = null,Object? userData = freezed,Object? onSuccess = freezed,}) {
   return _then(_Initialize(
-baseUrl: null == baseUrl ? _self.baseUrl : baseUrl // ignore: cast_nullable_to_non_nullable
-as String,companyToken: null == companyToken ? _self.companyToken : companyToken // ignore: cast_nullable_to_non_nullable
-as String,appKey: null == appKey ? _self.appKey : appKey // ignore: cast_nullable_to_non_nullable
-as String,appSecret: null == appSecret ? _self.appSecret : appSecret // ignore: cast_nullable_to_non_nullable
-as String,socketUrl: null == socketUrl ? _self.socketUrl : socketUrl // ignore: cast_nullable_to_non_nullable
-as String,enableLogging: null == enableLogging ? _self.enableLogging : enableLogging // ignore: cast_nullable_to_non_nullable
-as bool,defaultEndpoint: freezed == defaultEndpoint ? _self.defaultEndpoint : defaultEndpoint // ignore: cast_nullable_to_non_nullable
-as String?,userData: freezed == userData ? _self.userData : userData // ignore: cast_nullable_to_non_nullable
+config: null == config ? _self.config : config // ignore: cast_nullable_to_non_nullable
+as HilolChatConfig,userData: freezed == userData ? _self.userData : userData // ignore: cast_nullable_to_non_nullable
 as HilolChatRegisterModel?,onSuccess: freezed == onSuccess ? _self.onSuccess : onSuccess // ignore: cast_nullable_to_non_nullable
 as void Function()?,
   ));
