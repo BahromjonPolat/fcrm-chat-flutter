@@ -147,7 +147,7 @@ class HilolChatBubble extends StatelessWidget {
               ),
             ),
           ),
-        ).wrapExpandedOrNot(wrap: message.content.length > 50),
+        ).wrapExpandedOrNot(wrap: message.content.length > 40),
       ],
     );
   }

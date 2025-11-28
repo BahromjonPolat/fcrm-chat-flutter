@@ -5,8 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // final pref = await SharedPreferences.getInstance();
+  // await pref.clear();
   runApp(const MyApp());
 }
 

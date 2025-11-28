@@ -13,6 +13,7 @@ import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
 import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:formz/formz.dart';
+import 'package:hilol_chat_flutter/src/utils/logger.dart';
 
 part 'hilol_chat_event.dart';
 part 'hilol_chat_state.dart';
@@ -24,6 +25,7 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
     on<HilolChatEvent>((event, emit) async {
       await event.when(
         initialize: (config, userData, onSuccess) async {
+          emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
           final chat = FcrmChat(
             config: ChatConfig(
               baseUrl: config.baseUrl,
@@ -43,10 +45,15 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
           final registered = await chat.isRegistered();
 
           emit(
-            state.copyWith(chat: chat, defaultEndpoint: config.defaultEndpoint),
+            state.copyWith(
+              chat: chat,
+              defaultEndpoint: config.defaultEndpoint,
+              status: FormzSubmissionStatus.success,
+            ),
           );
 
           onSuccess?.call();
+
           if (registered) {
             add(const HilolChatEvent.getMessages());
             return;
@@ -73,12 +80,16 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
 
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
           await state.chat?.register(userData: data.toJson());
+          emit(state.copyWith(status: FormzSubmissionStatus.success));
+
           onSuccess?.call();
         },
         getMessages: (page) async {
+          Log.e(state.status, fileName: 'hilol_chat_bloc.getMessages');
           if (state.status.isInProgress) {
             return;
           }
+
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
           final result = await state.chat?.getMessages(page: page);
 
@@ -93,18 +104,20 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
           );
         },
         sendMessage: (message, endpoint) async {
+          emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
           await state.chat?.sendMessage(
             message,
             endpoint: endpoint ?? state.defaultEndpoint,
           );
-
-          // emit(state.copyWith());
+          emit(state.copyWith(status: FormzSubmissionStatus.success));
         },
         sendImage: (imagePath, endpoint) async {
+          emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
           await state.chat?.sendImage(
             File(imagePath),
             endpoint: endpoint ?? state.defaultEndpoint,
           );
+          emit(state.copyWith(status: FormzSubmissionStatus.success));
         },
         addMessage: (message) {
           final messages = [...state.messages, message];
