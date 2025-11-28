@@ -21,7 +21,7 @@ Add this to your package's `pubspec.yaml` file:
 dependencies:
   hilol_chat_flutter:
     git:
-      url: https://github.com/BahromjonPolat/fcrm-chat-flutter.git
+      url: https://github.com/BahromjonPolat/hilol-chat-flutter.git
       ref: main
 ```
 
@@ -69,13 +69,15 @@ Add the following permission to your `android/app/src/main/AndroidManifest.xml` 
 
 ### 2. API Configuration
 
-First, you need to obtain the following credentials from your Hilol dashboard:
-- `baseUrl` - API base URL
-- `companyToken` - Your company's unique token
-- `appKey` - Application key
-- `appSecret` - Application secret
-- `socketUrl` - WebSocket server URL
-- `defaultEndpoint` - Default chat endpoint name
+First, you need to obtain the following credentials from your Hilol dashboard to configure `HilolChatConfig`:
+- `baseUrl` - API base URL (required)
+- `companyToken` - Your company's unique token (required)
+- `appKey` - Application key (required)
+- `appSecret` - Application secret (required)
+- `socketUrl` - WebSocket server URL (optional)
+- `defaultEndpoint` - Default chat endpoint name (optional)
+- `enableLogging` - Enable SDK logging (optional, default: false)
+- `connectionTimeout` - Connection timeout duration (optional)
 
 ### 3. Initialize the BLoC
 
@@ -102,12 +104,14 @@ class MyApp extends StatelessWidget {
           create: (context) => HilolChatBloc()
             ..add(
               HilolChatEvent.initialize(
-                baseUrl: 'YOUR_BASE_URL',
-                companyToken: 'YOUR_COMPANY_TOKEN',
-                appKey: 'YOUR_APP_KEY',
-                appSecret: 'YOUR_APP_SECRET',
-                socketUrl: 'YOUR_SOCKET_URL',
-                defaultEndpoint: 'Support Chat',
+                config: HilolChatConfig(
+                  baseUrl: 'YOUR_BASE_URL',
+                  companyToken: 'YOUR_COMPANY_TOKEN',
+                  appKey: 'YOUR_APP_KEY',
+                  appSecret: 'YOUR_APP_SECRET',
+                  socketUrl: 'YOUR_SOCKET_URL',
+                  defaultEndpoint: 'Support Chat',
+                ),
               ),
             ),
         ),
