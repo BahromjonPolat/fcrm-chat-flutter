@@ -49,11 +49,7 @@ class HilolChatBubble extends StatelessWidget {
           : MainAxisAlignment.start,
       children: [
         if (!isSendBubble) ...{
-          const HilolChatSenderAvatar(
-            imageUrl:
-                'https://cdn.pixabay.com/photo/2013/07/12/12/40/help-146073_1280.png',
-            isOnline: true,
-          ),
+          const HilolChatSenderAvatar(imageUrl: '', isOnline: true),
         },
 
         GestureDetector(
@@ -156,7 +152,9 @@ class HilolChatBubble extends StatelessWidget {
               ),
             ),
           ),
-        ).wrapExpandedOrNot(wrap: message.content.length > 40),
+        ).wrapExpandedOrNot(
+          wrap: message.isImage || message.content.length > 40,
+        ),
       ],
     );
   }

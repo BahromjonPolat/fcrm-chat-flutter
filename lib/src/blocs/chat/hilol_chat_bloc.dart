@@ -159,7 +159,7 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
 
           if (message.isUserMessage) {
             final index = messages.indexWhere(
-              (m) => m.isImage
+              (m) => m.isImage && message.isImage
                   ? (m.imageMeta.originalName == message.imageMeta.originalName)
                   : (m.content == message.content && !m.isSent),
             );
