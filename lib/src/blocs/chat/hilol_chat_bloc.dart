@@ -6,7 +6,6 @@
 */
 
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
@@ -15,6 +14,7 @@ import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
 import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:formz/formz.dart';
+import 'package:hilol_chat_flutter/src/extensions/message_x.dart';
 
 part 'hilol_chat_event.dart';
 part 'hilol_chat_state.dart';
@@ -29,7 +29,7 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
           final chat = FcrmChat(
             config: ChatConfig(
-              enableLogging: kDebugMode,
+              enableLogging: false,
               baseUrl: config.baseUrl,
               companyToken: config.companyToken,
               appKey: config.appKey,
@@ -95,11 +95,11 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
 
           final messages = [...?result?.messages, ...state.messages];
 
-          messages.forEach((message) {
-            debugPrint(
-              'Message: ${const JsonEncoder.withIndent('  ').convert(message.toJson())}',
-            );
-          });
+          // messages.forEach((message) {
+          //   debugPrint(
+          //     'Message: ${const JsonEncoder.withIndent('  ').convert(message.toJson())}',
+          //   );
+          // });
           emit(
             state.copyWith(
               messages: messages,
@@ -110,12 +110,19 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
           );
         },
         sendMessage: (message, endpoint) async {
-          emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+          final chatMessage = ChatMessage(
+            id: 0,
+            chatId: 0,
+            content: message,
+            type: MessageType.user,
+            createdAt: DateTime.now(),
+          );
+          final messages = [...state.messages, chatMessage];
+          emit(state.copyWith(messages: messages));
           await state.chat?.sendMessage(
             message,
             endpoint: endpoint ?? state.defaultEndpoint,
           );
-          emit(state.copyWith(status: FormzSubmissionStatus.success));
         },
         sendImage: (imagePath, endpoint) async {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
@@ -126,7 +133,24 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
           emit(state.copyWith(status: FormzSubmissionStatus.success));
         },
         addMessage: (message) {
-          final messages = [...state.messages, message];
+          final messages = message.isUserMessage
+              ? [...state.messages]
+              : [
+                  ...state.messages.map((e) => e.copyWith(isRead: true)),
+                  message,
+                ];
+
+          if (message.isUserMessage) {
+            final index = messages.indexWhere(
+              (m) => m.content == message.content && m.id == 0,
+            );
+
+            if (index != -1) {
+              messages[index] = message;
+            } else {
+              messages.add(message);
+            }
+          }
           emit(state.copyWith(messages: messages));
         },
       );

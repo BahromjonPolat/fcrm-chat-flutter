@@ -116,8 +116,8 @@ class HilolChatBubble extends StatelessWidget {
                             ),
                           ),
 
-                          const Icon(
-                            Icons.done_all,
+                          Icon(
+                            message.isRead ? Icons.done_all : Icons.done,
                             color: Colors.white,
                             size: 20,
                           ),

@@ -142,10 +142,10 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "9a22c4e630e0fdfdf198f8a56efac80a6c10ce6f"
+      resolved-ref: eb6d2e1f4ab8607a3dd98b8f155c3de307a683b7
       url: "https://github.com/ipchi/fcrm_chat_sdk.git"
     source: git
-    version: "1.4.1"
+    version: "1.4.2"
   ffi:
     dependency: transitive
     description:
