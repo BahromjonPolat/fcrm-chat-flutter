@@ -38,12 +38,9 @@ void main() {
 
       // Assert
       expect(result.isRight(), true);
-      result.fold(
-        (failure) => fail('Should not fail'),
-        (success) {
-          expect(success.isRegistered, false);
-        },
-      );
+      result.fold((failure) => fail('Should not fail'), (success) {
+        expect(success.isRegistered, false);
+      });
     });
 
     test('initialize should return failure when shouldFail is true', () async {
@@ -63,30 +60,23 @@ void main() {
 
       // Assert
       expect(result.isLeft(), true);
-      result.fold(
-        (failure) {
-          expect(failure, isA<NetworkFailure>());
-          expect(failure.message, contains('Network error'));
-        },
-        (success) => fail('Should not succeed'),
-      );
+      result.fold((failure) {
+        expect(failure, isA<NetworkFailure>());
+        expect(failure.message, contains('Network error'));
+      }, (success) => fail('Should not succeed'));
     });
 
     test('register should fail if not initialized', () async {
       // Act
-      final result = await repository.register(userData: {
-        'name': 'Test User',
-        'email': 'test@example.com',
-      });
+      final result = await repository.register(
+        userData: {'name': 'Test User', 'email': 'test@example.com'},
+      );
 
       // Assert
       expect(result.isLeft(), true);
-      result.fold(
-        (failure) {
-          expect(failure, isA<ChatNotInitializedFailure>());
-        },
-        (success) => fail('Should not succeed'),
-      );
+      result.fold((failure) {
+        expect(failure, isA<ChatNotInitializedFailure>());
+      }, (success) => fail('Should not succeed'));
     });
 
     test('sendMessage should add message to list', () async {
@@ -106,12 +96,9 @@ void main() {
 
       // Assert
       expect(result.isRight(), true);
-      result.fold(
-        (failure) => fail('Should not fail'),
-        (success) {
-          expect(success.message.content, 'Hello');
-        },
-      );
+      result.fold((failure) => fail('Should not fail'), (success) {
+        expect(success.message.content, 'Hello');
+      });
     });
 
     test('getMessages should return messages', () async {
@@ -133,13 +120,10 @@ void main() {
 
       // Assert
       expect(result.isRight(), true);
-      result.fold(
-        (failure) => fail('Should not fail'),
-        (success) {
-          expect(success.messages.length, 2);
-          expect(success.hasMore, false);
-        },
-      );
+      result.fold((failure) => fail('Should not fail'), (success) {
+        expect(success.messages.length, 2);
+        expect(success.hasMore, false);
+      });
     });
 
     test('messageStream should emit messages', () async {
@@ -158,7 +142,7 @@ void main() {
       expectLater(
         repository.messageStream,
         emitsInOrder([
-          predicate((message) => message.content == 'Test'),
+          predicate((ChatMessage message) => message.content == 'Test'),
         ]),
       );
 
