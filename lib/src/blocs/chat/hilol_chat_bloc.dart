@@ -94,7 +94,6 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
 
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
           final result = await state.chat?.getMessages(page: page);
-
           final messages = [...?result?.messages, ...state.messages];
 
           emit(
@@ -147,6 +146,8 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
           await state.chat?.sendImage(
             imageFile,
             endpoint: endpoint ?? state.defaultEndpoint,
+            onSendProgress: (sent, total) {},
+            cancelToken: null,
           );
         },
         addMessage: (message) {
