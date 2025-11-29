@@ -124,6 +124,7 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
         sendImage: (imagePath, endpoint) async {
           final fileName = imagePath.split(Platform.pathSeparator).last;
           final imageFile = File(imagePath);
+
           final image = await getImageDimensions(imagePath);
           final chatMessage = ChatMessage(
             id: 0,
@@ -159,12 +160,12 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
           if (message.isUserMessage) {
             final index = messages.indexWhere(
               (m) => m.isImage
-                  ? m.imageMeta.originalName == message.imageMeta.originalName
+                  ? (m.imageMeta.originalName == message.imageMeta.originalName)
                   : (m.content == message.content && !m.isSent),
             );
 
             if (index != -1) {
-              messages[index] = !message.isImage
+              messages[index] = message.isImage
                   ? message.copyWith(
                       metadata: messages[index].imageMeta.toJson(),
                     )

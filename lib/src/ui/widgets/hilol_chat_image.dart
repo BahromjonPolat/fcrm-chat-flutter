@@ -11,6 +11,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hilol_chat_flutter/src/models/image_meta.dart';
+import 'package:hilol_chat_flutter/src/utils/logger.dart';
 
 class HilolChatImage extends StatelessWidget {
   final String imageUrl;
@@ -23,16 +24,19 @@ class HilolChatImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // return const SizedBox();
+    Log.d(imageMeta.aspectRatio, fileName: 'hilol_chat_image');
     return ClipRRect(
       borderRadius: BorderRadiusGeometry.circular(8),
       child: AspectRatio(
         aspectRatio: imageMeta.aspectRatio,
+        // aspectRatio: 16 / 9,
         child: CachedNetworkImage(
           imageUrl: imageUrl,
-          fit: BoxFit.cover,
+          // fit: BoxFit.cover,
           placeholder: (context, url) => imageMeta.filePath.isNotEmpty
               ? Image.file(File(imageMeta.filePath), fit: BoxFit.cover)
-              : const Center(child: CupertinoActivityIndicator()),
+              : const CupertinoActivityIndicator(),
           errorWidget: (context, url, error) => imageMeta.filePath.isNotEmpty
               ? Image.file(File(imageMeta.filePath), fit: BoxFit.cover)
               : const Icon(Icons.error),
