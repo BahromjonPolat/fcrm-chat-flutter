@@ -97,10 +97,7 @@ return getMessages(_that);case _Register():
 return register(_that);case _SendMessage():
 return sendMessage(_that);case _SendImage():
 return sendImage(_that);case _AddMessage():
-return addMessage(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
+return addMessage(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -174,10 +171,7 @@ return getMessages(_that.page);case _Register():
 return register(_that.data,_that.onSuccess,_that.onError);case _SendMessage():
 return sendMessage(_that.message,_that.endpoint);case _SendImage():
 return sendImage(_that.imagePath,_that.endpoint);case _AddMessage():
-return addMessage(_that.message);case _:
-  throw StateError('Unexpected subclass');
-
-}
+return addMessage(_that.message);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///

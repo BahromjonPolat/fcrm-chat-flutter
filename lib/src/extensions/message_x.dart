@@ -6,9 +6,13 @@
 */
 
 import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
+import 'package:hilol_chat_flutter/src/models/image_meta.dart';
 
 extension MessageX on ChatMessage {
   bool get isImage => metadata?['is_image'] == true;
   bool get isSent => id > 0;
   bool get isUserMessage => type == MessageType.user;
+  ImageMeta get imageMeta => isImage
+      ? ImageMeta.fromJson(metadata ?? {})
+      : throw Exception('Not an image message');
 }

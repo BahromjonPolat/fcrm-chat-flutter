@@ -39,7 +39,7 @@ class _HilolChatPageState extends State<HilolChatPage> {
             final offset = scrollController.offset;
             final distance = max - offset;
 
-            if (200 > distance) {
+            if (700 > distance) {
               scrollController.animateTo(
                 max,
                 duration: const Duration(milliseconds: 200),

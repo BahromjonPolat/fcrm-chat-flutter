@@ -9,11 +9,17 @@ import 'package:flutter/material.dart';
 import 'package:hilol_chat_flutter/src/extensions/context_x.dart';
 import 'package:hilol_chat_flutter/src/extensions/string_x.dart';
 import 'package:hilol_chat_flutter/src/languages/strings.dart';
+import 'package:hilol_chat_flutter/src/models/image_meta.dart';
 import 'package:hilol_chat_flutter/src/ui/widgets/hilol_chat_image.dart';
 
 class HilolChatImageViewer extends StatelessWidget {
   final String imageUrl;
-  const HilolChatImageViewer({super.key, required this.imageUrl});
+  final ImageMeta imageMeta;
+  const HilolChatImageViewer({
+    super.key,
+    required this.imageUrl,
+    required this.imageMeta,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +29,7 @@ class HilolChatImageViewer extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.all(24),
         alignment: Alignment.center,
-        child: HilolChatImage(imageUrl: imageUrl),
+        child: HilolChatImage(imageUrl: imageUrl, imageMeta: imageMeta),
       ),
       bottomNavigationBar: Padding(
         padding: EdgeInsetsGeometry.fromLTRB(

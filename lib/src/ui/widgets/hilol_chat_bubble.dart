@@ -6,6 +6,7 @@
 */
 
 import 'package:hilol_chat_flutter/src/extensions/context_x.dart';
+import 'package:hilol_chat_flutter/src/extensions/message_x.dart';
 import 'package:hilol_chat_flutter/src/extensions/widget_x.dart';
 import 'package:hilol_chat_flutter/src/ui/widgets/hilol_chat_image.dart';
 import 'package:hilol_chat_flutter/src/ui/widgets/hilol_chat_image_viewer.dart';
@@ -58,7 +59,12 @@ class HilolChatBubble extends StatelessWidget {
         GestureDetector(
           onTap: message.isImage
               ? () {
-                  context.push(HilolChatImageViewer(imageUrl: message.content));
+                  context.push(
+                    HilolChatImageViewer(
+                      imageUrl: message.content,
+                      imageMeta: message.imageMeta,
+                    ),
+                  );
                 }
               : null,
           child: Container(
@@ -90,7 +96,10 @@ class HilolChatBubble extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     message.isImage
-                        ? HilolChatImage(imageUrl: message.content)
+                        ? HilolChatImage(
+                            imageUrl: message.content,
+                            imageMeta: message.imageMeta,
+                          )
                         : Text(
                             message.content,
                             style: TextStyle(

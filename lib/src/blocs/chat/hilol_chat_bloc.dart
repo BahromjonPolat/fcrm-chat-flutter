@@ -15,6 +15,8 @@ import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:formz/formz.dart';
 import 'package:hilol_chat_flutter/src/extensions/message_x.dart';
+import 'package:hilol_chat_flutter/src/models/image_meta.dart';
+import 'package:hilol_chat_flutter/src/utils/image_utils.dart';
 
 part 'hilol_chat_event.dart';
 part 'hilol_chat_state.dart';
@@ -95,11 +97,6 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
 
           final messages = [...?result?.messages, ...state.messages];
 
-          // messages.forEach((message) {
-          //   debugPrint(
-          //     'Message: ${const JsonEncoder.withIndent('  ').convert(message.toJson())}',
-          //   );
-          // });
           emit(
             state.copyWith(
               messages: messages,
@@ -125,12 +122,31 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
           );
         },
         sendImage: (imagePath, endpoint) async {
-          emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+          final fileName = imagePath.split(Platform.pathSeparator).last;
+          final imageFile = File(imagePath);
+          final image = await getImageDimensions(imagePath);
+          final chatMessage = ChatMessage(
+            id: 0,
+            chatId: 0,
+            content: imagePath,
+            type: MessageType.user,
+            createdAt: DateTime.now(),
+
+            metadata: ImageMeta(
+              isImage: true,
+              originalName: fileName,
+              filePath: imagePath,
+              size: 0,
+              width: image.width,
+              height: image.height,
+            ).toJson(),
+          );
+          final messages = [...state.messages, chatMessage];
+          emit(state.copyWith(messages: messages));
           await state.chat?.sendImage(
-            File(imagePath),
+            imageFile,
             endpoint: endpoint ?? state.defaultEndpoint,
           );
-          emit(state.copyWith(status: FormzSubmissionStatus.success));
         },
         addMessage: (message) {
           final messages = message.isUserMessage
@@ -142,11 +158,17 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
 
           if (message.isUserMessage) {
             final index = messages.indexWhere(
-              (m) => m.content == message.content && m.id == 0,
+              (m) => m.isImage
+                  ? m.imageMeta.originalName == message.imageMeta.originalName
+                  : (m.content == message.content && !m.isSent),
             );
 
             if (index != -1) {
-              messages[index] = message;
+              messages[index] = !message.isImage
+                  ? message.copyWith(
+                      metadata: messages[index].imageMeta.toJson(),
+                    )
+                  : message;
             } else {
               messages.add(message);
             }
