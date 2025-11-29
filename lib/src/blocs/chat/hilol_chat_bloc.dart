@@ -9,11 +9,11 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
 import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:formz/formz.dart';
-import 'package:hilol_chat_flutter/src/utils/logger.dart';
 
 part 'hilol_chat_event.dart';
 part 'hilol_chat_state.dart';
@@ -28,8 +28,8 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
           final chat = FcrmChat(
             config: ChatConfig(
+              enableLogging: kDebugMode,
               baseUrl: config.baseUrl,
-              enableLogging: config.enableLogging,
               companyToken: config.companyToken,
               appKey: config.appKey,
               appSecret: config.appSecret,
@@ -85,7 +85,6 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
           onSuccess?.call();
         },
         getMessages: (page) async {
-          Log.e(state.status, fileName: 'hilol_chat_bloc.getMessages');
           if (state.status.isInProgress) {
             return;
           }
@@ -94,6 +93,12 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
           final result = await state.chat?.getMessages(page: page);
 
           final messages = [...?result?.messages, ...state.messages];
+
+          // messages.forEach((message) {
+          //   debugPrint(
+          //     'Message: ${const JsonEncoder.withIndent('  ').convert(message.toJson())}',
+          //   );
+          // });
           emit(
             state.copyWith(
               messages: messages,

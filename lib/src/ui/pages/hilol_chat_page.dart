@@ -25,70 +25,75 @@ class _HilolChatPageState extends State<HilolChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HilolChatBloc, HilolChatState>(
-      listenWhen: (previous, current) =>
-          previous.messages.length != current.messages.length,
-      listener: (context, state) async {
-        try {
-          await Future.delayed(const Duration(milliseconds: 100));
-          final max = scrollController.position.maxScrollExtent;
-          final offset = scrollController.offset;
-          final distance = max - offset;
+    return MediaQuery(
+      data: MediaQuery.of(
+        context,
+      ).copyWith(textScaler: const TextScaler.linear(1.0)),
+      child: BlocConsumer<HilolChatBloc, HilolChatState>(
+        listenWhen: (previous, current) =>
+            previous.messages.length != current.messages.length,
+        listener: (context, state) async {
+          try {
+            await Future.delayed(const Duration(milliseconds: 100));
+            final max = scrollController.position.maxScrollExtent;
+            final offset = scrollController.offset;
+            final distance = max - offset;
 
-          if (200 > distance) {
-            scrollController.animateTo(
-              max,
-              duration: const Duration(milliseconds: 200),
-              curve: Curves.linear,
-            );
+            if (200 > distance) {
+              scrollController.animateTo(
+                max,
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.linear,
+              );
+            }
+          } catch (e) {
+            Log.e(e, fileName: 'hilol_chat_page');
           }
-        } catch (e) {
-          Log.e(e, fileName: 'hilol_chat_page');
-        }
-      },
-      builder: (context, state) {
-        return Scaffold(
-          appBar: HilolChatAppBar(chat: state.chat),
-          body: Column(
-            children: [
-              Expanded(
-                child: Builder(
-                  builder: (context) {
-                    if (state.status.isInProgress && state.messages.isEmpty) {
-                      return const HilolChatShimmer();
-                    }
+        },
+        builder: (context, state) {
+          return Scaffold(
+            appBar: HilolChatAppBar(chat: state.chat),
+            body: Column(
+              children: [
+                Expanded(
+                  child: Builder(
+                    builder: (context) {
+                      if (state.status.isInProgress && state.messages.isEmpty) {
+                        return const HilolChatShimmer();
+                      }
 
-                    return ListView.separated(
-                      controller: scrollController,
-                      itemCount: state.messages.length + 1,
-                      padding: const EdgeInsets.all(16),
-                      separatorBuilder: (_, _) => const SizedBox(height: 16),
-                      itemBuilder: (context, index) {
-                        if (index == 0) {
-                          return HilolChatLoadMore(
-                            showLoading: state.hasMoreMessages,
-                            onVisible: () {
-                              context.read<HilolChatBloc>().add(
-                                HilolChatEvent.getMessages(
-                                  page: state.currentPage + 1,
-                                ),
-                              );
-                            },
-                          );
-                        }
-                        final realIndex = index - 1;
-                        final message = state.messages[realIndex];
-                        return HilolChatBubble(message: message);
-                      },
-                    );
-                  },
+                      return ListView.separated(
+                        controller: scrollController,
+                        itemCount: state.messages.length + 1,
+                        padding: const EdgeInsets.all(16),
+                        separatorBuilder: (_, _) => const SizedBox(height: 16),
+                        itemBuilder: (context, index) {
+                          if (index == 0) {
+                            return HilolChatLoadMore(
+                              showLoading: state.hasMoreMessages,
+                              onVisible: () {
+                                context.read<HilolChatBloc>().add(
+                                  HilolChatEvent.getMessages(
+                                    page: state.currentPage + 1,
+                                  ),
+                                );
+                              },
+                            );
+                          }
+                          final realIndex = index - 1;
+                          final message = state.messages[realIndex];
+                          return HilolChatBubble(message: message);
+                        },
+                      );
+                    },
+                  ),
                 ),
-              ),
-              const HilolChatInput(),
-            ],
-          ),
-        );
-      },
+                const HilolChatInput(),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 

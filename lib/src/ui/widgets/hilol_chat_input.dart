@@ -9,6 +9,8 @@ import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
 import 'package:hilol_chat_flutter/src/constants/hilol_chat_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hilol_chat_flutter/src/extensions/string_x.dart';
+import 'package:hilol_chat_flutter/src/languages/strings.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
 import 'hilol_chat_file_picker_button.dart';
@@ -72,7 +74,7 @@ class _HilolChatInputState extends State<HilolChatInput> {
                     contentPadding: const EdgeInsets.all(12),
                     fillColor: Theme.of(context).cardColor,
                     filled: true,
-                    hintText: 'Message',
+                    hintText: Strings.chat_type_message.tr(),
                     constraints: const BoxConstraints(
                       maxHeight: 150,
                       minHeight: 42,

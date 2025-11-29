@@ -7,6 +7,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:hilol_chat_flutter/src/extensions/context_x.dart';
+import 'package:hilol_chat_flutter/src/extensions/string_x.dart';
+import 'package:hilol_chat_flutter/src/languages/strings.dart';
 import 'package:hilol_chat_flutter/src/ui/widgets/hilol_chat_image.dart';
 
 class HilolChatImageViewer extends StatelessWidget {
@@ -39,7 +41,7 @@ class HilolChatImageViewer extends StatelessWidget {
               borderRadius: BorderRadiusGeometry.circular(8),
             ),
           ),
-          child: const Text('Close'),
+          child: Text(Strings.general_close.tr()),
         ),
       ),
     );
