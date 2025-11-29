@@ -1,7 +1,7 @@
 part of 'hilol_chat_bloc.dart';
 
 @freezed
-class HilolChatEvent with _$HilolChatEvent {
+sealed class HilolChatEvent with _$HilolChatEvent {
   const factory HilolChatEvent.initialize({
     required HilolChatConfig config,
     HilolChatRegisterModel? userData,

@@ -12,11 +12,17 @@ part of 'hilol_chat_bloc.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$HilolChatEvent {
+mixin _$HilolChatEvent implements DiagnosticableTreeMixin {
 
 
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'HilolChatEvent'))
+    ;
+}
 
 @override
 bool operator ==(Object other) {
@@ -28,7 +34,7 @@ bool operator ==(Object other) {
 int get hashCode => runtimeType.hashCode;
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'HilolChatEvent()';
 }
 
@@ -204,7 +210,7 @@ return addMessage(_that.message);case _:
 /// @nodoc
 
 
-class _Initialize implements HilolChatEvent {
+class _Initialize with DiagnosticableTreeMixin implements HilolChatEvent {
   const _Initialize({required this.config, this.userData, this.onSuccess});
   
 
@@ -219,6 +225,12 @@ class _Initialize implements HilolChatEvent {
 _$InitializeCopyWith<_Initialize> get copyWith => __$InitializeCopyWithImpl<_Initialize>(this, _$identity);
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'HilolChatEvent.initialize'))
+    ..add(DiagnosticsProperty('config', config))..add(DiagnosticsProperty('userData', userData))..add(DiagnosticsProperty('onSuccess', onSuccess));
+}
 
 @override
 bool operator ==(Object other) {
@@ -230,7 +242,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,config,userData,onSuccess);
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'HilolChatEvent.initialize(config: $config, userData: $userData, onSuccess: $onSuccess)';
 }
 
@@ -274,7 +286,7 @@ as void Function()?,
 /// @nodoc
 
 
-class _GetMessages implements HilolChatEvent {
+class _GetMessages with DiagnosticableTreeMixin implements HilolChatEvent {
   const _GetMessages({this.page = 1});
   
 
@@ -287,6 +299,12 @@ class _GetMessages implements HilolChatEvent {
 _$GetMessagesCopyWith<_GetMessages> get copyWith => __$GetMessagesCopyWithImpl<_GetMessages>(this, _$identity);
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'HilolChatEvent.getMessages'))
+    ..add(DiagnosticsProperty('page', page));
+}
 
 @override
 bool operator ==(Object other) {
@@ -298,7 +316,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,page);
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'HilolChatEvent.getMessages(page: $page)';
 }
 
@@ -340,7 +358,7 @@ as int,
 /// @nodoc
 
 
-class _Register implements HilolChatEvent {
+class _Register with DiagnosticableTreeMixin implements HilolChatEvent {
   const _Register({required this.data, this.onSuccess, this.onError});
   
 
@@ -355,6 +373,12 @@ class _Register implements HilolChatEvent {
 _$RegisterCopyWith<_Register> get copyWith => __$RegisterCopyWithImpl<_Register>(this, _$identity);
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'HilolChatEvent.register'))
+    ..add(DiagnosticsProperty('data', data))..add(DiagnosticsProperty('onSuccess', onSuccess))..add(DiagnosticsProperty('onError', onError));
+}
 
 @override
 bool operator ==(Object other) {
@@ -366,7 +390,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,data,onSuccess,onError);
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'HilolChatEvent.register(data: $data, onSuccess: $onSuccess, onError: $onError)';
 }
 
@@ -410,7 +434,7 @@ as void Function(String error)?,
 /// @nodoc
 
 
-class _SendMessage implements HilolChatEvent {
+class _SendMessage with DiagnosticableTreeMixin implements HilolChatEvent {
   const _SendMessage(this.message, {this.endpoint});
   
 
@@ -424,6 +448,12 @@ class _SendMessage implements HilolChatEvent {
 _$SendMessageCopyWith<_SendMessage> get copyWith => __$SendMessageCopyWithImpl<_SendMessage>(this, _$identity);
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'HilolChatEvent.sendMessage'))
+    ..add(DiagnosticsProperty('message', message))..add(DiagnosticsProperty('endpoint', endpoint));
+}
 
 @override
 bool operator ==(Object other) {
@@ -435,7 +465,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,message,endpoint);
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'HilolChatEvent.sendMessage(message: $message, endpoint: $endpoint)';
 }
 
@@ -478,7 +508,7 @@ as String?,
 /// @nodoc
 
 
-class _SendImage implements HilolChatEvent {
+class _SendImage with DiagnosticableTreeMixin implements HilolChatEvent {
   const _SendImage(this.imagePath, {this.endpoint});
   
 
@@ -492,6 +522,12 @@ class _SendImage implements HilolChatEvent {
 _$SendImageCopyWith<_SendImage> get copyWith => __$SendImageCopyWithImpl<_SendImage>(this, _$identity);
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'HilolChatEvent.sendImage'))
+    ..add(DiagnosticsProperty('imagePath', imagePath))..add(DiagnosticsProperty('endpoint', endpoint));
+}
 
 @override
 bool operator ==(Object other) {
@@ -503,7 +539,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,imagePath,endpoint);
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'HilolChatEvent.sendImage(imagePath: $imagePath, endpoint: $endpoint)';
 }
 
@@ -546,7 +582,7 @@ as String?,
 /// @nodoc
 
 
-class _AddMessage implements HilolChatEvent {
+class _AddMessage with DiagnosticableTreeMixin implements HilolChatEvent {
   const _AddMessage(this.message);
   
 
@@ -559,6 +595,12 @@ class _AddMessage implements HilolChatEvent {
 _$AddMessageCopyWith<_AddMessage> get copyWith => __$AddMessageCopyWithImpl<_AddMessage>(this, _$identity);
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'HilolChatEvent.addMessage'))
+    ..add(DiagnosticsProperty('message', message));
+}
 
 @override
 bool operator ==(Object other) {
@@ -570,7 +612,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,message);
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'HilolChatEvent.addMessage(message: $message)';
 }
 
@@ -610,7 +652,7 @@ as ChatMessage,
 }
 
 /// @nodoc
-mixin _$HilolChatState {
+mixin _$HilolChatState implements DiagnosticableTreeMixin {
 
  FormzSubmissionStatus get status; List<ChatMessage> get messages; FcrmChat? get chat; String? get defaultEndpoint; bool get isRegistered; bool get hasMoreMessages; int get currentPage;
 /// Create a copy of HilolChatState
@@ -620,6 +662,12 @@ mixin _$HilolChatState {
 $HilolChatStateCopyWith<HilolChatState> get copyWith => _$HilolChatStateCopyWithImpl<HilolChatState>(this as HilolChatState, _$identity);
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'HilolChatState'))
+    ..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('messages', messages))..add(DiagnosticsProperty('chat', chat))..add(DiagnosticsProperty('defaultEndpoint', defaultEndpoint))..add(DiagnosticsProperty('isRegistered', isRegistered))..add(DiagnosticsProperty('hasMoreMessages', hasMoreMessages))..add(DiagnosticsProperty('currentPage', currentPage));
+}
 
 @override
 bool operator ==(Object other) {
@@ -631,7 +679,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(messages),chat,defaultEndpoint,isRegistered,hasMoreMessages,currentPage);
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'HilolChatState(status: $status, messages: $messages, chat: $chat, defaultEndpoint: $defaultEndpoint, isRegistered: $isRegistered, hasMoreMessages: $hasMoreMessages, currentPage: $currentPage)';
 }
 
@@ -803,7 +851,7 @@ return initial(_that.status,_that.messages,_that.chat,_that.defaultEndpoint,_tha
 /// @nodoc
 
 
-class _Initial implements HilolChatState {
+class _Initial with DiagnosticableTreeMixin implements HilolChatState {
   const _Initial({this.status = FormzSubmissionStatus.initial, final  List<ChatMessage> messages = const [], this.chat, this.defaultEndpoint, this.isRegistered = false, this.hasMoreMessages = false, this.currentPage = 1}): _messages = messages;
   
 
@@ -828,6 +876,12 @@ class _Initial implements HilolChatState {
 _$InitialCopyWith<_Initial> get copyWith => __$InitialCopyWithImpl<_Initial>(this, _$identity);
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'HilolChatState.initial'))
+    ..add(DiagnosticsProperty('status', status))..add(DiagnosticsProperty('messages', messages))..add(DiagnosticsProperty('chat', chat))..add(DiagnosticsProperty('defaultEndpoint', defaultEndpoint))..add(DiagnosticsProperty('isRegistered', isRegistered))..add(DiagnosticsProperty('hasMoreMessages', hasMoreMessages))..add(DiagnosticsProperty('currentPage', currentPage));
+}
 
 @override
 bool operator ==(Object other) {
@@ -839,7 +893,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_messages),chat,defaultEndpoint,isRegistered,hasMoreMessages,currentPage);
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'HilolChatState.initial(status: $status, messages: $messages, chat: $chat, defaultEndpoint: $defaultEndpoint, isRegistered: $isRegistered, hasMoreMessages: $hasMoreMessages, currentPage: $currentPage)';
 }
 

@@ -6,6 +6,7 @@
 */
 
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
@@ -94,11 +95,11 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
 
           final messages = [...?result?.messages, ...state.messages];
 
-          // messages.forEach((message) {
-          //   debugPrint(
-          //     'Message: ${const JsonEncoder.withIndent('  ').convert(message.toJson())}',
-          //   );
-          // });
+          messages.forEach((message) {
+            debugPrint(
+              'Message: ${const JsonEncoder.withIndent('  ').convert(message.toJson())}',
+            );
+          });
           emit(
             state.copyWith(
               messages: messages,
