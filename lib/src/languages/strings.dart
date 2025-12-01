@@ -37,6 +37,18 @@ abstract final class Strings {
   static const time_online = 'time.online';
   static const time_offline = 'time.offline';
   static const time_typing = 'time.typing';
+  static const time_january = 'time.january';
+  static const time_february = 'time.february';
+  static const time_march = 'time.march';
+  static const time_april = 'time.april';
+  static const time_may = 'time.may';
+  static const time_june = 'time.june';
+  static const time_july = 'time.july';
+  static const time_august = 'time.august';
+  static const time_september = 'time.september';
+  static const time_october = 'time.october';
+  static const time_november = 'time.november';
+  static const time_december = 'time.december';
 
   // Attachments
   static const attachments_attach_file = 'attachments.attach_file';

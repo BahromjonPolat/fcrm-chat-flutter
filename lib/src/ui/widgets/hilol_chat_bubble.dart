@@ -5,6 +5,7 @@
 
 */
 
+import 'package:hilol_chat_flutter/src/constants/hilol_chat_colors.dart';
 import 'package:hilol_chat_flutter/src/extensions/context_x.dart';
 import 'package:hilol_chat_flutter/src/extensions/message_x.dart';
 import 'package:hilol_chat_flutter/src/extensions/widget_x.dart';
@@ -41,14 +42,14 @@ class HilolChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isSendBubble = message.type == MessageType.user;
+    final isUserMessage = message.isUserMessage;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
-      mainAxisAlignment: isSendBubble
+      mainAxisAlignment: isUserMessage
           ? MainAxisAlignment.end
           : MainAxisAlignment.start,
       children: [
-        if (!isSendBubble) ...{
+        if (!isUserMessage) ...{
           const HilolChatSenderAvatar(imageUrl: '', isOnline: true),
         },
 
@@ -65,18 +66,18 @@ class HilolChatBubble extends StatelessWidget {
               : null,
           child: Container(
             margin: EdgeInsets.only(
-              left: isSendBubble ? 56 : 0,
-              right: isSendBubble ? 0 : 56,
-              bottom: isSendBubble ? 0 : 16,
+              left: isUserMessage ? 56 : 0,
+              right: isUserMessage ? 0 : 56,
+              bottom: isUserMessage ? 0 : 16,
             ),
             child: PhysicalShape(
               clipper: ChatBubbleClipper(
-                type: isSendBubble
+                type: isUserMessage
                     ? BubbleType.sendBubble
                     : BubbleType.receiverBubble,
               ),
               elevation: elevation ?? 2,
-              color: isSendBubble
+              color: isUserMessage
                   ? Theme.of(context).primaryColor
                   : Theme.of(context).cardColor,
               shadowColor: shadowColor ?? Colors.grey.shade200,
@@ -84,8 +85,8 @@ class HilolChatBubble extends StatelessWidget {
                 padding: EdgeInsets.only(
                   bottom: 8,
                   top: 8,
-                  right: isSendBubble ? 16 : 8,
-                  left: isSendBubble ? 8 : 16,
+                  right: isUserMessage ? 16 : 8,
+                  left: isUserMessage ? 8 : 16,
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -101,7 +102,7 @@ class HilolChatBubble extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
-                              color: isSendBubble ? Colors.white : null,
+                              color: isUserMessage ? Colors.white : null,
                             ),
                           ),
                     const SizedBox(height: 4),
@@ -109,11 +110,11 @@ class HilolChatBubble extends StatelessWidget {
                       spacing: 7,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        if (isSendBubble) ...{
+                        if (isUserMessage) ...{
                           Text(
                             AppDateUtils.formatDate(
                               message.createdAt.toLocal(),
-                              pattern: 'hh:mm',
+                              format: 'hh:mm',
                             ),
                             style: const TextStyle(
                               fontSize: 10,
@@ -134,14 +135,14 @@ class HilolChatBubble extends StatelessWidget {
                                 TextSpan(
                                   text: AppDateUtils.formatDate(
                                     message.createdAt.toLocal(),
-                                    pattern: 'hh:mm',
+                                    format: 'hh:mm',
                                   ),
                                 ),
                               ],
                             ),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 10,
-                              color: Colors.grey.shade500,
+                              color: HilolChatColors.grey,
                             ),
                           ),
                         },
