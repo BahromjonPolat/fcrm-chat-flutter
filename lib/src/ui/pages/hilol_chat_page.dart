@@ -5,7 +5,6 @@
 
 */
 
-import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
 import 'package:hilol_chat_flutter/src/ui/widgets/hilol_chat_input.dart';
 import 'package:flutter/material.dart';
@@ -42,12 +41,12 @@ class _HilolChatPageState extends State<HilolChatPage> {
             final max = scrollController.position.maxScrollExtent;
             final offset = scrollController.offset;
             final distance = max - offset;
-            final lastMessage = state.messages.isNotEmpty
-                ? state.messages.last
-                : null;
-            final isMyMessage = lastMessage?.type == MessageType.user;
+            // final lastMessage = state.messages.isNotEmpty
+            //     ? state.messages.last
+            //     : null;
+            // final isMyMessage = lastMessage?.type == MessageType.user;
 
-            if (500 > distance || isMyMessage) {
+            if (500 > distance) {
               scrollController.animateTo(
                 max,
                 duration: const Duration(milliseconds: 200),
@@ -76,28 +75,21 @@ class _HilolChatPageState extends State<HilolChatPage> {
                         padding: const EdgeInsets.all(16),
                         separatorBuilder: (_, index) {
                           final message = state.messages[index];
-
-                          final nextMessageIndex = index + 1;
-                          if (nextMessageIndex < state.messages.length) {
-                            final nextMessage =
-                                state.messages[nextMessageIndex];
-                            final nextDate = nextMessage.createdAt;
-                            if (!AppDateUtils.isSameDay(
+                          bool isTheSameDay = false;
+                          if (index == 0) {
+                            isTheSameDay = true;
+                          } else {
+                            final previousMessage = state.messages[index - 1];
+                            isTheSameDay = AppDateUtils.isSameDay(
                               message.createdAt,
-                              nextDate,
-                            )) {
-                              return Column(
-                                children: [
-                                  const SizedBox(height: 16),
-                                  Center(
-                                    child: HilolChatDateSeparator(
-                                      dateTime: nextDate,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 16),
-                                ],
-                              );
-                            }
+                              previousMessage.createdAt,
+                            );
+                          }
+
+                          if (index == 0 || !isTheSameDay) {
+                            return HilolChatDateSeparator(
+                              dateTime: message.createdAt,
+                            );
                           }
 
                           return const SizedBox(height: 16);

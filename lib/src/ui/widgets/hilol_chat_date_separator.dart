@@ -15,9 +15,13 @@ class HilolChatDateSeparator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      AppDateUtils.formatDate(dateTime, format: 'ddMM'),
-      style: const TextStyle(fontSize: 12, color: HilolChatColors.grey),
+    return Container(
+      margin: const .symmetric(vertical: 16),
+      alignment: .center,
+      child: Text(
+        AppDateUtils.formatDate(dateTime, format: 'ddMM'),
+        style: const TextStyle(fontSize: 12, color: HilolChatColors.grey),
+      ),
     );
   }
 }
