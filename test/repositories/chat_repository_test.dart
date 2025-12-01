@@ -9,6 +9,7 @@
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
+import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 
 void main() {
   group('ChatRepository Tests', () {

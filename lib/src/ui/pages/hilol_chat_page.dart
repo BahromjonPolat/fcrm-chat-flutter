@@ -59,7 +59,7 @@ class _HilolChatPageState extends State<HilolChatPage> {
         },
         builder: (context, state) {
           return Scaffold(
-            appBar: HilolChatAppBar(chat: state.chat),
+            appBar: const HilolChatAppBar(),
             body: Column(
               children: [
                 Expanded(

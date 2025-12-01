@@ -6,7 +6,6 @@
 */
 
 import 'package:hilol_chat_flutter/src/constants/hilol_chat_icons.dart';
-import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 import 'package:flutter/material.dart';
 import 'package:hilol_chat_flutter/src/extensions/string_x.dart';
 import 'package:hilol_chat_flutter/src/languages/strings.dart';
@@ -15,8 +14,7 @@ import 'package:svg_flutter/svg.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class HilolChatAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final FcrmChat? chat;
-  const HilolChatAppBar({super.key, required this.chat});
+  const HilolChatAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {

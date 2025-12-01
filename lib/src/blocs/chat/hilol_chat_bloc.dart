@@ -23,69 +23,89 @@ part 'hilol_chat_state.dart';
 part 'hilol_chat_bloc.freezed.dart';
 
 class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
+  final ChatRepository _chatRepository;
   StreamSubscription<ChatMessage>? _messageSubscription;
-  HilolChatBloc() : super(const HilolChatState.initial()) {
+
+  HilolChatBloc({ChatRepository? chatRepository})
+    : _chatRepository = chatRepository ?? ChatRepositoryImpl(),
+      super(const HilolChatState.initial()) {
     on<HilolChatEvent>((event, emit) async {
       await event.when(
         initialize: (config, userData, onSuccess) async {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-          final chat = FcrmChat(
-            config: ChatConfig(
-              enableLogging: false,
-              baseUrl: config.baseUrl,
-              companyToken: config.companyToken,
-              appKey: config.appKey,
-              appSecret: config.appSecret,
-              socketUrl: config.socketUrl,
-            ),
+          final result = await _chatRepository.initialize(config: config);
+
+          result.fold(
+            (failure) {
+              emit(
+                state.copyWith(
+                  status: FormzSubmissionStatus.failure,
+                  errorMessage: failure.message,
+                ),
+              );
+            },
+            (chatInitResult) async {
+              _messageSubscription = _chatRepository.messageStream?.listen((
+                message,
+              ) {
+                add(HilolChatEvent.addMessage(message));
+              });
+
+              emit(
+                state.copyWith(
+                  defaultEndpoint: config.defaultEndpoint,
+                  status: FormzSubmissionStatus.success,
+                  isRegistered: chatInitResult.isRegistered,
+                  errorMessage: null,
+                ),
+              );
+
+              onSuccess?.call();
+
+              if (chatInitResult.isRegistered) {
+                add(const HilolChatEvent.getMessages());
+                return;
+              }
+
+              if (userData == null) {
+                return;
+              }
+              add(HilolChatEvent.register(data: userData));
+            },
           );
-
-          await chat.initialize();
-
-          _messageSubscription = chat.onMessage.listen((message) {
-            add(HilolChatEvent.addMessage(message));
-          });
-          final registered = await chat.isRegistered();
-
-          emit(
-            state.copyWith(
-              chat: chat,
-              defaultEndpoint: config.defaultEndpoint,
-              status: FormzSubmissionStatus.success,
-            ),
-          );
-
-          onSuccess?.call();
-
-          if (registered) {
-            add(const HilolChatEvent.getMessages());
-            return;
-          }
-
-          if (userData == null) {
-            return;
-          }
-          add(HilolChatEvent.register(data: userData));
         },
         register: (data, onSuccess, onError) async {
           if (state.status.isInProgress) {
             return;
           }
-          final chat = state.chat;
-          if (chat == null) {
-            return;
-          }
-
-          final isRegistered = await chat.isRegistered();
-          if (isRegistered) {
-            return;
-          }
 
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-          await state.chat?.register(userData: data.toJson());
-          emit(state.copyWith(status: FormzSubmissionStatus.success));
 
-          onSuccess?.call();
+          final result = await _chatRepository.register(
+            userData: data.toJson(),
+          );
+
+          result.fold(
+            (failure) {
+              emit(
+                state.copyWith(
+                  status: FormzSubmissionStatus.failure,
+                  errorMessage: failure.message,
+                ),
+              );
+              onError?.call(failure.message);
+            },
+            (registerResult) {
+              emit(
+                state.copyWith(
+                  status: FormzSubmissionStatus.success,
+                  isRegistered: true,
+                  errorMessage: null,
+                ),
+              );
+              onSuccess?.call();
+            },
+          );
         },
         getMessages: (page) async {
           if (state.status.isInProgress) {
@@ -93,16 +113,30 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
           }
 
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-          final result = await state.chat?.getMessages(page: page);
-          final messages = [...?result?.messages, ...state.messages];
 
-          emit(
-            state.copyWith(
-              messages: messages,
-              status: FormzSubmissionStatus.success,
-              hasMoreMessages: result?.hasMore == true,
-              currentPage: page,
-            ),
+          final result = await _chatRepository.getMessages(page: page);
+
+          result.fold(
+            (failure) {
+              emit(
+                state.copyWith(
+                  status: FormzSubmissionStatus.failure,
+                  errorMessage: failure.message,
+                ),
+              );
+            },
+            (messagesResult) {
+              final messages = [...messagesResult.messages, ...state.messages];
+              emit(
+                state.copyWith(
+                  messages: messages,
+                  status: FormzSubmissionStatus.success,
+                  hasMoreMessages: messagesResult.hasMore,
+                  currentPage: messagesResult.page,
+                  errorMessage: null,
+                ),
+              );
+            },
           );
         },
         sendMessage: (message, endpoint) async {
@@ -115,9 +149,20 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
           );
           final messages = [...state.messages, chatMessage];
           emit(state.copyWith(messages: messages));
-          await state.chat?.sendMessage(
-            message,
+
+          final result = await _chatRepository.sendMessage(
+            message: message,
             endpoint: endpoint ?? state.defaultEndpoint,
+          );
+
+          result.fold(
+            (failure) {
+              emit(state.copyWith(errorMessage: failure.message));
+            },
+            (sendResult) {
+              // Message will be updated via the message stream
+              emit(state.copyWith(errorMessage: null));
+            },
           );
         },
         sendImage: (imagePath, endpoint) async {
@@ -131,7 +176,6 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
             content: imagePath,
             type: MessageType.user,
             createdAt: DateTime.now(),
-
             metadata: ImageMeta(
               isImage: true,
               originalName: fileName,
@@ -143,11 +187,23 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
           );
           final messages = [...state.messages, chatMessage];
           emit(state.copyWith(messages: messages));
-          await state.chat?.sendImage(
-            imageFile,
+
+          final result = await _chatRepository.sendImage(
+            imageFile: imageFile,
+            imagePath: imagePath,
+            fileName: fileName,
             endpoint: endpoint ?? state.defaultEndpoint,
-            onSendProgress: (sent, total) {},
-            cancelToken: null,
+            onProgress: (sent, total) {},
+          );
+
+          result.fold(
+            (failure) {
+              emit(state.copyWith(errorMessage: failure.message));
+            },
+            (imageSendResult) {
+              // Message will be updated via the message stream
+              emit(state.copyWith(errorMessage: null));
+            },
           );
         },
         addMessage: (message) {
@@ -182,8 +238,9 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
   }
 
   @override
-  Future<void> close() {
+  Future<void> close() async {
     _messageSubscription?.cancel();
+    await _chatRepository.dispose();
     return super.close();
   }
 }
