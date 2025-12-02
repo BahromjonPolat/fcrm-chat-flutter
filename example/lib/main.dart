@@ -32,11 +32,6 @@ class MyApp extends StatelessWidget {
                   enableLogging: kDebugMode,
                   defaultEndpoint: 'Chat Example',
                 ),
-                userData: HilolChatRegisterModel(
-                  name: 'Bahromjon',
-                  email: 'bahromjon@gmail.com',
-                  phone: '+998901234567',
-                ),
               ),
             ),
           child: Container(),

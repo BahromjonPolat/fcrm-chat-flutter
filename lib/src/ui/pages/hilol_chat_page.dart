@@ -25,6 +25,7 @@ class HilolChatPage extends StatefulWidget {
 
 class _HilolChatPageState extends State<HilolChatPage> {
   final scrollController = ScrollController(initialScrollOffset: 100000);
+  final inputController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -109,19 +110,28 @@ class _HilolChatPageState extends State<HilolChatPage> {
                           }
                           final realIndex = index - 1;
                           final message = state.messages[realIndex];
-                          return HilolChatBubble(message: message);
+                          return HilolChatBubble(
+                            message: message,
+                            controller: inputController,
+                          );
                         },
                       );
                     },
                   ),
                 ),
-                const HilolChatInput(),
+                HilolChatInput(controller: inputController),
               ],
             ),
           );
         },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    inputController.dispose();
+    super.dispose();
   }
 
   // void _scrollToBottom() {

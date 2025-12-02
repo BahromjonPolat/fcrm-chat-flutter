@@ -16,18 +16,18 @@ import 'package:svg_flutter/svg_flutter.dart';
 import 'hilol_chat_file_picker_button.dart';
 
 class HilolChatInput extends StatefulWidget {
-  const HilolChatInput({super.key});
+  final TextEditingController controller;
+  const HilolChatInput({super.key, required this.controller});
 
   @override
   State<HilolChatInput> createState() => _HilolChatInputState();
 }
 
 class _HilolChatInputState extends State<HilolChatInput> {
-  final controller = TextEditingController();
   bool showButton = false;
 
   void listener() {
-    final message = controller.text.trim();
+    final message = widget.controller.text.trim();
     final isShow = message.isNotEmpty;
     if (isShow == showButton) {
       return;
@@ -38,7 +38,7 @@ class _HilolChatInputState extends State<HilolChatInput> {
   @override
   void initState() {
     super.initState();
-    controller.addListener(listener);
+    widget.controller.addListener(listener);
   }
 
   @override
@@ -59,7 +59,7 @@ class _HilolChatInputState extends State<HilolChatInput> {
             child: Stack(
               children: [
                 TextFormField(
-                  controller: controller,
+                  controller: widget.controller,
                   textInputAction: TextInputAction.newline,
                   textCapitalization: TextCapitalization.sentences,
                   maxLines: null,
@@ -92,14 +92,14 @@ class _HilolChatInputState extends State<HilolChatInput> {
                     right: 0,
                     child: SendButton(
                       onPressed: () {
-                        final message = controller.text.trim();
+                        final message = widget.controller.text.trim();
                         if (message.isEmpty) {
                           return;
                         }
                         context.read<HilolChatBloc>().add(
                           HilolChatEvent.sendMessage(message),
                         );
-                        controller.clear();
+                        widget.controller.clear();
                       },
                     ),
                   ),
@@ -114,8 +114,7 @@ class _HilolChatInputState extends State<HilolChatInput> {
 
   @override
   void dispose() {
-    controller.removeListener(listener);
-    controller.dispose();
+    widget.controller.removeListener(listener);
     super.dispose();
   }
 }

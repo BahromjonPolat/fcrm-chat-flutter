@@ -17,6 +17,7 @@ import 'package:formz/formz.dart';
 import 'package:hilol_chat_flutter/src/extensions/message_x.dart';
 import 'package:hilol_chat_flutter/src/models/image_meta.dart';
 import 'package:hilol_chat_flutter/src/utils/image_utils.dart';
+import 'package:hilol_chat_flutter/src/utils/logger.dart';
 
 part 'hilol_chat_event.dart';
 part 'hilol_chat_state.dart';
@@ -193,7 +194,9 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
             imagePath: imagePath,
             fileName: fileName,
             endpoint: endpoint ?? state.defaultEndpoint,
-            onProgress: (sent, total) {},
+            onProgress: (sent, total) {
+              Log.d(sent / total * 100, fileName: 'hilol_chat_bloc');
+            },
           );
 
           result.fold(
