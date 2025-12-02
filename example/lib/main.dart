@@ -40,13 +40,23 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          primaryColor: Color(0xFF0085FF),
           cardColor: Colors.white,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xFF0085FF),
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadiusGeometry.circular(8),
+              ),
+            ),
+          ),
           appBarTheme: AppBarThemeData(
             centerTitle: true,
             backgroundColor: Colors.white,
             surfaceTintColor: Colors.white,
           ),
-          primaryColor: Color(0xFF0085FF),
+
           // primaryColor: const Color.fromARGB(255, 52, 148, 55),
           scaffoldBackgroundColor: Color(0xFFF1F3F3),
         ),
@@ -64,11 +74,25 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () => Navigator.of(
-            context,
-          ).push(MaterialPageRoute(builder: (context) => HilolChatPage())),
-          child: Text('Chat'),
+        child: Column(
+          mainAxisAlignment: .center,
+          spacing: 16,
+          children: [
+            ElevatedButton(
+              onPressed: () => Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (context) => HilolChatPage())),
+              child: Text('Chat'),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => HilolChatRegisterPage(),
+                ),
+              ),
+              child: Text('Register'),
+            ),
+          ],
         ),
       ),
     );

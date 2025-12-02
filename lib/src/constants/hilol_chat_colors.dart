@@ -9,4 +9,5 @@ import 'dart:ui';
 
 abstract final class HilolChatColors {
   static const grey = Color(0xFF9B9B9B);
+  static const darkGrey = Color(0xFF6F7977);
 }

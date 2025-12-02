@@ -6,3 +6,4 @@
 */
 
 export 'hilol_chat_page.dart';
+export 'hilol_chat_register_page.dart';

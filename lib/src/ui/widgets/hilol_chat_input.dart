@@ -15,15 +15,15 @@ import 'package:svg_flutter/svg_flutter.dart';
 
 import 'hilol_chat_file_picker_button.dart';
 
-class HilolChatInput extends StatefulWidget {
+class HilolChatMessageInput extends StatefulWidget {
   final TextEditingController controller;
-  const HilolChatInput({super.key, required this.controller});
+  const HilolChatMessageInput({super.key, required this.controller});
 
   @override
-  State<HilolChatInput> createState() => _HilolChatInputState();
+  State<HilolChatMessageInput> createState() => _HilolChatMessageInputState();
 }
 
-class _HilolChatInputState extends State<HilolChatInput> {
+class _HilolChatMessageInputState extends State<HilolChatMessageInput> {
   bool showButton = false;
 
   void listener() {

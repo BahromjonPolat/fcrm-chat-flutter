@@ -119,7 +119,7 @@ class _HilolChatPageState extends State<HilolChatPage> {
                     },
                   ),
                 ),
-                HilolChatInput(controller: inputController),
+                HilolChatMessageInput(controller: inputController),
               ],
             ),
           );

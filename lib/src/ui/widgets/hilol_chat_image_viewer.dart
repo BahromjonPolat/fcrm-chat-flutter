@@ -40,13 +40,7 @@ class HilolChatImageViewer extends StatelessWidget {
         ),
         child: ElevatedButton(
           onPressed: context.pop,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Theme.of(context).primaryColor,
-            foregroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadiusGeometry.circular(8),
-            ),
-          ),
+
           child: Text(Strings.general_close.tr()),
         ),
       ),
