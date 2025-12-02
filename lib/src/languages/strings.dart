@@ -62,4 +62,20 @@ abstract final class Strings {
   static const notifications_message_delivered =
       'notifications.message_delivered';
   static const notifications_message_read = 'notifications.message_read';
+
+  // Register
+  static const register_greeting = 'register.greeting';
+  static const register_instruction = 'register.instruction';
+  static const register_name_label = 'register.name_label';
+  static const register_name_placeholder = 'register.name_placeholder';
+  static const register_email_or_phone_label = 'register.email_or_phone_label';
+  static const register_email_or_phone_placeholder =
+      'register.email_or_phone_placeholder';
+  static const register_start_button = 'register.start_button';
+  static const register_name_required = 'register.name_required';
+  static const register_name_too_short = 'register.name_too_short';
+  static const register_email_or_phone_required =
+      'register.email_or_phone_required';
+  static const register_email_or_phone_invalid =
+      'register.email_or_phone_invalid';
 }

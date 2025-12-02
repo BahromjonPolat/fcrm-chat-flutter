@@ -1,0 +1,51 @@
+# AI Development Journal
+
+## 2025-12-02: Register Page Translations and Validation Implementation
+
+### Task 1: Added translations for register page
+- **Files Modified:**
+  - `lib/src/languages/translations.dart` - Added 'register' section with 11 keys for all 10 supported languages (uz, uz-Cyrl, ru, en, tr, kaa, tg, kk, ky, tk)
+  - `lib/src/languages/strings.dart` - Added 11 string constants for register page
+  - `lib/src/ui/pages/hilol_chat_register_page.dart` - Replaced all hardcoded strings with translated keys using Strings class and .tr() method
+
+**Translation keys added:**
+- greeting: Welcome message
+- instruction: Form instruction text
+- name_label: Name field label
+- name_placeholder: Name field placeholder
+- email_or_phone_label: Email/phone field label
+- email_or_phone_placeholder: Email/phone field placeholder
+- start_button: Submit button text
+- name_required: Validation error for empty name
+- name_too_short: Validation error for short name
+- email_or_phone_required: Validation error for empty email/phone
+- email_or_phone_invalid: Validation error for invalid email/phone format
+
+### Task 2: Implemented form validation with Bloc pattern
+- **Files Created:**
+  - `lib/src/inputs/name_input.dart` - Formz input validator for name field with empty and too short validation
+  - `lib/src/inputs/email_or_phone_input.dart` - Formz input validator for email/phone field with empty and invalid format validation
+  - `lib/src/blocs/register/hilol_chat_register_bloc.dart` - Register bloc with validation logic
+  - `lib/src/blocs/register/hilol_chat_register_event.dart` - Register events (nameChanged, emailOrPhoneChanged, submit)
+  - `lib/src/blocs/register/hilol_chat_register_state.dart` - Register state with form fields and validation status
+  - `lib/src/blocs/register/hilol_chat_register_bloc.freezed.dart` - Generated freezed code for bloc
+
+**Bloc Implementation:**
+- Used Formz for form validation with pure/dirty states
+- Used Freezed for immutable state and events with code generation
+- Validation triggers on field changes
+- Submit button enabled only when form is valid
+- Error messages displayed in real-time using translated strings
+
+**UI Integration:**
+- Added BlocProvider at page level to provide bloc instance
+- Used BlocBuilder to rebuild UI on state changes
+- Connected input fields to bloc events via onChanged callbacks
+- Display validation errors from bloc state
+- Submit button disabled when form is invalid
+
+### Technical Details:
+- Used existing project patterns: bloc + freezed + formz
+- Followed existing string extension pattern for translations
+- Ran `dart run build_runner build` to generate freezed code
+- All 10 languages supported with proper translations
