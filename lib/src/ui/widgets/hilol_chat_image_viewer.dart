@@ -12,6 +12,8 @@ import 'package:hilol_chat_flutter/src/languages/strings.dart';
 import 'package:hilol_chat_flutter/src/models/image_meta.dart';
 import 'package:hilol_chat_flutter/src/ui/widgets/hilol_chat_image.dart';
 
+import 'hilol_chat_elevated_button.dart';
+
 class HilolChatImageViewer extends StatelessWidget {
   final String imageUrl;
   final ImageMeta imageMeta;
@@ -38,10 +40,9 @@ class HilolChatImageViewer extends StatelessWidget {
           16,
           MediaQuery.paddingOf(context).bottom + 8,
         ),
-        child: ElevatedButton(
+        child: HilolChatElevatedButton(
           onPressed: context.pop,
-
-          child: Text(Strings.general_close.tr()),
+          text: Strings.general_close.tr(),
         ),
       ),
     );

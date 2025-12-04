@@ -24,17 +24,17 @@ part 'hilol_chat_state.dart';
 part 'hilol_chat_bloc.freezed.dart';
 
 class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
-  final ChatRepository _chatRepository;
+  final ChatRepository chatRepository;
   StreamSubscription<ChatMessage>? _messageSubscription;
 
-  HilolChatBloc({ChatRepository? chatRepository})
-    : _chatRepository = chatRepository ?? ChatRepositoryImpl(),
+  HilolChatBloc()
+    : chatRepository = ChatRepositoryImpl(),
       super(const HilolChatState.initial()) {
     on<HilolChatEvent>((event, emit) async {
       await event.when(
         initialize: (config, userData, onSuccess) async {
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-          final result = await _chatRepository.initialize(config: config);
+          final result = await chatRepository.initialize(config: config);
 
           result.fold(
             (failure) {
@@ -46,7 +46,7 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
               );
             },
             (chatInitResult) async {
-              _messageSubscription = _chatRepository.messageStream?.listen((
+              _messageSubscription = chatRepository.messageStream?.listen((
                 message,
               ) {
                 add(HilolChatEvent.addMessage(message));
@@ -82,9 +82,7 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
 
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
 
-          final result = await _chatRepository.register(
-            userData: data.toJson(),
-          );
+          final result = await chatRepository.register(userData: data.toJson());
 
           result.fold(
             (failure) {
@@ -115,7 +113,7 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
 
           emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
 
-          final result = await _chatRepository.getMessages(page: page);
+          final result = await chatRepository.getMessages(page: page);
 
           result.fold(
             (failure) {
@@ -151,11 +149,10 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
           final messages = [...state.messages, chatMessage];
           emit(state.copyWith(messages: messages));
 
-          final result = await _chatRepository.sendMessage(
+          final result = await chatRepository.sendMessage(
             message: message,
             endpoint: endpoint ?? state.defaultEndpoint,
           );
-
           result.fold(
             (failure) {
               emit(state.copyWith(errorMessage: failure.message));
@@ -189,7 +186,7 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
           final messages = [...state.messages, chatMessage];
           emit(state.copyWith(messages: messages));
 
-          final result = await _chatRepository.sendImage(
+          final result = await chatRepository.sendImage(
             imageFile: imageFile,
             imagePath: imagePath,
             fileName: fileName,
@@ -243,7 +240,7 @@ class HilolChatBloc extends Bloc<HilolChatEvent, HilolChatState> {
   @override
   Future<void> close() async {
     _messageSubscription?.cancel();
-    await _chatRepository.dispose();
+    await chatRepository.dispose();
     return super.close();
   }
 }

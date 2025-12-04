@@ -7,20 +7,26 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
+import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
 import 'package:hilol_chat_flutter/src/blocs/register/hilol_chat_register_bloc.dart';
+import 'package:hilol_chat_flutter/src/extensions/context_x.dart';
 import 'package:hilol_chat_flutter/src/extensions/string_x.dart';
 import 'package:hilol_chat_flutter/src/inputs/email_or_phone_input.dart';
 import 'package:hilol_chat_flutter/src/inputs/name_input.dart';
 import 'package:hilol_chat_flutter/src/languages/strings.dart';
+import 'package:hilol_chat_flutter/src/repositories/chat_repository.dart';
+import 'package:hilol_chat_flutter/src/ui/widgets/hilol_chat_elevated_button.dart';
 import 'package:hilol_chat_flutter/src/ui/widgets/hilol_chat_input_field.dart';
 
 class HilolChatRegisterPage extends StatelessWidget {
-  const HilolChatRegisterPage({super.key});
+  final ChatRepository chatRepository;
+  const HilolChatRegisterPage({super.key, required this.chatRepository});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HilolChatRegisterBloc(),
+      create: (context) => HilolChatRegisterBloc(repository: chatRepository),
       child: Scaffold(
         appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0),
         body: const HilolChatRegisterCard(),
@@ -63,13 +69,21 @@ class HilolChatRegisterCard extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               HilolChatInputField(
+                initialValue: 'Bahromjon Polat',
+                textCapitalization: TextCapitalization.words,
                 title: Strings.register_name_label.tr(),
                 isRequired: true,
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.name,
+                autofillHints: const [
+                  AutofillHints.name,
+                  AutofillHints.familyName,
+                ],
                 hintText: Strings.register_name_placeholder.tr(),
                 onChanged: (value) {
                   context.read<HilolChatRegisterBloc>().add(
-                        HilolChatRegisterEvent.nameChanged(value),
-                      );
+                    HilolChatRegisterEvent.nameChanged(value),
+                  );
                 },
                 errorText: state.name.displayError != null
                     ? _getNameErrorText(state.name.displayError!)
@@ -77,13 +91,21 @@ class HilolChatRegisterCard extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               HilolChatInputField(
+                initialValue: '998931881333',
                 title: Strings.register_email_or_phone_label.tr(),
                 isRequired: true,
+                textInputAction: TextInputAction.done,
+                keyboardType: TextInputType.emailAddress,
+                autofillHints: const [
+                  AutofillHints.email,
+                  AutofillHints.telephoneNumber,
+                ],
+
                 hintText: Strings.register_email_or_phone_placeholder.tr(),
                 onChanged: (value) {
                   context.read<HilolChatRegisterBloc>().add(
-                        HilolChatRegisterEvent.emailOrPhoneChanged(value),
-                      );
+                    HilolChatRegisterEvent.emailOrPhoneChanged(value),
+                  );
                 },
                 errorText: state.emailOrPhone.displayError != null
                     ? _getEmailOrPhoneErrorText(
@@ -92,15 +114,24 @@ class HilolChatRegisterCard extends StatelessWidget {
                     : null,
               ),
               const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: state.isValid
-                    ? () {
-                        context.read<HilolChatRegisterBloc>().add(
-                              const HilolChatRegisterEvent.submit(),
-                            );
-                      }
-                    : null,
-                child: Text(Strings.register_start_button.tr()),
+              HilolChatElevatedButton(
+                isEnabled: state.isValid,
+                isLoading: state.status.isInProgress,
+                onPressed: () {
+                  context.read<HilolChatRegisterBloc>().add(
+                    HilolChatRegisterEvent.submit(
+                      onSuccess: () {
+                        context.pushReplacement(const HilolChatPage());
+                      },
+                      onError: (errorMessage) {
+                        ScaffoldMessenger.of(
+                          context,
+                        ).showSnackBar(SnackBar(content: Text(errorMessage)));
+                      },
+                    ),
+                  );
+                },
+                text: Strings.register_start_button.tr(),
               ),
             ],
           ),

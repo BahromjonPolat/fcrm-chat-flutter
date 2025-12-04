@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
+          lazy: false,
           create: (context) => HilolChatBloc()
             ..add(
               HilolChatEvent.initialize(
@@ -83,14 +84,6 @@ class HomePage extends StatelessWidget {
                 context,
               ).push(MaterialPageRoute(builder: (context) => HilolChatPage())),
               child: Text('Chat'),
-            ),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => HilolChatRegisterPage(),
-                ),
-              ),
-              child: Text('Register'),
             ),
           ],
         ),

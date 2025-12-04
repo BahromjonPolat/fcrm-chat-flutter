@@ -14,5 +14,6 @@ sealed class HilolChatRegisterState with _$HilolChatRegisterState {
     required EmailOrPhoneInput emailOrPhone,
     required bool isValid,
     required FormzSubmissionStatus status,
+    String? errorMessage,
   }) = _HilolChatRegisterState;
 }

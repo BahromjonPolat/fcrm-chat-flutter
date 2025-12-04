@@ -13,5 +13,8 @@ class HilolChatRegisterEvent with _$HilolChatRegisterEvent {
   const factory HilolChatRegisterEvent.emailOrPhoneChanged(
     String emailOrPhone,
   ) = _EmailOrPhoneChanged;
-  const factory HilolChatRegisterEvent.submit() = _Submit;
+  const factory HilolChatRegisterEvent.submit({
+    required void Function() onSuccess,
+    required void Function(String errorMessage) onError,
+  }) = _Submit;
 }

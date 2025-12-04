@@ -6,6 +6,7 @@
 */
 
 import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
+import 'package:hilol_chat_flutter/src/extensions/context_x.dart';
 import 'package:hilol_chat_flutter/src/ui/widgets/hilol_chat_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,6 +29,22 @@ class _HilolChatPageState extends State<HilolChatPage> {
   final inputController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final chatBloc = context.read<HilolChatBloc>();
+      final isRegistered = chatBloc.state.isRegistered;
+      if (isRegistered) {
+        return;
+      }
+      context.pushReplacement(
+        HilolChatRegisterPage(chatRepository: chatBloc.chatRepository),
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MediaQuery(
       data: MediaQuery.of(
@@ -42,10 +59,6 @@ class _HilolChatPageState extends State<HilolChatPage> {
             final max = scrollController.position.maxScrollExtent;
             final offset = scrollController.offset;
             final distance = max - offset;
-            // final lastMessage = state.messages.isNotEmpty
-            //     ? state.messages.last
-            //     : null;
-            // final isMyMessage = lastMessage?.type == MessageType.user;
 
             if (500 > distance) {
               scrollController.animateTo(

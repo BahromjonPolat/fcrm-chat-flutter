@@ -125,12 +125,12 @@ return submit(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String name)?  nameChanged,TResult Function( String emailOrPhone)?  emailOrPhoneChanged,TResult Function()?  submit,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String name)?  nameChanged,TResult Function( String emailOrPhone)?  emailOrPhoneChanged,TResult Function( void Function() onSuccess,  void Function(String errorMessage) onError)?  submit,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _NameChanged() when nameChanged != null:
 return nameChanged(_that.name);case _EmailOrPhoneChanged() when emailOrPhoneChanged != null:
 return emailOrPhoneChanged(_that.emailOrPhone);case _Submit() when submit != null:
-return submit();case _:
+return submit(_that.onSuccess,_that.onError);case _:
   return orElse();
 
 }
@@ -148,12 +148,12 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String name)  nameChanged,required TResult Function( String emailOrPhone)  emailOrPhoneChanged,required TResult Function()  submit,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String name)  nameChanged,required TResult Function( String emailOrPhone)  emailOrPhoneChanged,required TResult Function( void Function() onSuccess,  void Function(String errorMessage) onError)  submit,}) {final _that = this;
 switch (_that) {
 case _NameChanged():
 return nameChanged(_that.name);case _EmailOrPhoneChanged():
 return emailOrPhoneChanged(_that.emailOrPhone);case _Submit():
-return submit();case _:
+return submit(_that.onSuccess,_that.onError);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -170,12 +170,12 @@ return submit();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String name)?  nameChanged,TResult? Function( String emailOrPhone)?  emailOrPhoneChanged,TResult? Function()?  submit,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String name)?  nameChanged,TResult? Function( String emailOrPhone)?  emailOrPhoneChanged,TResult? Function( void Function() onSuccess,  void Function(String errorMessage) onError)?  submit,}) {final _that = this;
 switch (_that) {
 case _NameChanged() when nameChanged != null:
 return nameChanged(_that.name);case _EmailOrPhoneChanged() when emailOrPhoneChanged != null:
 return emailOrPhoneChanged(_that.emailOrPhone);case _Submit() when submit != null:
-return submit();case _:
+return submit(_that.onSuccess,_that.onError);case _:
   return null;
 
 }
@@ -319,38 +319,74 @@ as String,
 
 
 class _Submit implements HilolChatRegisterEvent {
-  const _Submit();
+  const _Submit({required this.onSuccess, required this.onError});
   
 
+ final  void Function() onSuccess;
+ final  void Function(String errorMessage) onError;
 
-
+/// Create a copy of HilolChatRegisterEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SubmitCopyWith<_Submit> get copyWith => __$SubmitCopyWithImpl<_Submit>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Submit);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Submit&&(identical(other.onSuccess, onSuccess) || other.onSuccess == onSuccess)&&(identical(other.onError, onError) || other.onError == onError));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,onSuccess,onError);
 
 @override
 String toString() {
-  return 'HilolChatRegisterEvent.submit()';
+  return 'HilolChatRegisterEvent.submit(onSuccess: $onSuccess, onError: $onError)';
 }
 
 
 }
 
+/// @nodoc
+abstract mixin class _$SubmitCopyWith<$Res> implements $HilolChatRegisterEventCopyWith<$Res> {
+  factory _$SubmitCopyWith(_Submit value, $Res Function(_Submit) _then) = __$SubmitCopyWithImpl;
+@useResult
+$Res call({
+ void Function() onSuccess, void Function(String errorMessage) onError
+});
 
 
+
+
+}
+/// @nodoc
+class __$SubmitCopyWithImpl<$Res>
+    implements _$SubmitCopyWith<$Res> {
+  __$SubmitCopyWithImpl(this._self, this._then);
+
+  final _Submit _self;
+  final $Res Function(_Submit) _then;
+
+/// Create a copy of HilolChatRegisterEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? onSuccess = null,Object? onError = null,}) {
+  return _then(_Submit(
+onSuccess: null == onSuccess ? _self.onSuccess : onSuccess // ignore: cast_nullable_to_non_nullable
+as void Function(),onError: null == onError ? _self.onError : onError // ignore: cast_nullable_to_non_nullable
+as void Function(String errorMessage),
+  ));
+}
+
+
+}
 
 /// @nodoc
 mixin _$HilolChatRegisterState {
 
- NameInput get name; EmailOrPhoneInput get emailOrPhone; bool get isValid; FormzSubmissionStatus get status;
+ NameInput get name; EmailOrPhoneInput get emailOrPhone; bool get isValid; FormzSubmissionStatus get status; String? get errorMessage;
 /// Create a copy of HilolChatRegisterState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -361,16 +397,16 @@ $HilolChatRegisterStateCopyWith<HilolChatRegisterState> get copyWith => _$HilolC
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HilolChatRegisterState&&(identical(other.name, name) || other.name == name)&&(identical(other.emailOrPhone, emailOrPhone) || other.emailOrPhone == emailOrPhone)&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.status, status) || other.status == status));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HilolChatRegisterState&&(identical(other.name, name) || other.name == name)&&(identical(other.emailOrPhone, emailOrPhone) || other.emailOrPhone == emailOrPhone)&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,emailOrPhone,isValid,status);
+int get hashCode => Object.hash(runtimeType,name,emailOrPhone,isValid,status,errorMessage);
 
 @override
 String toString() {
-  return 'HilolChatRegisterState(name: $name, emailOrPhone: $emailOrPhone, isValid: $isValid, status: $status)';
+  return 'HilolChatRegisterState(name: $name, emailOrPhone: $emailOrPhone, isValid: $isValid, status: $status, errorMessage: $errorMessage)';
 }
 
 
@@ -381,7 +417,7 @@ abstract mixin class $HilolChatRegisterStateCopyWith<$Res>  {
   factory $HilolChatRegisterStateCopyWith(HilolChatRegisterState value, $Res Function(HilolChatRegisterState) _then) = _$HilolChatRegisterStateCopyWithImpl;
 @useResult
 $Res call({
- NameInput name, EmailOrPhoneInput emailOrPhone, bool isValid, FormzSubmissionStatus status
+ NameInput name, EmailOrPhoneInput emailOrPhone, bool isValid, FormzSubmissionStatus status, String? errorMessage
 });
 
 
@@ -398,13 +434,14 @@ class _$HilolChatRegisterStateCopyWithImpl<$Res>
 
 /// Create a copy of HilolChatRegisterState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? emailOrPhone = null,Object? isValid = null,Object? status = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? emailOrPhone = null,Object? isValid = null,Object? status = null,Object? errorMessage = freezed,}) {
   return _then(_self.copyWith(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as NameInput,emailOrPhone: null == emailOrPhone ? _self.emailOrPhone : emailOrPhone // ignore: cast_nullable_to_non_nullable
 as EmailOrPhoneInput,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
 as bool,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as FormzSubmissionStatus,
+as FormzSubmissionStatus,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -451,10 +488,7 @@ return $default(_that);case _:
 final _that = this;
 switch (_that) {
 case _HilolChatRegisterState():
-return $default(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
+return $default(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -489,10 +523,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( NameInput name,  EmailOrPhoneInput emailOrPhone,  bool isValid,  FormzSubmissionStatus status)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( NameInput name,  EmailOrPhoneInput emailOrPhone,  bool isValid,  FormzSubmissionStatus status,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _HilolChatRegisterState() when $default != null:
-return $default(_that.name,_that.emailOrPhone,_that.isValid,_that.status);case _:
+return $default(_that.name,_that.emailOrPhone,_that.isValid,_that.status,_that.errorMessage);case _:
   return orElse();
 
 }
@@ -510,13 +544,10 @@ return $default(_that.name,_that.emailOrPhone,_that.isValid,_that.status);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( NameInput name,  EmailOrPhoneInput emailOrPhone,  bool isValid,  FormzSubmissionStatus status)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( NameInput name,  EmailOrPhoneInput emailOrPhone,  bool isValid,  FormzSubmissionStatus status,  String? errorMessage)  $default,) {final _that = this;
 switch (_that) {
 case _HilolChatRegisterState():
-return $default(_that.name,_that.emailOrPhone,_that.isValid,_that.status);case _:
-  throw StateError('Unexpected subclass');
-
-}
+return $default(_that.name,_that.emailOrPhone,_that.isValid,_that.status,_that.errorMessage);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -530,10 +561,10 @@ return $default(_that.name,_that.emailOrPhone,_that.isValid,_that.status);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( NameInput name,  EmailOrPhoneInput emailOrPhone,  bool isValid,  FormzSubmissionStatus status)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( NameInput name,  EmailOrPhoneInput emailOrPhone,  bool isValid,  FormzSubmissionStatus status,  String? errorMessage)?  $default,) {final _that = this;
 switch (_that) {
 case _HilolChatRegisterState() when $default != null:
-return $default(_that.name,_that.emailOrPhone,_that.isValid,_that.status);case _:
+return $default(_that.name,_that.emailOrPhone,_that.isValid,_that.status,_that.errorMessage);case _:
   return null;
 
 }
@@ -545,13 +576,14 @@ return $default(_that.name,_that.emailOrPhone,_that.isValid,_that.status);case _
 
 
 class _HilolChatRegisterState implements HilolChatRegisterState {
-  const _HilolChatRegisterState({required this.name, required this.emailOrPhone, required this.isValid, required this.status});
+  const _HilolChatRegisterState({required this.name, required this.emailOrPhone, required this.isValid, required this.status, this.errorMessage});
   
 
 @override final  NameInput name;
 @override final  EmailOrPhoneInput emailOrPhone;
 @override final  bool isValid;
 @override final  FormzSubmissionStatus status;
+@override final  String? errorMessage;
 
 /// Create a copy of HilolChatRegisterState
 /// with the given fields replaced by the non-null parameter values.
@@ -563,16 +595,16 @@ _$HilolChatRegisterStateCopyWith<_HilolChatRegisterState> get copyWith => __$Hil
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HilolChatRegisterState&&(identical(other.name, name) || other.name == name)&&(identical(other.emailOrPhone, emailOrPhone) || other.emailOrPhone == emailOrPhone)&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.status, status) || other.status == status));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HilolChatRegisterState&&(identical(other.name, name) || other.name == name)&&(identical(other.emailOrPhone, emailOrPhone) || other.emailOrPhone == emailOrPhone)&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,emailOrPhone,isValid,status);
+int get hashCode => Object.hash(runtimeType,name,emailOrPhone,isValid,status,errorMessage);
 
 @override
 String toString() {
-  return 'HilolChatRegisterState(name: $name, emailOrPhone: $emailOrPhone, isValid: $isValid, status: $status)';
+  return 'HilolChatRegisterState(name: $name, emailOrPhone: $emailOrPhone, isValid: $isValid, status: $status, errorMessage: $errorMessage)';
 }
 
 
@@ -583,7 +615,7 @@ abstract mixin class _$HilolChatRegisterStateCopyWith<$Res> implements $HilolCha
   factory _$HilolChatRegisterStateCopyWith(_HilolChatRegisterState value, $Res Function(_HilolChatRegisterState) _then) = __$HilolChatRegisterStateCopyWithImpl;
 @override @useResult
 $Res call({
- NameInput name, EmailOrPhoneInput emailOrPhone, bool isValid, FormzSubmissionStatus status
+ NameInput name, EmailOrPhoneInput emailOrPhone, bool isValid, FormzSubmissionStatus status, String? errorMessage
 });
 
 
@@ -600,13 +632,14 @@ class __$HilolChatRegisterStateCopyWithImpl<$Res>
 
 /// Create a copy of HilolChatRegisterState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? emailOrPhone = null,Object? isValid = null,Object? status = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? emailOrPhone = null,Object? isValid = null,Object? status = null,Object? errorMessage = freezed,}) {
   return _then(_HilolChatRegisterState(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as NameInput,emailOrPhone: null == emailOrPhone ? _self.emailOrPhone : emailOrPhone // ignore: cast_nullable_to_non_nullable
 as EmailOrPhoneInput,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
 as bool,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as FormzSubmissionStatus,
+as FormzSubmissionStatus,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

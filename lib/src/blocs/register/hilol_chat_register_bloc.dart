@@ -8,8 +8,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hilol_chat_flutter/src/extensions/string_x.dart';
 import 'package:hilol_chat_flutter/src/inputs/email_or_phone_input.dart';
 import 'package:hilol_chat_flutter/src/inputs/name_input.dart';
+import 'package:hilol_chat_flutter/src/repositories/chat_repository.dart';
 
 part 'hilol_chat_register_event.dart';
 part 'hilol_chat_register_state.dart';
@@ -17,17 +19,21 @@ part 'hilol_chat_register_bloc.freezed.dart';
 
 class HilolChatRegisterBloc
     extends Bloc<HilolChatRegisterEvent, HilolChatRegisterState> {
-  HilolChatRegisterBloc()
-      : super(
-          const HilolChatRegisterState(
-            name: NameInput.pure(),
-            emailOrPhone: EmailOrPhoneInput.pure(),
-            isValid: false,
-            status: FormzSubmissionStatus.initial,
-          ),
-        ) {
-    on<HilolChatRegisterEvent>((event, emit) {
-      event.when(
+  final ChatRepository _repository;
+
+  HilolChatRegisterBloc({required ChatRepository repository})
+    : _repository = repository,
+      super(
+        const HilolChatRegisterState(
+          name: NameInput.pure(),
+          emailOrPhone: EmailOrPhoneInput.pure(),
+          isValid: false,
+          status: FormzSubmissionStatus.initial,
+          errorMessage: null,
+        ),
+      ) {
+    on<HilolChatRegisterEvent>((event, emit) async {
+      await event.when(
         nameChanged: (name) {
           final nameInput = NameInput.dirty(name);
           emit(
@@ -46,7 +52,7 @@ class HilolChatRegisterBloc
             ),
           );
         },
-        submit: () {
+        submit: (onSuccess, onError) async {
           if (!state.isValid) {
             emit(
               state.copyWith(
@@ -58,7 +64,34 @@ class HilolChatRegisterBloc
             return;
           }
 
-          emit(state.copyWith(status: FormzSubmissionStatus.success));
+          emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+          final type = state.emailOrPhone.value.getUsernameType();
+          final userData = {
+            'name': state.name.value,
+            type: state.emailOrPhone.value,
+          };
+
+          final result = await _repository.register(userData: userData);
+          result.fold(
+            (failure) {
+              emit(
+                state.copyWith(
+                  status: FormzSubmissionStatus.failure,
+                  errorMessage: failure.message,
+                ),
+              );
+              onError(failure.message);
+            },
+            (registerResult) {
+              emit(
+                state.copyWith(
+                  status: FormzSubmissionStatus.success,
+                  errorMessage: null,
+                ),
+              );
+              onSuccess();
+            },
+          );
         },
       );
     });

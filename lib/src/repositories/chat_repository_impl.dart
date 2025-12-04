@@ -13,6 +13,7 @@ import 'package:fcrm_chat_sdk/fcrm_chat_sdk.dart';
 import 'package:hilol_chat_flutter/hilol_chat_flutter.dart';
 import 'package:hilol_chat_flutter/src/utils/image_utils.dart';
 import 'package:hilol_chat_flutter/src/models/image_meta.dart';
+import 'package:hilol_chat_flutter/src/utils/logger.dart';
 
 /// Implementation of ChatRepository
 /// Follows Dependency Inversion Principle - depends on abstractions
@@ -76,7 +77,9 @@ class ChatRepositoryImpl implements ChatRepository {
           message: 'Network error during registration: ${e.message}',
         ),
       );
-    } catch (e) {
+    } catch (e, st) {
+      Log.e(e, fileName: 'chat_repository_impl');
+      Log.e(st, fileName: 'chat_repository_impl');
       return Left(
         ServerFailure(message: 'Failed to register user: ${e.toString()}'),
       );
